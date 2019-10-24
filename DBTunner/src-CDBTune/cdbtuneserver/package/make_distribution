@@ -1,0 +1,54 @@
+#!/bin/bash
+
+function red_c()
+{
+    echo -e $2 "\e[31;1m${1}\e[0m"
+}
+
+function cyan_c()
+{
+    echo -e $2 "\e[36;1m${1}\e[0m"
+}
+
+function MakePackage() 
+{
+    program=$1
+    if [ -d $program ] && [ -d $program/bin ] && [ -d $program/etc ] && [ -d $program/tools ]; then
+        cyan_c "$program: make package $program.tgz..."
+        rm -f $program.tgz
+        tar zcvf $program.tgz $program --exclude ''$program'/log/*.log' --exclude ''$program'/log/job/*' --exclude ''$program'/bin/*.runlog' --exclude ''$program'/bin/*.pid'
+        if [ $? -ne 0 ];then
+            red_c "make package $program failed"
+            return 1
+        fi
+    fi
+    return 0
+}
+
+if [ $# -lt 1 ];then
+    echo "Usage: `basename $0` <all>|<program>...<program>"
+    exit 1
+fi
+
+if [ "$1" == "all" ];then
+    echo "Build package all..."
+    for file in `ls`
+    do
+         MakePackage $file
+         if [ $? -ne 0 ];then
+             red_c "Terminate..."
+             exit 1
+         fi
+    done
+else
+    echo "Build package $@"
+    for file in $@
+    do
+        MakePackage $file
+        if [ $? -ne 0 ];then
+            red_c "Terminate..."
+            exit 2
+        fi
+    done
+fi
+cyan_c "Done!"

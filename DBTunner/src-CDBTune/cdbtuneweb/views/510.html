@@ -1,0 +1,11 @@
+{{ template "base.html" .}}
+
+{{ define "title"}} Request not Allowed{{ end }}
+
+{{ define "body" }}
+<div style="text-align: center;">
+    <h1>Request not Allowed</h1>
+
+    <p>{{.Content}}</p>
+</div>
+{{ end }}

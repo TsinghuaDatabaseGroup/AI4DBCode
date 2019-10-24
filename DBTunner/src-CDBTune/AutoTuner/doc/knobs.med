@@ -1,0 +1,27 @@
+15403.658,24.294,246456.134,tmp_table_size:1073741824
+innodb_lru_scan_depth:1024
+innodb_sync_array_size:1
+innodb_spin_wait_delay:6
+innodb_write_io_threads:12
+innodb_flush_neighbors:1
+innodb_buffer_pool_size:6721623818
+metadata_locks_hash_instances:8
+innodb_read_io_threads:12
+innodb_sync_spin_loops:30
+innodb_read_ahead_threshold:56
+table_open_cache:512
+thread_cache_size:512
+innodb_adaptive_hash_index:OFF
+innodb_adaptive_hash_index_parts:8
+innodb_buffer_pool_instances:8
+table_open_cache_instances:16
+innodb_io_capacity:20000
+
+Sys.Input: data={"instanceid": "2018f2a7-959d-11e8-8728-283152b07750", "operator": "zakijzhang", "para_list": [{"name": "
+       tmp_table_size", "value": "1073741824"}, {"name": "innodb_lru_scan_depth", "value": "1024"}, {"name": "innodb_sync_array_size", "value": "1"}, {"name": "innodb_spin_wait_
+       delay", "value": "6"}, {"name": "innodb_page_cleaners", "value": "4"}, {"name": "innodb_write_io_threads", "value": "12"}, {"name": "innodb_flush_neighbors", "value": "1"
+       }, {"name": "innodb_buffer_pool_size", "value": "672162381824"}, {"name": "metadata_locks_hash_instances", "value": "8"}, {"name": "innodb_read_io_threads", "value": "12"
+       }, {"name": "innodb_sync_spin_loops", "value": "30"}, {"name": "innodb_read_ahead_threshold", "value": "56"}, {"name": "table_open_cache", "value": "512"}, {"name": "inno
+       db_thread_concurrency", "value": "0"}, {"name": "thread_cache_size", "value": "512"}, {"name": "innodb_adaptive_hash_index", "value": "OFF"}, {"name": "innodb_random_read
+       _ahead", "value": "OFF"}, {"name": "innodb_adaptive_hash_index_parts", "value": "8"}, {"name": "innodb_buffer_pool_instances", "value": "8"}, {"name": "innodb_purge_threa
+       ds", "value": "1"}, {"name": "table_open_cache_instances", "value": "16"}, {"name": "innodb_io_capacity", "value": "20000"}]}

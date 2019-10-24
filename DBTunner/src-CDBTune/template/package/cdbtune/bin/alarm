@@ -1,0 +1,22 @@
+#!/bin/bash
+
+apdtools_dir="/usr/local/apdtools/agent/reportexception"
+
+function alarm()
+{
+    ${apdtools_dir}/reportexception ${apdtools_dir}/reportException.conf "$1" "$2"  >/dev/null 2>&1 &
+    exit $?
+}
+
+if [ $# -ne 2 ]
+then
+    echo "USAGE: `basename $0` <message> <alarm_id>"
+    exit 1
+fi
+
+ip=`/sbin/ifconfig|grep -A1 eth1 |grep "inet addr"|awk -F ":" '{print $2}'|awk '{print $1}'`
+
+now_time=`date +"%Y-%m-%d"`
+message="$1"
+id="$2"
+alarm $id "${message}.From:${ip};[$now_time]"

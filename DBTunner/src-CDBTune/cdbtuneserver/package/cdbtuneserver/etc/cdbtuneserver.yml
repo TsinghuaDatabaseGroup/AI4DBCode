@@ -1,0 +1,21 @@
+formatters:
+        f:
+                format: "[%(asctime)s][%(levelname)s] %(message)s [%(filename)s:%(lineno)d]"
+                dateformat: "%y%m%d %H:%M:%S"
+handlers:
+        h:
+                class: RotatingFileHandler
+                filepath: "../log/cdbtuneserver.log"
+                mode: O_APPEND
+                bufferSize: 0
+                # 30 * 1000 ms -> 30 seconds
+                bufferFlushTime: 1000
+                inputChanSize: 0 
+                # 100 * 1024 * 1024 -> 100M
+                maxBytes: 104857600
+                backupCount: 9
+                formatter: f
+loggers:
+        cdb: 
+                level: DEBUG
+                handlers: [h]

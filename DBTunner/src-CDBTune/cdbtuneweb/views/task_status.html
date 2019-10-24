@@ -1,0 +1,68 @@
+{{ template "base.html" .}}
+
+{{ define "body" }}
+
+<div id="task_status" class="container">
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <caption><h4>Task Info</h4></caption>
+    <tbody>
+    <tr>
+        <td><div class="text-right">ID:</div></td>
+        <td>{{ .Id }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-top text-right">Project:</div></td>
+        <td>{{ .Result.session.project.name }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Session:</div></td>
+        <td><div id="sessions">{{ .Result.session.name}}</div></td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Overall status:</div></td>
+        <td>{{ .Oerall_status }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Tasks completed:</div></td>
+        <td>{{ .Num_completed }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Start time:</div></td>
+        <td>{{ .Result.creation_time }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Completion time:</div></td>
+        <td>{{ .Completion_time }}</td>
+    </tr>
+    <tr>
+        <td><div class="text-right">Total runtime:</div></td>
+        <td>{{ .Total_runtime }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{{ range $task_name,$task := .tasks }}
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <caption><h4>{{ .Task_name }}</h4></caption>
+    <tbody>
+	    <tr>
+	        <td><div class="text-right">Status:</div></td>
+	        <td>{{ .Task.status }} </td>
+	    </tr>
+	    {{ if .Task.traceback }}
+	    <tr>
+	        <td><div class="text-right">Traceback:</div></td>
+	        <td>{{ .Task.traceback }} </td>
+	    </tr>
+	    {{ end}}
+	    <tr>
+	        <td><div class="text-right">Result:</div></td>
+	        <td>{{ .Task.result }} </td>
+	    </tr>
+    </tbody>
+</table>
+{{ end}}
+</div>
+
+
+{{ end }}

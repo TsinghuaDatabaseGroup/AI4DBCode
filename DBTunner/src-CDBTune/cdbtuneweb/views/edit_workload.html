@@ -1,0 +1,23 @@
+{{template "base.html" .}}
+
+{{ define "body" }}
+<div class="container">
+<form action="/update_workload/" method="POST"> {{ .Csrf_token }}
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <caption><h4>Edit Workload Information</h4></caption>
+    <tbody>
+    <tr>
+        <td><div class="text-right">Name:</div></td>
+        <td><input type="text" id="name" name="name" value="{{ .Workload.name }}" maxlength="50" required></td>
+    </tr>
+    <!-- <tr>
+        <td><div class="text-right">Creation time:</div></td>
+        <td>{{ .Benchmark.creation_time }}</td>
+    </tr> -->
+    </tbody>
+</table>
+<button class="btn btn-default" type="submit" name="id" value="{{ .Workload.pk }}">Save</button>
+<a class="btn btn-default" href="/workload/?id={{ .Workload.pk }}">Cancel</a>
+</form>
+</div>
+{{ end }}

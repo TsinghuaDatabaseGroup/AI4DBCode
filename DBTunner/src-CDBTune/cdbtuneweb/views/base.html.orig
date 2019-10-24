@@ -1,0 +1,159 @@
+{{ template "nav.html" .}}
+
+
+<!DOCTYPE html>
+<html>
+
+<!-- Javascript imports -->
+<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/jquery.address-1.5.min.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/jqplot/jquery.jqplot.min.js"></script>
+<script type='text/javascript'>var STATIC_URL = 'static/';</script>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ define "title"}}CDBTune{{ end }}</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="static/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/js/jqplot/jquery.jqplot.min.css" />
+    <link rel="stylesheet" href="static/css/base.css">
+    <style>
+        .btn-sm2,
+.btn-group-sm > .btn {
+  padding: 6px 9px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.navbar-btn2 {
+  padding: 4px 6px;
+  margin-top:12.5px;
+  margin-bottom:12.5px;
+}
+
+.navbar-form2 {
+  padding: 4px 6px;
+  margin-top:12.5px;
+  margin-bottom:12.5px;
+}
+
+.form-control2 {
+  margin: 0 0 0 0;
+  height: 32px;
+  width: 150px;
+}
+</style>
+    {{ block "extra_head" .}}
+    <link rel="stylesheet" href="static/css/style.css">
+    {{ end }}
+</head>
+
+<body>
+
+<<<<<<< Updated upstream
+<!-- Navigation -->
+<nav class="navbar navbar-default fixed-top topnav" role="navigation">
+<div class="container">
+    <div class="navbar-header">
+	   <a class="navbar-brand .text-warning" href="/login.html">CDBTune</a>
+	</div>
+    <div class="navbar-collapse collapse">
+        <div class="navbar-right">
+            {{ if not .User.IsAuthenticated }}
+            <span class="navbar-text">
+                    <img style="height: 25px"  src="http://dcloud.oa.com/Public/Avatar/samuelzan.png">
+
+                
+                   samuelzan
+
+            </span>
+            <a class="btn btn-default navbar-btn2" style="margin-top:15px" href="http://www.oa.com/api/loginout.ashx?ref">注销</a>
+            {{ else }}
+            <form class="form-inline navbar-form2" role="form" action="/login.html" method="POST" style="margin:0 0 0 0">
+                <input type="text" placeholder="username" class="form-control form-control2" name="username">
+                <input type="password" placeholder="password" class="form-control form-control2" name="password">
+                <button type="submit" class="btn btn-default navbar-btn2">Sign in</button>
+            </form>
+        </div>
+        {{ end}}
+    </div>
+</div>
+</nav>
+
+	{{ if .Form.errors }}
+	{{ range $field := .Form }}
+	{{ range $error := .Field.errors }}
+	<div class="alert alert-danger">
+		<strong>{{ $error }}</strong>
+	</div>
+	{{ end}}
+	{{ end}}
+	{{ range $error := .Form.non_field_errors }}
+	<div class="alert alert-danger">
+		<strong>{{ $error }}</strong>
+	</div>
+	{{ end}}
+    {{ end}}
+
+    {{if true}}
+        {{ block "nav" .}} {{ end }}
+    {{else}}
+        {{ block "body" .}} {{ end }}
+    {{end}}
+
+
+    
+
+=======
+    <!-- Navigation -->
+    <nav class="navbar navbar-default fixed-top topnav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand .text-warning" href="/home_projects.html">CDBTune</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="navbar-right">
+                    {{ if .User.IsAuthenticated }}
+                    <span class="navbar-text">Hello, {{ .User.username }}</span>
+                    <a class="btn btn-default navbar-btn2" href="/change_password.html">Change Password</a>
+                    <a class="btn btn-default navbar-btn2" href="/logout.html">Sign Out</a>
+                    {{ else }}
+                    <form class="form-inline navbar-form2" role="form" action="/login.html" method="POST" style="margin:0 0 0 0">
+                        {{ .Csrf_token }}
+                        <input type="text" placeholder="username" class="form-control form-control2" name="username">
+                        <input type="password" placeholder="password" class="form-control form-control2" name="password">
+                        <button type="submit" class="btn btn-default navbar-btn2">Sign in</button>
+                    </form>
+                </div>
+                {{ end}}
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    {{ if .Form.errors }}
+    {{ range $field := .Form }}
+    {{ range $error := .Field.errors }}
+    <div class="alert alert-danger">
+        <strong>{{ $error }}</strong>
+    </div>
+    {{ end}}
+    {{ end}}
+    {{ range $error := .Form.non_field_errors }}
+    <div class="alert alert-danger">
+        <strong>{{ $error }}</strong>
+    </div>
+    {{ end}}
+    {{ end}}
+
+    {{ block "body" .}} {{ end }}
+>>>>>>> Stashed changes
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+{{ template "base.html" .}}
+
+
+
+{{ define "body" }}
+
+<div class="container">
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <caption>
+            <h4>stest{{ .Labels.title }}</h4>
+        </caption>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.id }}</div>
+                </td>
+                <td>stest{{ .Result.pk }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.session }}</div>
+                </td>
+                <td>stest{{ .Result.session.name }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.workload }}</div>
+                </td>
+                <td><a href=" urlfor 'workload' project_id session_id result.workload.pk ">
+                        stest{{ .Result.workload.name}}</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-top text-right">stest{{ .Labels.knob_data }}</div>
+                </td>
+                <td>
+                    <a href=" urlfor 'knob_data' project_id session_id result.knob_data.pk ">
+                        {{ .Result.knob_data.name }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-top text-right">stest{{ .Labels.metric_data }}</div>
+                </td>
+                <td><a href=" urlfor 'metric_data' project_id session_id result.metric_data.pk }}">
+                        {{ .Result.metric_data.name }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.creation_time }}</div>
+                </td>
+                <td>stest{{ .Result.creation_time }}</td>
+            </tr>
+            {{ range $key,$value := .default_metrics.items }}
+            <tr>
+                <td>
+                    <div class="text-right">metric_meta.key.pprint }}</div>
+                </td>
+                <td> value|floatformat:2 metric_meta.key.unit }}</td>
+            </tr>
+            {{ end}}
+            {{ if .Status }}
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.status }}</div>
+                </td>
+                <td><a href=" urlfor 'tuner_status' project_id session_id result.pk }}">stest{{ .Status }}</td>
+
+            </tr>
+            {{ end}}
+            {{ if .Next_conf_available }}
+            <tr>
+                <td>
+                    <div class="text-right">stest{{ .Labels.next_conf_available }}</div>
+                </td>
+                <td><a href="/get_result_data_file/?id={{ .Result.pk }}&type=next_conf">Download</a></td>
+            </tr>
+            {{ end}}
+        </tbody>
+    </table>
+</div>
+
+<!-- <hr>
+
+
+<div class="container">
+<div class="row">
+
+
+<div id="sidebar" class="col-md-3">
+<div id="same">
+    <div><h4>Same-Configuration Runs</h4></div>
+    <div class="checkbox boxbody">
+        <ul>
+        {{ range $run := .same_runs}}
+        <li><label><input type="checkbox" name="same_run" value="{{ .Run.pk }}" /> {{ .Run.pk }}@{{ .Run.timestamp }}<a href=" urlfor 'result' project_id session_id run.pk ">(view)</a></label></li>
+ 	{{ end}}
+</ul>
+    </div>
+    <div class="pagination">
+    <a href="#" class="first" data-action="first">&laquo;</a>
+    <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+    <input type="text" readonly="readonly" data-max-page="40" />
+    <a href="#" class="next" data-action="next">&rsaquo;</a>
+    <a href="#" class="last" data-action="last">&raquo;</a>
+    </div>
+
+</div>
+<div id="similar">
+    <div><h4>Similar-Configuration Runs (<a href="/update_similar/?id={{ .Result.pk }}">update</a>)</h4></div>
+    <div class="checkbox boxbody">
+        <ul  >
+       {{ range $run := .similar_runs }}
+        <li><label><input type="checkbox" name="same_run" value="{{ .run.pk }}" /> {{ .run.pk }}@{{ .Run.timestamp }}<a href=" urlfor 'result' project_id session_id run.pk ">(view)</a></label></li>
+        {{ end}}
+        </ul>
+    </div>
+</div>
+<div id="metric">
+    <div><h4>Plot Metrics</h4></div>
+    <div class="checkbox boxbody">
+        <ul>
+        {{ range $metric,$metric_info := .metric_meta.items }}
+        <li><label><input type="checkbox" name="metric" value=" metric }}" /> metric_info.pprint }}</label></li>
+        {{ end}}
+        </ul>
+    </div>
+</div>
+</div>
+
+<div class="col-md-9">
+    <div id="content">
+        <div id="plotgrid" class="plotcontainer"></div>
+    </div>
+</div>
+
+
+</div>
+</div> -->
+
+<script type="text/javascript" src="/static/js/jqplot/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.barRenderer.min.js"></script>
+
+<script type="text/javascript" src="/static/js/result10.js"></script>
+<script type="text/javascript" src="/static/js/jquery.jqpagination.min.js"></script>
+
+<!--  <script type="text/javascript">
+ $(function() {
+   ResultTimeline.init({
+        result: {{ .Result.pk }},
+        data: {{ .data }},
+        all_metrics: {{.metric_meta}}, 
+        metrics: [{{ range $metric := .default_metrics }}"{{ .metric }}", {{ end}}],
+    });
+}); 
+</script> -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $table_rows = $("#same  li");
+        var table_row_limit = 10;
+        var page_table = function (page) {
+
+            var offset = (page - 1) * table_row_limit,
+                limit = page * table_row_limit;
+
+            $table_rows.hide();
+
+            $table_rows.slice(offset, limit).show();
+
+        }
+        $('.pagination').jqPagination({
+            max_page: Math.ceil($table_rows.length / table_row_limit),
+            paged: page_table
+
+        });
+        page_table(1);
+
+    });
+</script>
+
+{{ end }}

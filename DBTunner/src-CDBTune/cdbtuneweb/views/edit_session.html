@@ -1,0 +1,72 @@
+{{ template "base.html" .}}
+
+{{ define "body" }}
+<div class="container">
+    {{ if .Session }}
+    <form action=" urlfor 'edit_session' project.pk session.pk " method="POST">
+        {{ else }}
+        <form action=" urlfor 'new_session' project.pk " method="POST">
+            {{ end}}
+            {{ .Csrf_token }}
+            <table class="table table-striped table-bordered table-hover table-nonfluid">
+                <tr>
+                    <td>{{ .Form.name.label_tag }}</td>
+                    <td>{{ .Form.name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ .Form.description.label_tag }}</td>
+                    <td>{{ .Form.description }}</td>
+                </tr>
+                <tr id="dbms_row">
+                    <td>{{ .Form.dbms.label_tag }}</td>
+                    <td>{{ .Form.dbms }}</td>
+                </tr>
+                <tr id="hardware_row">
+                    <td>{{ .Form.hardware.label_tag }}</td>
+                    <td>{{ .Form.hardware }}</td>
+                </tr>
+                <tr>
+                    <td>{{ .Form.tuning_session.label_tag }}</td>
+                    <td>{{ .Form.tuning_session }}</td>
+                </tr>
+                <tr id="target_obj_row">
+                    <td>{{ .Form.target_objective.label_tag }}</td>
+                    <td>{{ .Form.target_objective }}</td>
+                </tr>
+                <tr id="upload_code_row">
+                    <td>{{ .Form.gen_upload_code.label_tag }}</td>
+                    <td>{{ .Form.gen_upload_code }}</td>
+                </tr>
+            </table>
+            <button class="btn btn-default" type="submit" name="id">Submit</button>
+            {{ if .Session }}
+            <a class="btn btn-default" href=" urlfor 'session' project.pk session.pk ">Cancel</a>
+            {{ else }}
+            <a class="btn btn-default" href=" urlfor 'project_sessions' project.pk ">Cancel</a>
+            {{ end}}
+        </form>
+</div>
+
+<script language="javascript">
+    function show_content() {
+        console.log("In show_content()")
+        $("#target_obj_row").toggle()
+    }
+
+    $(function () {
+        if ("{{ .Session }}" != "None") {
+            $("#dbms_row").hide();
+            $("#hardware_row").hide();
+        } else {
+            $("#upload_code_row").hide();
+        }
+
+        if (document.getElementById('id_tuning_session').checked) {
+            $("#target_obj_row").show()
+        } else {
+            $("#target_obj_row").hide()
+        }
+    });
+</script>
+
+{{ end }}

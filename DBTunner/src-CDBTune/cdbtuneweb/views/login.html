@@ -1,0 +1,59 @@
+{{ template "base.html" .}}
+
+{{ define "body" }}
+<header id="home">
+    <div class="bg-img" style="background-image: url('static/img/otter.jpg')">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="home-content">
+                        <h1 class="white-text">CHALLENGE</h1>
+                        <ul class="white-text">
+                            <li>CDBTune是基于深度学习及强化学习提出的一种数据库参数智能调整工具，在此您可以对数据库进行参数调整，并与CDBTune参数调整后的数据库性能进行对比</li>
+                            <li>点击创建比赛，向CDBTune发起挑战！
+                            </li>
+                        </ul>
+                        <p><a class="btn btn-primary btn-lg" role="button" href="/task_manage.html">创建比赛 &raquo;</a>
+
+
+
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4067813-27"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4067813-27');
+</script>
+
+
+{{ end }}
+
+
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+
+</body>
+
+</html>

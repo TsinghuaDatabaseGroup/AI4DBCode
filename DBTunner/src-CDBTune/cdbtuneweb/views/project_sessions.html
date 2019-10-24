@@ -1,0 +1,45 @@
+{{ template "base.html" .}}
+
+{{ define "body" }}
+<div id="project_sessions" class="container">
+<form action=" urlfor 'delete_session' .Project.pk " method="POST"
+      onsubmit="return confirm('Are you sure you want to delete these sessions and all their results?')">
+      {{ .Csrf_token }}
+<table style="table-layout: auto; width: 100%;" id="session_table" class="table table-bordered table-striped table-hover table-nonfluid">
+    <caption><h4>{{ .Labels.title }}</h4></caption>
+    <tr>
+        <th><input type="checkbox" onClick="toggle(this, 'sessions')" /></th>
+        <th>{{ .Labels.name }}</th>
+        <th>{{ .Labels.dbms }}</th>
+        <th>{{ .Labels.hardware }}</th>
+        <th>{{ .Labels.tuning_session }}</th>
+        <th>{{ .Labels.creation_time }}</th>
+        <th>{{ .Labels.last_update }}</th>
+    </tr>
+    {{ range $session := .Sessions }}
+        <tr>
+            <td style="vertical-align:middle"><input type="checkbox" name="sessions" value="{{ $session.pk }}" /></td>
+            <td style="vertical-align:middle"><a href=" urlfor 'session' .Project.pk $session.pk ">{{ $session.name }}</a></td>
+            <td style="vertical-align:middle">{{ $session.dbms.full_name }}</td>
+            <td style="vertical-align:middle">{{ $session.hardware.name }}</td>
+            <td style="vertical-align:middle">{{ $session.tuning_session }}</td>
+            <td style="vertical-align:middle">{{ $session.creation_time }}</td>
+            <td style="vertical-align:middle">{{ $session.last_update }}</td>
+        </tr>
+    {{ end}}
+</table>
+<button class="btn btn-default" type="submit" name="id" value="{{ .Project.pk }}">{{ .Labels.button_delete }}</button>
+<a class="btn btn-default" href=" urlfor 'new_session' .Project.pk ">{{ .Labels.button_create}} </a>
+</form>
+</div>
+
+<script type="text/javascript">
+function toggle(source, name) {
+    checkboxes = document.getElementsByName(name);
+    for(var i=0, n=checkboxes.length; i<n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+</script>
+
+{{ end }}

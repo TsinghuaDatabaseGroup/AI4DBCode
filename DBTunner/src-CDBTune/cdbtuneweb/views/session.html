@@ -1,0 +1,252 @@
+{{ template "base.html" .}}
+
+
+{{ define "body" }}
+
+<div id="session" class="container">
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <caption>
+            <h4>{{ .Labels.title }} (<a href=" urlfor 'edit_session' .Project.pk session.pk ">edit</a>)</h4>
+        </caption>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.name }}</div>
+                </td>
+                <td>{{ .Session.name }}</td>
+            </tr>
+            {{ if .Session.description }}
+            <tr>
+                <td>
+                    <div class="text-top text-right">{{ .Labels.description }}</div>
+                </td>
+                <td>{{ .Session.description }}</td>
+            </tr>
+            {{ end}}
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.upload_code }}</div>
+                </td>
+                <td>{{ .Session.upload_code }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.dbms }}</div>
+                </td>
+                <td>{{ .Session.dbms }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.hardware }}</div>
+                </td>
+                <td>{{ .Session.hardware.name }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.creation_time }}</div>
+                </td>
+                <td>{{ .Session.creation_time }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.last_update }}</div>
+                </td>
+                <td>{{ .Session.last_update }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.tuning_session }}</div>
+                </td>
+                <td>{{ .Session.tuning_session }}</td>
+            </tr>
+            {{ if .Session.tuning_session }}
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.target_objective }}</div>
+                </td>
+                <td>{{ .Metric_meta.session.target_objective.pprint }}</td>
+            </tr>
+            {{ end}}
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <div id="sidebar" class="col-md-3">
+            <div id="dbmss">
+                <div>
+                    <h4>DBMS</h4>
+                </div>
+                <div class="boxbody checkbox">
+                    <ul>
+                        {{ range $dbms_key,$dbms := .dbmss.items }}
+                        <li><label><input type="checkbox" name="dbms" value="{{ .Dbms_key }}" /> {{ .Dbms.full_name }}</label></li>
+                        {{ end}}
+                    </ul>
+                </div>
+            </div>
+            <div id="workload">
+                <div>
+                    <h4>Workload</h4>
+                </div>
+                <div class="boxbody radio">
+                    <ul>
+                        <li><label><input type="radio" name="workload" value="show_none" /> Display none</label></li>
+                    </ul>
+                    <ul>
+                        {{ range $wkld,$confs := .workloads.items }}
+                        <li>
+                            <label><input id="workload_{{ .Wkld }}" type="radio" name="workload" value="{{ .Wkld }}" />
+                                {{ .Wkld }}</label>
+                            <div id="div_specific_{{ .Wkld }}">
+                                <ul>
+                                    {{ range $conf := .Confs }}
+                                    <li><label><input id="specific_{{ .Wkld }}_{{ .Conf.pk }}" type="checkbox" name="specific"
+                                                value="{{ .Conf.pk }}" /> {{ .Conf.name }}</label></li>
+                                    {{ end}}
+                                </ul>
+                            </div>
+                        </li>
+                        {{ end}}
+                    </ul>
+                </div>
+            </div>
+            <!-- <div id="additional_filter">
+    <div><h4>Additional Filter</h4></div>
+    <div class="boxbody">
+        <ul>
+        {{ range $filter := .filters }}
+        <li><label>{{ .Filter.print }}<select class="selectpicker" name="additional_{{ .Filter.field }}">
+            <option value="select_all">Select All</option>
+            {{ range $value := .filter.values }}
+            <option value="{{ .Value }}">{{ .Value }}</option>
+            {{ end}}
+        </select></label></li>
+        {{ end}}
+        </ul>
+    </div>
+</div> -->
+            <div id="metric">
+                <div>
+                    <h4>Plot Metrics</h4>
+                </div>
+                <div class="checkbox boxbody">
+                    <table id="metrictable">
+                        <thead style="display:none;">
+                            <tr>
+                                <th>Metrics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {{ range $metric := .Metrics }}
+                            <tr>
+                                <td style="background-color: white">
+                                    <input type="checkbox" name="metric" value="{{ .Metric }}">
+                                    {{ .Metric_meta.metric.pprint }}
+                                </td>
+                            </tr>
+                            {{ end}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="configbar" class="row">
+                <div class="col-sm-10">
+                    Show the last
+                    <select id="results_per_page" class="selectpicker show-tick" data-width="fit" data-style="btn-default">
+                        {{ range $n_res := .Results_per_page }}
+                        <option value="{{ .N_res }}">{{ .N_res }}</option>
+                        {{ end}}
+                    </select> results
+                </div>
+                <div class="col-sm-2 checkbox">
+                    <label><input id="equidistant" class="option" name="equidistant" type="checkbox" /> Equidistant</label>
+                </div>
+            </div>
+
+            <div id="content" class="col-sm-10">
+                <div id="plotgrid" class="plotcontainer row"></div>
+                <div id="result_table">
+                    <h4>Filtered Results</h4>
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- table tools stuff -->
+                <link rel='stylesheet' type='text/css' href='static/css/jquery.dataTables.css'>
+                <script type="text/javascript" src='static/js/jquery.dataTables.min.js'></script>
+                <script type="text/javascript" src='static/js/FixedHeader.min.js'></script>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisTickRenderer.min.js"></script>
+
+
+<script type="text/javascript" src="/static/js/timeline.js"></script>
+<script language="javascript">
+    $(function () {
+        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+            "num-html-pre": function (a) {
+                var x = String(a).replace(/<[\s\S]*?>/g, "");
+                return parseFloat(x);
+            },
+
+            "num-html-asc": function (a, b) {
+                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+            },
+
+            "num-html-desc": function (a, b) {
+                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+            }
+        });
+
+        $('.selectpicker').selectpicker();
+
+        $("[id^=div_specific]").hide();
+
+        Timeline.init({
+            project: {{.Session.Project.pk }},
+        session: {{.Session.pk }},
+        dbms: "{{ .Default_dbms }}",
+        results_per_page: {{ .Default_results_per_page }},
+        workload: "{{ .Default_workload }}",
+        workloads: "{{ .Defaultspe }}",
+        equidistant: "{{ .Default_equidistant }}",
+        additional: [{{ range $filter := .Filters }} "{{ .Filter.field }}", {{ end }}],
+        metrics: [{{ range $metric := .Default_metrics }}"{{ .Metric }}", {{ end }}]
+        });
+    });
+
+</script>
+
+{{ end }}

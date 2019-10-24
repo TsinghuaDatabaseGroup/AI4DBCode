@@ -1,0 +1,6 @@
+MySQL-python==1.2.3
+numpy==1.13.3
+scipy==0.13.3
+requests==2.18.4
+torch==0.3.1
+psutil==5.4.6

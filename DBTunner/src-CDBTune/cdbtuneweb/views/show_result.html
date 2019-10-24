@@ -1,0 +1,264 @@
+{{ template "base.html" .}}
+
+
+{{ define "body" }}
+
+
+
+
+<div id="configbar" class="row">
+    <div id="result_total" style="width:780px;height:500px"></div>
+</div>
+
+<div id="content" class=" row col-sm-10">
+    <div id="plotgrid" class="plotcontainer row"></div>
+    <div id="result_table">
+        <h4>Params Results</h4>
+        <table class="table table-striped table-bordered table-condensed table-hover">
+            <caption>
+                <!-- <h4>参数取值</h4> -->
+            </caption>
+            <thead>
+                <tr>
+                    <td>参数</td>
+                    <td id="knobs_actor">CDBTUNE</td>
+                </tr>
+            </thead>
+            <tbody id="knobs_detail">
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- table tools stuff -->
+    <link rel='stylesheet' type='text/css' href='static/css/jquery.dataTables.css'>
+    <script type="text/javascript" src='static/js/jquery.dataTables.min.js'></script>
+    <script type="text/javascript" src='static/js/FixedHeader.min.js'></script>
+</div>
+
+
+
+<script type="text/javascript" src="/static/js/echarts.common.min.js"></script>
+<script language="javascript">
+    var g_knobs = {}
+    var g_knob_ind = []
+
+    var _task_id = { "task_id": {{.TaskId }} }
+    var _lastIdx = 0
+    var timeData = []
+    timeData = timeData.map(function (str) {
+        return str.replace('2009/', '');
+    });
+
+    option = {
+        title: {
+            text: 'Result',
+            subtext: '',
+            x: 'left'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                // alert(params[0].dataIndex)
+                if (_lastIdx != params[0].dataIndex) {
+                    // console.log(params[0])
+                    showDetail(params[0].dataIndex, true)
+                    _lastIdx = params[0].dataIndex
+                }
+
+                var res = params[0].name;
+                res += '<style>td{padding:5px;}</style><table>';
+                res += '<tr><td>operator</td><td>QPS</td><td>RT</td></tr>';
+                show = params.length / 2
+                for (var i = 0; i < show; i++) {
+                    res += '<tr><td><font color="' + params[i].color + '"><strong>&nbsp;' + params[i].seriesName + '</strong></font></td><td>' + params[i].value.toFixed(2);
+                    res += '</td><td>' + params[i + show].value.toFixed(2);
+                    res += '</td></tr>';
+                }
+                // res += '<tr><td>' + params[params.length - 1].seriesName + '</td><td>' + params[params.length - 1].value + '</td></tr>';
+                res += '</table>';
+                return res;
+
+            },
+
+            axisPointer: {
+                animation: false
+            }
+        },
+        legend: {
+            data: ['YOUR', 'CDBTUNE'],
+            x: 'center'
+        },
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        axisPointer: {
+            link: { xAxisIndex: 'all' }
+        },
+        dataZoom: [
+            {
+                show: true,
+                realtime: true,
+                start: 30,
+                end: 70,
+                xAxisIndex: [0, 1]
+            },
+            {
+                type: 'inside',
+                realtime: true,
+                start: 30,
+                end: 70,
+                xAxisIndex: [0, 1]
+            }
+        ],
+        grid: [{
+            left: 50,
+            right: 50,
+            height: '35%'
+        }, {
+            left: 50,
+            right: 50,
+            top: '55%',
+            height: '35%'
+        }],
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                axisLine: { onZero: true },
+                data: timeData
+            },
+            {
+                gridIndex: 1,
+                type: 'category',
+                boundaryGap: false,
+                axisLine: { onZero: true },
+                data: timeData,
+                position: 'top',
+                show: false
+            }
+        ],
+        yAxis: [
+            {
+                name: 'QPS(q/s)',
+                type: 'value',
+                // max: 500
+            },
+            {
+                gridIndex: 1,
+                name: 'RT(ms)',
+                type: 'value',
+                inverse: true
+            }
+        ],
+        series: [
+            {
+                name: 'YOUR',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: []
+            },
+            {
+                name: 'YOUR',
+                type: 'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: []
+            },
+            {
+                name: 'CDBTUNE',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: []
+            },
+            {
+                name: 'CDBTUNE',
+                type: 'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: []
+            }
+        ]
+    };
+
+    var myChart = echarts.init(document.getElementById('result_total'));
+    myChart.setOption(option);
+    // myChart.on('mouseup', function (obj) {
+    //     var selected = obj.selected;
+    //     alert(obj)
+    //     if (params.dataIndex > 0) {
+    //         showDetail(params.dataIndex, true)
+    //     }
+
+    // });
+    function showDetail(index, iscdbtune) {
+        knob = g_knobs[g_knob_ind[index]]
+        if (iscdbtune) {
+            $("#knobs_actor").text("cdbtune")
+        } else {
+            $("#knobs_actor").text("oa_name")
+        }
+        $("#knobs_detail").empty()
+        for (var key in knob) {
+            $("#knobs_detail").append(
+                "<tr><td>" + key + "</td><td>" + knob[key] + "</td></tr>"
+            )
+        }
+
+        //添加 
+
+    }
+
+
+    function parseResult(data) {
+        var idx = [], qps = [], delay = [], detail = []
+        var ind = 0
+        data = data.map(function (knobs) {
+            idx[ind] = "idx_" + ind
+            qps[ind] = knobs.Qps
+            delay[ind] = knobs.Rt
+            g_knob_ind[ind] = knobs.ResultId
+            g_knobs[knobs.ResultId] = JSON.parse(knobs.KnobsDetail)
+            ind += 1
+        });
+        // console.log(idx, qps, delay, detail);
+        option = {
+            xAxis: [{ data: idx }, { data: idx }],
+            series: [
+                { data: qps }, { data: delay },
+                { data: qps }, { data: delay }
+            ]
+        };
+        myChart.setOption(option);
+    }
+
+
+    function refreshResult() {
+        $.post("task/query_task_result", _task_id, function (rsp) {
+            var drsp = JSON.parse(rsp);
+            console.log(drsp);
+            if (drsp.errno == 0) {
+                parseResult(drsp.data)
+            }
+
+        });
+    }
+
+    setInterval(refreshResult(), 1000)
+
+</script>
+
+{{ end }}

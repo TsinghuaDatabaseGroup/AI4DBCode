@@ -1,0 +1,40 @@
+{{ define "nav" }}
+
+<div class="container">
+    <div class="row">
+
+        <div id="sidebar" class="col-md-3">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="dropdown open">
+
+                    <ul class="dropdown-menu">
+                        <li class="{{if eq .url "task_manage.html"}}active{{end}}"> <a href="/task_manage.html">任务管理</a></li>
+                        <li class="divider"></li>
+                        <li class="{{if eq .url "edit_param.html"}}active{{end}}"> <a href="/edit_param.html">参数调整</a></li>
+                        <li class="divider"></li>
+                        <li class="{{if eq .url "show_database.html"}}active{{end}}"><a href="/show_database.html">数据库状态</a></li>
+                        <li class="divider"></li>
+                        <li class="{{if eq .url "show_result.html"}}active{{end}}"><a href="/show_result.html">结果展示</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="col-md-9">
+            <div id="configbar" class="row">
+                {{ block "body" .}} {{ end }}
+            </div>
+        </div>
+    </div>
+
+</div>
+{{end}}

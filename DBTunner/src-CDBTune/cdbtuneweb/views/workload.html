@@ -1,0 +1,96 @@
+{{ template "base.html" .}}
+
+
+{{ define "body" }}
+
+<div id="workload_info" class="container">
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <caption>
+            <h4>{{ .Labels.title }}</h4>
+        </caption>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.dbms }}</div>
+                </td>
+                <td>{{ .Workload.dbms }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-right">{{ .Labels.name }}</div>
+                </td>
+                <td>{{ .Workload.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <div id="sidebar" class="col-md-3">
+            <div id="dbs">
+                <div>
+                    <h4>DBMS Knob Configs</h4>
+                </div>
+                <div class="boxbody checkbox">
+                    <ul>
+                        {{ range $conf_name,$data := .knob_confs.items }}
+                        <li><label><input type="checkbox" name="db_{{ .Data.Field0.pk }}" value="{{ .Data.Field0.pk }}" />
+                                {{ .Conf_name }}</label></li>
+                        {{ end}}
+                    </ul>
+                </div>
+            </div>
+            <div id="metric">
+                <div>
+                    <h4>Plot Metrics</h4>
+                </div>
+                <div class="checkbox boxbody">
+                    <ul>
+                        {{ range $metric,$metric_info := .metric_meta.items }}
+                        <li><label><input type="checkbox" name="metric" value="{{ .Metric }}" />
+                                {{ .Metric_info.pprint }}</label></li>
+                        {{ end}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="content">
+                <div id="plotgrid" class="plotcontainer"></div>
+                <div id="chartpseudotooltip"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="/static/js/jqplot/jqplot.pointLabels.min.js"></script>
+
+
+<script type="text/javascript" src="/static/js/benchmark_bar.js"></script>
+<script language="javascript">
+    $(function () {
+        $('.selectpicker').selectpicker();
+        BenchmarkBar.init({
+            workload: {{ .Workload.pk }},
+        default_knob_confs: [{{ range $kd := .Knob_data }}"{{ .Kd.pk }}", {{ end }}],
+        metrics: [{{ range $metric := .Default_metrics }}"{{ .Mmetric }}", {{ end }}],
+        session_id: {{ .Session_id }},
+    });
+});
+</script>
+{{ end }}
