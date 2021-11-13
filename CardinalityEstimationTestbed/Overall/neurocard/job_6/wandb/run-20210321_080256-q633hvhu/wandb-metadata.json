@@ -1,0 +1,30 @@
+{
+  "root": "/home/jintao/neurocard-master/neurocard-cols6",
+  "program": "/home/jintao/anaconda3/lib/python3.8/site-packages/ray/workers/default_worker.py",
+  "startedAt": "2021-03-21T08:03:01.443057",
+  "host": "dodo-PowerEdge-T640",
+  "username": "jintao",
+  "executable": "/home/jintao/anaconda3/bin/python",
+  "os": "Linux-5.4.0-62-generic-x86_64-with-glibc2.10",
+  "python": "3.8.3",
+  "gpu": "GeForce RTX 2080 Ti",
+  "gpu_count": 4,
+  "cpu_count": 32,
+  "args": [
+    "--node-ip-address=166.111.5.177",
+    "--node-manager-port=46629",
+    "--object-store-name=/tmp/ray/session_2021-03-21_16-02-50_650775_4729/sockets/plasma_store",
+    "--raylet-name=/tmp/ray/session_2021-03-21_16-02-50_650775_4729/sockets/raylet",
+    "--redis-address=166.111.5.177:13396",
+    "--config-list=plasma_store_as_thread,True",
+    "--temp-dir=/tmp/ray",
+    "--redis-password=5241590000000000"
+  ],
+  "state": "finished",
+  "jobType": null,
+  "mode": "run",
+  "name": "NeuroCard_0_embed_size=16,label_smoothing=0,max_steps=500,resmade_drop_prob=0,word_size_bits=14_2021-03-21_16-02-53eoqs6ww1",
+  "project": "job-light-ranges",
+  "heartbeatAt": "2021-03-21T11:08:05.595470",
+  "exitcode": 0
+}

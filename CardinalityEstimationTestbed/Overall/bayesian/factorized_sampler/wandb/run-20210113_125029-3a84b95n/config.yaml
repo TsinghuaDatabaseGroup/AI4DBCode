@@ -1,0 +1,250 @@
+wandb_version: 1
+
+__cpu:
+  desc: null
+  value: 1
+__gpu:
+  desc: null
+  value: 0
+__run:
+  desc: null
+  value: test-job-light
+_load_samples:
+  desc: null
+  value: null
+_save_samples:
+  desc: null
+  value: null
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.8.36
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.7.7
+asserts:
+  desc: null
+  value:
+    fact_psample_8000_median: 4
+    fact_psample_8000_p99: 50
+    train_bits: 80
+bs:
+  desc: null
+  value: 2048
+checkpoint_every_epoch:
+  desc: null
+  value: false
+checkpoint_to_load:
+  desc: null
+  value: null
+compute_test_loss:
+  desc: null
+  value: true
+constant_lr:
+  desc: null
+  value: null
+custom_lr_lambda:
+  desc: null
+  value: null
+cwd:
+  desc: null
+  value: /home/jintao/CardinalityEstimationBenchmark/neurocard-master/neurocard
+dataset:
+  desc: null
+  value: imdb
+direct_io:
+  desc: null
+  value: true
+disable_learnable_unk:
+  desc: null
+  value: false
+dropout:
+  desc: null
+  value: 1
+embed_size:
+  desc: null
+  value: 32
+embs_tied:
+  desc: null
+  value: true
+epochs:
+  desc: null
+  value: 1
+epochs_per_iteration:
+  desc: null
+  value: 1
+eval_join_sampling:
+  desc: null
+  value: null
+eval_psamples:
+  desc: null
+  value:
+    - 8000
+factorize:
+  desc: null
+  value: true
+factorize_blacklist:
+  desc: null
+  value: null
+factorize_fanouts:
+  desc: null
+  value: false
+fc_hiddens:
+  desc: null
+  value: 128
+fixed_dropout_ratio:
+  desc: null
+  value: false
+force_query_cols:
+  desc: null
+  value: null
+grouped_dropout:
+  desc: null
+  value: true
+input_encoding:
+  desc: null
+  value: embed
+input_no_emb_if_leq:
+  desc: null
+  value: false
+join_clauses:
+  desc: null
+  value: null
+join_how:
+  desc: null
+  value: outer
+join_keys:
+  desc: null
+  value:
+    cast_info:
+      - movie_id
+    movie_companies:
+      - movie_id
+    movie_info:
+      - movie_id
+    movie_info_idx:
+      - movie_id
+    movie_keyword:
+      - movie_id
+    title:
+      - id
+join_name:
+  desc: null
+  value: job-light
+join_root:
+  desc: null
+  value: title
+join_tables:
+  desc: null
+  value:
+    - cast_info
+    - movie_companies
+    - movie_info
+    - movie_keyword
+    - title
+    - movie_info_idx
+label_smoothing:
+  desc: null
+  value: 0
+layers:
+  desc: null
+  value: 4
+loader_workers:
+  desc: null
+  value: 4
+lr_scheduler:
+  desc: null
+  value: OneCycleLR-0.28
+max_steps:
+  desc: null
+  value: 500
+num_dmol:
+  desc: null
+  value: 0
+num_eval_queries_at_checkpoint_load:
+  desc: null
+  value: 2000
+num_eval_queries_at_end:
+  desc: null
+  value: 70
+num_eval_queries_per_iteration:
+  desc: null
+  value: 70
+num_orderings:
+  desc: null
+  value: 1
+optimizer:
+  desc: null
+  value: adam
+order:
+  desc: null
+  value: null
+order_content_only:
+  desc: null
+  value: true
+order_indicators_at_front:
+  desc: null
+  value: false
+order_seed:
+  desc: null
+  value: null
+output_encoding:
+  desc: null
+  value: embed
+per_row_dropout:
+  desc: null
+  value: false
+queries_csv:
+  desc: null
+  value: ./queries/job-light.csv
+query_filters:
+  desc: null
+  value:
+    - 5
+    - 12
+residual:
+  desc: null
+  value: true
+resmade_drop_prob:
+  desc: null
+  value: 0.1
+sampler:
+  desc: null
+  value: factorized_sampler
+sampler_batch_size:
+  desc: null
+  value: 4096
+save_checkpoint_at_end:
+  desc: null
+  value: false
+seed:
+  desc: null
+  value: 0
+special_order_seed:
+  desc: null
+  value: 0
+special_orders:
+  desc: null
+  value: 0
+table_dropout:
+  desc: null
+  value: true
+transformer_args:
+  desc: null
+  value: {}
+use_cols:
+  desc: null
+  value: simple
+use_data_parallel:
+  desc: null
+  value: false
+use_transformer:
+  desc: null
+  value: false
+warmups:
+  desc: null
+  value: 0.05
+word_size_bits:
+  desc: null
+  value: 11

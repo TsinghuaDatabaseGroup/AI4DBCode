@@ -1,0 +1,5 @@
+name,min,max,cardinality,num_unique_values
+t.phonetic_code,3.0,23259.0,505023,13955
+t.series_years,1.0,1407.0,505023,844
+ci.role_id,3.0,11.0,2722672,6
+t.production_year,1888.0,2017.0,505023,79

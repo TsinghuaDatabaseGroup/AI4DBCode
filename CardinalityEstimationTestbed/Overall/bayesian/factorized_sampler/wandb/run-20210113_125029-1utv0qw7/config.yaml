@@ -1,0 +1,302 @@
+wandb_version: 1
+
+__cpu:
+  desc: null
+  value: 1
+__gpu:
+  desc: null
+  value: 0
+__run:
+  desc: null
+  value: test-job-m
+_load_samples:
+  desc: null
+  value: null
+_save_samples:
+  desc: null
+  value: null
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.8.36
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.7.7
+asserts:
+  desc: null
+  value:
+    fact_psample_8000_median: 3
+    fact_psample_8000_p99: 600
+    train_bits: 150
+bs:
+  desc: null
+  value: 2048
+checkpoint_every_epoch:
+  desc: null
+  value: true
+checkpoint_to_load:
+  desc: null
+  value: null
+compute_test_loss:
+  desc: null
+  value: false
+constant_lr:
+  desc: null
+  value: null
+custom_lr_lambda:
+  desc: null
+  value: null
+cwd:
+  desc: null
+  value: /home/jintao/CardinalityEstimationBenchmark/neurocard-master/neurocard
+dataset:
+  desc: null
+  value: imdb
+direct_io:
+  desc: null
+  value: true
+disable_learnable_unk:
+  desc: null
+  value: false
+dropout:
+  desc: null
+  value: 1
+embed_size:
+  desc: null
+  value: 32
+embs_tied:
+  desc: null
+  value: true
+epochs:
+  desc: null
+  value: 2
+epochs_per_iteration:
+  desc: null
+  value: 1
+eval_join_sampling:
+  desc: null
+  value: null
+eval_psamples:
+  desc: null
+  value:
+    - 8000
+factorize:
+  desc: null
+  value: true
+factorize_blacklist:
+  desc: null
+  value: []
+factorize_fanouts:
+  desc: null
+  value: true
+fc_hiddens:
+  desc: null
+  value: 128
+fixed_dropout_ratio:
+  desc: null
+  value: false
+force_query_cols:
+  desc: null
+  value: null
+grouped_dropout:
+  desc: null
+  value: true
+input_encoding:
+  desc: null
+  value: embed
+input_no_emb_if_leq:
+  desc: null
+  value: true
+join_clauses:
+  desc: null
+  value:
+    - title.id=aka_title.movie_id
+    - title.id=cast_info.movie_id
+    - title.id=complete_cast.movie_id
+    - title.id=movie_companies.movie_id
+    - title.id=movie_info.movie_id
+    - title.id=movie_info_idx.movie_id
+    - title.id=movie_keyword.movie_id
+    - title.id=movie_link.movie_id
+    - title.kind_id=kind_type.id
+    - comp_cast_type.id=complete_cast.subject_id
+    - company_name.id=movie_companies.company_id
+    - company_type.id=movie_companies.company_type_id
+    - movie_info_idx.info_type_id=info_type.id
+    - keyword.id=movie_keyword.keyword_id
+    - link_type.id=movie_link.link_type_id
+join_how:
+  desc: null
+  value: outer
+join_keys:
+  desc: null
+  value:
+    aka_title:
+      - movie_id
+    cast_info:
+      - movie_id
+    comp_cast_type:
+      - id
+    company_name:
+      - id
+    company_type:
+      - id
+    complete_cast:
+      - movie_id
+      - subject_id
+    info_type:
+      - id
+    keyword:
+      - id
+    kind_type:
+      - id
+    link_type:
+      - id
+    movie_companies:
+      - company_id
+      - company_type_id
+      - movie_id
+    movie_info:
+      - movie_id
+    movie_info_idx:
+      - info_type_id
+      - movie_id
+    movie_keyword:
+      - keyword_id
+      - movie_id
+    movie_link:
+      - link_type_id
+      - movie_id
+    title:
+      - id
+      - kind_id
+join_name:
+  desc: null
+  value: job-m
+join_root:
+  desc: null
+  value: title
+join_tables:
+  desc: null
+  value:
+    - title
+    - aka_title
+    - cast_info
+    - complete_cast
+    - movie_companies
+    - movie_info
+    - movie_info_idx
+    - movie_keyword
+    - movie_link
+    - kind_type
+    - comp_cast_type
+    - company_name
+    - company_type
+    - info_type
+    - keyword
+    - link_type
+label_smoothing:
+  desc: null
+  value: 0.0
+layers:
+  desc: null
+  value: 4
+loader_workers:
+  desc: null
+  value: 8
+lr_scheduler:
+  desc: null
+  value: null
+max_steps:
+  desc: null
+  value: 128
+num_dmol:
+  desc: null
+  value: 0
+num_eval_queries_at_checkpoint_load:
+  desc: null
+  value: 2000
+num_eval_queries_at_end:
+  desc: null
+  value: 20
+num_eval_queries_per_iteration:
+  desc: null
+  value: 0
+num_orderings:
+  desc: null
+  value: 1
+optimizer:
+  desc: null
+  value: adam
+order:
+  desc: null
+  value: null
+order_content_only:
+  desc: null
+  value: true
+order_indicators_at_front:
+  desc: null
+  value: false
+order_seed:
+  desc: null
+  value: null
+output_encoding:
+  desc: null
+  value: embed
+per_row_dropout:
+  desc: null
+  value: false
+queries_csv:
+  desc: null
+  value: ./queries/job-m.csv
+query_filters:
+  desc: null
+  value:
+    - 5
+    - 12
+residual:
+  desc: null
+  value: true
+resmade_drop_prob:
+  desc: null
+  value: 0.1
+sampler:
+  desc: null
+  value: factorized_sampler
+sampler_batch_size:
+  desc: null
+  value: 16384
+save_checkpoint_at_end:
+  desc: null
+  value: false
+seed:
+  desc: null
+  value: 0
+special_order_seed:
+  desc: null
+  value: 0
+special_orders:
+  desc: null
+  value: 0
+table_dropout:
+  desc: null
+  value: true
+transformer_args:
+  desc: null
+  value: {}
+use_cols:
+  desc: null
+  value: multi
+use_data_parallel:
+  desc: null
+  value: false
+use_transformer:
+  desc: null
+  value: false
+warmups:
+  desc: null
+  value: 0.15
+word_size_bits:
+  desc: null
+  value: 14

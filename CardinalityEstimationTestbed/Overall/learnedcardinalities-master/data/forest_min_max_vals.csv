@@ -1,0 +1,11 @@
+name,min,max,cardinality,num_unique_values
+forest.Hillshade_Noon,0,254,581012,185
+forest.Hillshade_3pm,0,254,581012,255
+forest.Horizontal_Distance_To_Hydrology,0,1397,581012,551
+forest.Aspect,0,360,581012,361
+forest.Horizontal_Distance_To_Roadways,0,7117,581012,5785
+forest.Elevation,1859,3858,581012,1978
+forest.Horizontal_Distance_To_Fire_Points,0,7173,581012,5827
+forest.Hillshade_9am,0,254,581012,207
+forest.Vertical_Distance_To_Hydrology,-173,601,581012,700
+forest.Slope,0,66,581012,67

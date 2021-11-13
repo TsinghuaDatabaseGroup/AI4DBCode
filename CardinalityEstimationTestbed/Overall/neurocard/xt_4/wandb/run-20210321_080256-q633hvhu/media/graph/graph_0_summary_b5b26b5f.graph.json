@@ -1,0 +1,658 @@
+{
+  "format": "torch",
+  "nodes": [
+    {
+      "name": "embeddings.0",
+      "id": 139927114332240,
+      "class_name": "Embedding(12, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            12,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        192
+      ]
+    },
+    {
+      "name": "embeddings.1",
+      "id": 139927114332288,
+      "class_name": "Embedding(133, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            133,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        2128
+      ]
+    },
+    {
+      "name": "embeddings.2",
+      "id": 139927114332336,
+      "class_name": "Embedding(11630, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            11630,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        186080
+      ]
+    },
+    {
+      "name": "embeddings.3",
+      "id": 139927114332384,
+      "class_name": "Embedding(2, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            2,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        32
+      ]
+    },
+    {
+      "name": "embeddings.4",
+      "id": 139927114332432,
+      "class_name": "Embedding(1409, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            1409,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        22544
+      ]
+    },
+    {
+      "name": "embeddings.5",
+      "id": 139927114332480,
+      "class_name": "Embedding(8, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            8,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        128
+      ]
+    },
+    {
+      "name": "embeddings.6",
+      "id": 139927114332528,
+      "class_name": "Embedding(14489, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            14489,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        231824
+      ]
+    },
+    {
+      "name": "embeddings.7",
+      "id": 139927114332576,
+      "class_name": "Embedding(1024, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            1024,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        16384
+      ]
+    },
+    {
+      "name": "embeddings.8",
+      "id": 139927114332624,
+      "class_name": "Embedding(72, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            72,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        1152
+      ]
+    },
+    {
+      "name": "embeddings.9",
+      "id": 139927114332672,
+      "class_name": "Embedding(10629, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            10629,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        170064
+      ]
+    },
+    {
+      "name": "embeddings.10",
+      "id": 139927114332720,
+      "class_name": "Embedding(256, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            256,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        4096
+      ]
+    },
+    {
+      "name": "embeddings.11",
+      "id": 139927114332768,
+      "class_name": "Embedding(8351, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            8351,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        133616
+      ]
+    },
+    {
+      "name": "embeddings.12",
+      "id": 139927114332816,
+      "class_name": "Embedding(16, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            16,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        256
+      ]
+    },
+    {
+      "name": "embeddings.13",
+      "id": 139927114332864,
+      "class_name": "Embedding(2, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            2,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        32
+      ]
+    },
+    {
+      "name": "embeddings.14",
+      "id": 139927114332912,
+      "class_name": "Embedding(2, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            2,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        32
+      ]
+    },
+    {
+      "name": "embeddings.15",
+      "id": 139927114332960,
+      "class_name": "Embedding(2, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            2,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        32
+      ]
+    },
+    {
+      "name": "embeddings.16",
+      "id": 139927114333008,
+      "class_name": "Embedding(1743, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            1743,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        27888
+      ]
+    },
+    {
+      "name": "embeddings.17",
+      "id": 139927114333056,
+      "class_name": "Embedding(2939, 16)",
+      "parameters": [
+        [
+          "weight",
+          [
+            2939,
+            16
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          16
+        ]
+      ],
+      "num_parameters": [
+        47024
+      ]
+    },
+    {
+      "name": "direct_io_layer",
+      "id": 139927114333584,
+      "class_name": "MaskedLinear(in_features=288, out_features=288, bias=True)",
+      "parameters": [
+        [
+          "weight",
+          [
+            288,
+            288
+          ]
+        ],
+        [
+          "bias",
+          [
+            288
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          288
+        ]
+      ],
+      "num_parameters": [
+        82944,
+        288
+      ]
+    },
+    {
+      "name": "net.0",
+      "id": 139927114331376,
+      "class_name": "MaskedLinear(in_features=288, out_features=128, bias=True)",
+      "parameters": [
+        [
+          "weight",
+          [
+            128,
+            288
+          ]
+        ],
+        [
+          "bias",
+          [
+            128
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          128
+        ]
+      ],
+      "num_parameters": [
+        36864,
+        128
+      ]
+    },
+    {
+      "name": "net.1",
+      "id": 139927114331280,
+      "class_name": "MaskedResidualBlock(\n  (layers): ModuleList(\n    (0): MaskedLinear(in_features=128, out_features=128, bias=True)\n    (1): MaskedLinear(in_features=128, out_features=128, bias=True)\n  )\n  (dropout): Dropout(p=0, inplace=False)\n  (activation): ReLU()\n)",
+      "parameters": [
+        [
+          "layers.0.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.0.bias",
+          [
+            128
+          ]
+        ],
+        [
+          "layers.1.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.1.bias",
+          [
+            128
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          128
+        ]
+      ],
+      "num_parameters": [
+        16384,
+        128,
+        16384,
+        128
+      ]
+    },
+    {
+      "name": "net.2",
+      "id": 139927114331616,
+      "class_name": "MaskedResidualBlock(\n  (layers): ModuleList(\n    (0): MaskedLinear(in_features=128, out_features=128, bias=True)\n    (1): MaskedLinear(in_features=128, out_features=128, bias=True)\n  )\n  (dropout): Dropout(p=0, inplace=False)\n  (activation): ReLU()\n)",
+      "parameters": [
+        [
+          "layers.0.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.0.bias",
+          [
+            128
+          ]
+        ],
+        [
+          "layers.1.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.1.bias",
+          [
+            128
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          128
+        ]
+      ],
+      "num_parameters": [
+        16384,
+        128,
+        16384,
+        128
+      ]
+    },
+    {
+      "name": "net.3",
+      "id": 139927114331904,
+      "class_name": "MaskedResidualBlock(\n  (layers): ModuleList(\n    (0): MaskedLinear(in_features=128, out_features=128, bias=True)\n    (1): MaskedLinear(in_features=128, out_features=128, bias=True)\n  )\n  (dropout): Dropout(p=0, inplace=False)\n  (activation): ReLU()\n)",
+      "parameters": [
+        [
+          "layers.0.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.0.bias",
+          [
+            128
+          ]
+        ],
+        [
+          "layers.1.weight",
+          [
+            128,
+            128
+          ]
+        ],
+        [
+          "layers.1.bias",
+          [
+            128
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          128
+        ]
+      ],
+      "num_parameters": [
+        16384,
+        128,
+        16384,
+        128
+      ]
+    },
+    {
+      "name": "net.4",
+      "id": 139927114331952,
+      "class_name": "ReLU()",
+      "parameters": [],
+      "output_shape": [
+        [
+          2048,
+          128
+        ]
+      ],
+      "num_parameters": []
+    },
+    {
+      "name": "net.5",
+      "id": 139927114332192,
+      "class_name": "MaskedLinear(in_features=128, out_features=288, bias=True)",
+      "parameters": [
+        [
+          "weight",
+          [
+            288,
+            128
+          ]
+        ],
+        [
+          "bias",
+          [
+            288
+          ]
+        ]
+      ],
+      "output_shape": [
+        [
+          2048,
+          288
+        ]
+      ],
+      "num_parameters": [
+        36864,
+        288
+      ]
+    }
+  ],
+  "edges": []
+}

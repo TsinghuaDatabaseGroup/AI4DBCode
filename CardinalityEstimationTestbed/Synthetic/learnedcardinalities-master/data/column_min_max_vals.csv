@@ -1,0 +1,14 @@
+name,min,max,cardinality,num_unique_values
+t.imdb_index,1.0,25.0,2528312,26
+t.phonetic_code,1.0,23259.0,2528312,23260
+t.season_nr,1.0,2013.0,2528312,97
+t.series_years,1.0,1408.0,2528312,1409
+ci.nr_order,0.0,1115798165.0,36244344,1095
+t.kind_id,1.0,2010.0,2528312,7
+mi_idx.info_type_id,99.0,113.0,1380035,5
+mk.keyword_id,1.0,134170.0,4523930,134170
+ci.role_id,1.0,11.0,36244344,11
+mc.company_type_id,1.0,2.0,2609129,2
+t.episode_nr,1.0,91821.0,2528312,14907
+t.production_year,1880.0,2019.0,2528312,133
+mi.info_type_id,1.0,110.0,14835720,71

@@ -1,0 +1,2 @@
+python updatetrain.py --version forest --num-gpus=1 --dataset=PF --epochs=100 --warmups=8000 --bs=2048 --residual --layers=5 --fc-hiddens=256 --direct-io --column-masking  --update yes
+python updateeval.py --testfilepath /home/jintao/naru_update/sql_truecard/ --version forest --table forest --alias forest --dataset=PF --glob='<ckpt from above>' --num-queries=500 --residual --layers=5 --fc-hiddens=256 --direct-io --column-masking --update yes

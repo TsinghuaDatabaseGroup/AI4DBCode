@@ -1,0 +1,13 @@
+Traintime since start: 3.6 secs
+testtime per:0.0022280365890926784
+Median: 1.6
+90th percentile: 5.0
+95th percentile: 10.0
+99th percentile: 27.0
+99th percentile: 27.0
+Max: 66.0
+Mean: 2.9972291075981445
+MSE: 3984395.357357357
+MAPE: 99.24338024111317
+Pearson Correlation: (0.9579893449981934, 0.0)
+

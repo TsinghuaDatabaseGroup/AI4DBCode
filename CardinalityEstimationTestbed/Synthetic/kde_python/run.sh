@@ -1,0 +1,1 @@
+python kde.py --train-file ../sql_truecard/cols_4_distinct_1000_corr_6_skew_6train.sql --test-file ../sql_truecard/cols_4_distinct_1000_corr_6_skew_6test.sql --min-max-file ../learnedcardinalities-master/data/cols_4_distinct_1000_corr_6_skew_6_min_max_vals.csv --version cols_4_distinct_1000_corr_6_skew_6

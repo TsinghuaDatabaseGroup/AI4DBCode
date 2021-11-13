@@ -1,0 +1,28 @@
+{
+  "root": "/home/jintao/CardinalityEstimationBenchmark/neurocard-master/neurocard",
+  "program": "/home/jintao/anaconda3/envs/neurocard/lib/python3.7/site-packages/ray/workers/default_worker.py",
+  "startedAt": "2021-01-13T12:50:29.913498",
+  "host": "spark13",
+  "username": "jintao",
+  "executable": "/home/jintao/anaconda3/envs/neurocard/bin/python",
+  "os": "Linux-4.4.0-146-generic-x86_64-with-debian-jessie-sid",
+  "python": "3.7.7",
+  "cpu_count": 40,
+  "args": [
+    "--node-ip-address=172.6.31.15",
+    "--node-manager-port=65189",
+    "--object-store-name=/tmp/ray/session_2021-01-13_20-50-26_191367_19918/sockets/plasma_store",
+    "--raylet-name=/tmp/ray/session_2021-01-13_20-50-26_191367_19918/sockets/raylet",
+    "--redis-address=172.6.31.15:48285",
+    "--config-list=plasma_store_as_thread,True",
+    "--temp-dir=/tmp/ray",
+    "--redis-password=5241590000000000"
+  ],
+  "state": "finished",
+  "jobType": null,
+  "mode": "dryrun",
+  "name": "NeuroCard_2_embed_size=16,label_smoothing=0,max_steps=500,resmade_drop_prob=0,word_size_bits=14_2021-01-13_20-50-28vouc_nqp",
+  "project": "test-job-light-ranges",
+  "heartbeatAt": "2021-01-13T12:50:51.282103",
+  "exitcode": 0
+}

@@ -1,0 +1,7 @@
+name,min,max,cardinality,num_unique_values
+cdcs.col3,0,999,100000,1000
+cdcs.col5,0,999,100000,1000
+cdcs.col4,0,999,100000,1000
+cdcs.col2,0,999,100000,1000
+cdcs.col0,0,999,100000,1000
+cdcs.col1,0,999,100000,1000

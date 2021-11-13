@@ -1,0 +1,27 @@
+Training Time: 28.862610340118408s
+Training Time: 17.22416377067566s
+Prediction time per test sample: 0.013103961944580078ms
+Median: 1.625
+90th percentile: 5.007142857142859
+95th percentile: 7.0
+99th percentile: 10.401
+99th percentile: 10.401
+Max: 15.333333333333334
+Mean: 2.4653683056072295
+MSE: 16352380.019
+MAPE: 100.15717838148062
+Pearson Correlation: (0.9496837174953282, 0.0)
+
+Training Time: 8.231035470962524s
+Prediction time per test sample: 0.29808759689331055ms
+Median: 1.6
+90th percentile: 6.0
+95th percentile: 7.0
+99th percentile: 11.516999999999985
+99th percentile: 11.516999999999985
+Max: 40.666666666666664
+Mean: 2.6296322100710343
+MSE: 16695533.352
+MAPE: 95.26818787722267
+Pearson Correlation: (0.9428270922588827, 0.0)
+

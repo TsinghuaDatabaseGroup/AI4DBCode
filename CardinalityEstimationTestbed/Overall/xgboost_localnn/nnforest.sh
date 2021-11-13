@@ -1,0 +1,1 @@
+python run.py --train-file ../train-test-data/forest_power-data-sql/foresttrain.sql --test-file ../train-test-data/forest_power-data-sql/foresttest.sql --min-max-file ../learnedcardinalities-master/data/forest_min_max_vals.csv --model nn --version forest
