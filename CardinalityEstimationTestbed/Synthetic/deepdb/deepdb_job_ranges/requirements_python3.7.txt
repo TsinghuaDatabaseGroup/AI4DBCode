@@ -10,7 +10,7 @@ cloudpickle==1.2.1
 colorama==0.4.1
 cryptography==2.1.4
 cycler==0.10.0
-dask==1.2.0
+dask==2021.10.0
 decorator==4.4.0
 ete3==3.1.1
 idna==2.6
