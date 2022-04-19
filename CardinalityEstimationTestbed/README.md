@@ -74,10 +74,14 @@ AND
 
 ## Citation
 ```
-@article{DBLP:journals/pvldb/benchmark,
-	author    = {Ji Sun and Jintao Zhang and Zhaoyan Sun and Guoliang Li and Nan Tang},
-	title     = {Learned Cardinality Estimation: A Design Space Exploration and A Comparative Evaluation},
-	journal   = {VLDB},
-	year      = {2021},
+@article{sun2021learned,
+  title={Learned cardinality estimation: A design space exploration and a comparative evaluation},
+  author={Sun, Ji and Zhang, Jintao and Sun, Zhaoyan and Li, Guoliang and Tang, Nan},
+  journal={Proceedings of the VLDB Endowment},
+  volume={15},
+  number={1},
+  pages={85--97},
+  year={2021},
+  publisher={VLDB Endowment}
 }
 ```
