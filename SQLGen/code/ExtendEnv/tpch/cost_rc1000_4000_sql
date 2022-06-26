@@ -1,0 +1,461 @@
+delete from supplier where supplier.s_suppkey >= 80920
+delete from supplier where supplier.s_suppkey >= 28972 and supplier.s_suppkey > 68932 and supplier.s_acctbal < 2489
+delete from supplier where supplier.s_suppkey >= 70930
+update customer set c_nationkey = 4 where customer.c_custkey >= 1484902 and customer.c_custkey >= 44998 and customer.c_acctbal >= 4669 and customer.c_custkey >= 1169923
+update customer set c_custkey = 1304914 where customer.c_custkey >= 494968 and customer.c_custkey >= 1259917 and customer.c_acctbal >= 3143 and customer.c_nationkey >= 14 and customer.c_nationkey >= 1 and customer.c_nationkey >= 8 and customer.c_custkey >= 1484902 and customer.c_acctbal >= 1726
+delete from supplier where supplier.s_suppkey >= 86914 and supplier.s_suppkey >= 25975 and supplier.s_acctbal >= -563 and supplier.s_acctbal >= -127 and supplier.s_acctbal >= 7285 and supplier.s_acctbal >= 4669 and supplier.s_acctbal >= 5541 and supplier.s_suppkey >= 14986
+delete from supplier where supplier.s_acctbal > 8048 and supplier.s_suppkey <= 57943 and supplier.s_acctbal >= 745 and supplier.s_suppkey >= 1000 and supplier.s_suppkey >= 45955 and supplier.s_acctbal >= 8811 and supplier.s_acctbal != 1944 and supplier.s_acctbal >= -18 and supplier.s_acctbal < 4560
+delete from supplier where supplier.s_acctbal >= 7394 and supplier.s_acctbal < 5868 and supplier.s_acctbal <= 7612 and supplier.s_acctbal < 7394 and supplier.s_acctbal < -236 and supplier.s_suppkey < 46954 and supplier.s_suppkey <= 14986 and supplier.s_acctbal >= 7612
+insert into supplier select * from supplier where supplier.s_acctbal <= 3688 and supplier.s_suppkey < 30970 and supplier.s_acctbal >= 9683 and supplier.s_acctbal > 4451 and supplier.s_acctbal >= 8702 and supplier.s_acctbal < 3361
+update supplier set s_acctbal = 5977, s_suppkey = 16984 where supplier.s_suppkey <= 20980 and supplier.s_acctbal <= 200
+delete from part where part.p_size < 13 and part.p_size > 29 and part.p_partkey != 39999 and part.p_retailprice != 944 and part.p_retailprice != 1241 and part.p_partkey >= 1739914 and part.p_retailprice = 1340 and part.p_retailprice <= 1670 and part.p_partkey <= 1779912
+delete from customer where customer.c_custkey > 1469903
+update part set p_size = 20 where part.p_retailprice = 1890 and part.p_size > 43 and part.p_partkey != 1259938 and part.p_partkey >= 1959903
+delete from part where part.p_partkey >= 1959903
+insert into part select * from part where part.p_size != 26 and part.p_retailprice != 1428 and part.p_retailprice <= 1571 and part.p_partkey >= 1959903
+update part set p_size = 47 where part.p_partkey >= 579972 and part.p_partkey >= 1979902
+update part set p_retailprice = 1945, p_partkey = 539974 where part.p_partkey > 1959903
+select customer.c_nationkey, nation.n_nationkey from customer join nation on nation.n_nationkey=customer.c_nationkey where nation.n_nationkey > (select nation.n_nationkey from nation where nation.n_nationkey > 20 and  nation.n_nationkey < 13 and  nation.n_regionkey != 0 and  nation.n_regionkey = 1) and customer.c_custkey = (select customer.c_custkey from customer where customer.c_custkey < 59997);
+delete from customer where customer.c_custkey >= 1469903 and customer.c_acctbal > -563 and customer.c_nationkey >= 7
+update part set p_partkey = 799961 where part.p_size < 28 and part.p_retailprice = 1538 and part.p_retailprice = 922 and part.p_partkey <= 39999
+update part set p_partkey = 1319935 where part.p_partkey > 1959903
+update customer set c_acctbal = 5432 where customer.c_nationkey > 21 and customer.c_custkey >= 1469903
+select orders.o_shippriority, partsupp.ps_supplycost, lineitem.l_orderkey, part.p_retailprice from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join part on part.p_partkey=partsupp.ps_partkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_orderkey = 47999921 and  lineitem.l_tax >= 0) order by part.p_retailprice ASC, lineitem.l_orderkey ASC, partsupp.ps_supplycost DESC, orders.o_shippriority ASC;
+delete from customer where customer.c_custkey <= 29999 and customer.c_nationkey = 22
+delete from part where part.p_partkey <= 20000
+delete from part where part.p_partkey > 1979902
+update part set p_partkey = 1139944, p_size = 12, p_retailprice = 1351 where part.p_retailprice > 1098 and part.p_partkey >= 1979902 and part.p_size != 28
+delete from part where part.p_partkey < 20000 and part.p_retailprice >= 933
+update part set p_size = 28, p_partkey = 659968 where part.p_partkey > 1979902 and part.p_size >= 5
+update customer set c_custkey = 374976, c_nationkey = 4 where customer.c_custkey > 1469903
+insert into part select * from part where part.p_retailprice != 1285 and part.p_size >= 15 and part.p_size >= 14 and part.p_partkey > 1979902
+update part set p_partkey = 1519925 where part.p_partkey < 39999 and part.p_size < 16 and part.p_size != 23 and part.p_size >= 40
+delete from customer where customer.c_acctbal <= 1617 and customer.c_nationkey < 8 and customer.c_acctbal != 9247 and customer.c_custkey >= 1469903 and customer.c_custkey > 974936
+delete from part where part.p_retailprice >= 1736 and part.p_partkey >= 1979902
+update customer set c_acctbal = 418 where customer.c_acctbal <= 2380 and customer.c_custkey > 1454904 and customer.c_custkey <= 1484902
+delete from customer where customer.c_custkey <= 15000 and customer.c_custkey <= 1394908
+update part set p_size = 34, p_retailprice = 1252 where part.p_size < 21 and part.p_retailprice = 1868 and part.p_partkey <= 20000
+delete from part where part.p_partkey > 1959903 and part.p_partkey > 539974 and part.p_size < 17
+delete from part where part.p_partkey > 1959903
+update customer set c_custkey = 1484902 where customer.c_custkey > 1469903 and customer.c_custkey != 359977 and customer.c_acctbal < 8593 and customer.c_nationkey >= 22 and customer.c_nationkey != 0
+insert into part select * from part where part.p_size < 27 and part.p_partkey >= 1979902 and part.p_size != 8
+delete from part where part.p_partkey < 39999
+insert into part select * from part where part.p_partkey < 39999 and part.p_size = 27
+delete from part where part.p_partkey > 1959903
+delete from customer where customer.c_custkey > 1469903
+delete from part where part.p_partkey < 39999 and part.p_retailprice < 1780 and part.p_retailprice < 1692
+update part set p_partkey = 1579922 where part.p_size > 44 and part.p_partkey <= 119995 and part.p_partkey <= 39999
+delete from part where part.p_size < 50 and part.p_size > 2 and part.p_partkey <= 39999
+delete from customer where customer.c_custkey > 1484902 and customer.c_acctbal >= 418
+delete from part where part.p_partkey > 1979902
+delete from part where part.p_partkey >= 1959903 and part.p_retailprice > 1208
+delete from part where part.p_partkey < 39999
+update part set p_retailprice = 1384, p_size = 44 where part.p_retailprice > 1989 and part.p_retailprice < 1362 and part.p_partkey > 1979902
+update part set p_retailprice = 1197 where part.p_partkey >= 1259938 and part.p_partkey < 1279937
+update customer set c_nationkey = 16, c_custkey = 1139925 where customer.c_acctbal <= -890 and customer.c_nationkey >= 23 and customer.c_custkey <= 29999 and customer.c_custkey < 539965 and customer.c_nationkey < 13
+insert into part select * from part where part.p_partkey <= 20000
+delete from part where part.p_partkey <= 20000
+delete from part where part.p_size != 10 and part.p_partkey <= 1939904 and part.p_partkey <= 99996 and part.p_partkey >= 59998 and part.p_size < 13 and part.p_size >= 23
+insert into customer select * from customer where customer.c_custkey >= 359977 and customer.c_custkey >= 1484902
+update part set p_partkey = 1139944 where part.p_partkey < 39999
+update part set p_retailprice = 1703 where part.p_partkey >= 1959903 and part.p_size < 4
+update part set p_retailprice = 1483, p_size = 17 where part.p_partkey <= 20000 and part.p_partkey != 299986 and part.p_partkey <= 719965 and part.p_retailprice >= 1153
+delete from customer where customer.c_custkey >= 1484902
+update customer set c_custkey = 224986, c_acctbal = 8484 where customer.c_custkey > 1469903 and customer.c_acctbal > -563
+delete from part where part.p_partkey > 1979902
+insert into customer select * from customer where customer.c_custkey >= 1484902
+update part set p_partkey = 979952 where part.p_partkey < 39999 and part.p_retailprice >= 977
+update part set p_retailprice = 1956 where part.p_partkey > 1979902
+delete from customer where customer.c_custkey >= 1469903 and customer.c_nationkey >= 17 and customer.c_nationkey >= 24 and customer.c_nationkey <= 17 and customer.c_nationkey >= 17
+update part set p_partkey = 1599921, p_size = 24 where part.p_partkey < 20000
+insert into customer select * from customer where customer.c_acctbal >= 527 and customer.c_custkey > 1469903 and customer.c_acctbal > 9574
+delete from part where part.p_partkey > 1959903
+delete from part where part.p_retailprice <= 1967 and part.p_partkey <= 339984 and part.p_partkey >= 319985 and part.p_retailprice <= 1934
+delete from customer where customer.c_custkey <= 15000
+insert into customer select * from customer where customer.c_custkey <= 1154924 and customer.c_custkey >= 704954 and customer.c_acctbal != 2380 and customer.c_custkey <= 1199921 and customer.c_acctbal != 6195 and customer.c_nationkey != 10 and customer.c_custkey > 1139925 and customer.c_nationkey != 21
+delete from part where part.p_partkey >= 1659918 and part.p_partkey >= 1979902 and part.p_retailprice < 1032
+update part set p_partkey = 1779912, p_size = 49, p_retailprice = 1615 where part.p_partkey <= 20000 and part.p_retailprice > 1890 and part.p_size < 17 and part.p_partkey < 1899906
+update part set p_partkey = 1759913 where part.p_size <= 32 and part.p_partkey > 1979902
+insert into part select * from part where part.p_retailprice != 1373 and part.p_retailprice < 1846 and part.p_partkey < 39999 and part.p_size < 50 and part.p_retailprice <= 922
+insert into part select * from part where part.p_partkey != 139994 and part.p_partkey <= 39999 and part.p_retailprice != 1109
+insert into customer select * from customer where customer.c_custkey > 1469903
+update part set p_partkey = 99996, p_retailprice = 1252 where part.p_retailprice = 1054 and part.p_retailprice = 1989 and part.p_partkey > 1959903 and part.p_retailprice <= 1549
+delete from customer where customer.c_acctbal >= 2816 and customer.c_nationkey != 4 and customer.c_acctbal <= 2925 and customer.c_custkey > 1484902 and customer.c_custkey > 674956
+update customer set c_custkey = 164990, c_nationkey = 3 where customer.c_nationkey = 13 and customer.c_acctbal <= 1835 and customer.c_acctbal != 6086 and customer.c_acctbal <= 1290 and customer.c_nationkey >= 21 and customer.c_custkey <= 29999
+insert into part select * from part where part.p_retailprice >= 1560 and part.p_partkey > 1959903
+update customer set c_custkey = 764950, c_acctbal = 854, c_nationkey = 1 where customer.c_custkey >= 1484902
+delete from part where part.p_partkey >= 1959903
+update customer set c_custkey = 764950, c_nationkey = 13, c_acctbal = 8484 where customer.c_custkey >= 1469903
+delete from customer where customer.c_custkey < 29999
+update customer set c_custkey = 809947, c_nationkey = 7 where customer.c_custkey > 1484902 and customer.c_nationkey < 11
+insert into customer select * from customer where customer.c_nationkey > 23 and customer.c_acctbal != 7721 and customer.c_nationkey != 12 and customer.c_acctbal <= 2816 and customer.c_nationkey > 14 and customer.c_custkey >= 1469903
+delete from customer where customer.c_custkey > 1349911 and customer.c_custkey >= 1004934 and customer.c_custkey >= 1484902
+delete from part where part.p_partkey < 1179942 and part.p_partkey > 1139944 and part.p_size > 21
+update customer set c_custkey = 494968, c_acctbal = 3361, c_nationkey = 24 where customer.c_custkey < 15000 and customer.c_nationkey <= 7
+update customer set c_nationkey = 20, c_acctbal = 9029 where customer.c_acctbal <= 9029 and customer.c_acctbal > 6958 and customer.c_custkey <= 29999
+insert into customer select * from customer where customer.c_acctbal != 8811 and customer.c_acctbal != 9683 and customer.c_custkey >= 1469903
+update part set p_partkey = 39999, p_retailprice = 1956 where part.p_partkey <= 20000
+delete from part where part.p_partkey > 1979902 and part.p_size < 35
+delete from customer where customer.c_custkey <= 15000
+delete from part where part.p_retailprice <= 1186 and part.p_partkey >= 1959903
+update part set p_partkey = 499976 where part.p_partkey > 1959903
+update part set p_size = 41 where part.p_partkey > 1979902 and part.p_partkey >= 1559923
+insert into customer select * from customer where customer.c_custkey > 1484902
+insert into part select * from part where part.p_size < 36 and part.p_partkey > 1979902
+insert into customer select * from customer where customer.c_custkey <= 15000
+update part set p_partkey = 1299936, p_size = 21 where part.p_partkey < 39999
+delete from customer where customer.c_custkey < 15000
+insert into customer select * from customer where customer.c_nationkey > 13 and customer.c_acctbal < 963 and customer.c_custkey > 1484902 and customer.c_nationkey != 13 and customer.c_nationkey != 16
+update customer set c_custkey = 1334912, c_nationkey = 18 where customer.c_custkey > 1484902 and customer.c_nationkey <= 4
+update customer set c_nationkey = 23 where customer.c_custkey < 29999
+update customer set c_custkey = 629959 where customer.c_custkey <= 29999
+insert into part select * from part where part.p_partkey > 1979902
+delete from part where part.p_partkey <= 39999 and part.p_size >= 29
+insert into part select * from part where part.p_partkey >= 239989 and part.p_retailprice > 1021 and part.p_partkey >= 1979902 and part.p_partkey >= 1879907 and part.p_size > 9 and part.p_retailprice > 1615
+insert into part select * from part where part.p_size <= 35 and part.p_partkey <= 39999 and part.p_size <= 33
+insert into customer select * from customer where customer.c_custkey >= 1484902
+insert into customer select * from customer where customer.c_nationkey != 22 and customer.c_nationkey >= 21 and customer.c_custkey < 29999
+insert into customer select * from customer where customer.c_nationkey = 8 and customer.c_custkey <= 719953 and customer.c_nationkey <= 24 and customer.c_custkey < 29999
+delete from customer where customer.c_acctbal > 8484 and customer.c_custkey <= 29999 and customer.c_nationkey >= 23
+delete from customer where customer.c_nationkey < 12 and customer.c_custkey >= 1469903
+delete from part where part.p_partkey < 39999
+update customer set c_custkey = 149991 where customer.c_custkey > 1469903
+insert into part select * from part where part.p_partkey <= 39999 and part.p_size <= 42
+delete from part where part.p_partkey >= 1959903
+delete from customer where customer.c_custkey <= 29999 and customer.c_nationkey = 22
+delete from customer where customer.c_nationkey = 9 and customer.c_custkey > 1469903 and customer.c_custkey >= 539965
+update customer set c_nationkey = 16 where customer.c_nationkey != 13 and customer.c_nationkey < 6 and customer.c_nationkey > 15 and customer.c_acctbal < 4124 and customer.c_custkey >= 1454904 and customer.c_acctbal > 8375
+insert into customer select * from customer where customer.c_custkey >= 1469903 and customer.c_nationkey < 1
+delete from customer where customer.c_custkey <= 29999 and customer.c_nationkey >= 17
+delete from part where part.p_size >= 16 and part.p_partkey != 1219940 and part.p_partkey < 39999
+update customer set c_nationkey = 22 where customer.c_custkey < 1169923 and customer.c_custkey < 29999
+update part set p_partkey = 39999 where part.p_retailprice < 1054 and part.p_retailprice != 1010 and part.p_partkey > 1979902 and part.p_size > 31
+delete from part where part.p_partkey <= 39999 and part.p_retailprice > 1857 and part.p_size = 47
+delete from customer where customer.c_nationkey > 16 and customer.c_nationkey != 7 and customer.c_custkey <= 15000 and customer.c_nationkey >= 22
+delete from part where part.p_partkey >= 1959903
+delete from part where part.p_partkey >= 1979902
+update part set p_size = 36 where part.p_partkey < 1479927 and part.p_retailprice < 1010 and part.p_partkey < 20000
+delete from part where part.p_partkey > 1979902
+delete from customer where customer.c_custkey >= 1484902 and customer.c_custkey >= 1274916
+delete from part where part.p_partkey >= 1979902
+update customer set c_nationkey = 22, c_custkey = 164990 where customer.c_nationkey = 1 and customer.c_nationkey >= 18 and customer.c_custkey <= 29999 and customer.c_acctbal <= 4124 and customer.c_acctbal != 7830 and customer.c_acctbal >= 9138
+delete from customer where customer.c_custkey >= 1484902
+delete from customer where customer.c_custkey >= 1469903
+delete from customer where customer.c_acctbal != 4669 and customer.c_acctbal >= 963 and customer.c_custkey >= 1469903
+update part set p_retailprice = 1934, p_size = 1, p_partkey = 1379932 where part.p_partkey >= 1979902 and part.p_partkey != 819960
+delete from customer where customer.c_acctbal != 5977 and customer.c_custkey >= 1469903 and customer.c_custkey >= 599961
+update customer set c_custkey = 509967, c_nationkey = 19, c_acctbal = 1944 where customer.c_custkey >= 1469903
+delete from part where part.p_partkey <= 20000 and part.p_size > 46
+insert into customer select * from customer where customer.c_custkey >= 1469903
+insert into customer select * from customer where customer.c_custkey >= 1484902
+delete from part where part.p_partkey >= 599971 and part.p_partkey > 1959903
+update part set p_retailprice = 1120, p_partkey = 679967, p_size = 44 where part.p_retailprice < 1384 and part.p_partkey > 1959903 and part.p_retailprice > 1923 and part.p_partkey != 1159943 and part.p_retailprice <= 1483
+insert into customer select * from customer where customer.c_custkey > 1469903
+update part set p_retailprice = 1164 where part.p_partkey > 1619920 and part.p_partkey <= 1659918 and part.p_partkey > 239989 and part.p_size = 45
+update part set p_partkey = 979952, p_retailprice = 1142 where part.p_retailprice > 1428 and part.p_size >= 50 and part.p_partkey < 39999
+delete from customer where customer.c_custkey > 1484902 and customer.c_custkey != 1184922 and customer.c_nationkey != 2 and customer.c_custkey > 1064930 and customer.c_custkey >= 1409907
+update customer set c_custkey = 1124926, c_acctbal = 6195 where customer.c_custkey < 15000
+update part set p_size = 46, p_retailprice = 1032, p_partkey = 599971 where part.p_partkey > 1979902
+delete from customer where customer.c_custkey < 15000
+insert into part select * from part where part.p_partkey <= 20000
+delete from part where part.p_partkey != 1599921 and part.p_partkey > 1959903 and part.p_retailprice < 1054
+delete from part where part.p_partkey > 1979902
+delete from customer where customer.c_custkey < 15000 and customer.c_acctbal != 3252
+delete from customer where customer.c_custkey <= 15000 and customer.c_acctbal != 9792
+delete from part where part.p_size > 27 and part.p_retailprice < 1131 and part.p_size != 24 and part.p_size > 24 and part.p_size > 37 and part.p_size <= 4 and part.p_partkey < 819960 and part.p_partkey >= 799961
+update customer set c_custkey = 15000, c_acctbal = 1508 where customer.c_custkey < 29999
+update customer set c_acctbal = 7612, c_nationkey = 19 where customer.c_custkey < 29999 and customer.c_acctbal >= 3579
+insert into part select * from part where part.p_partkey <= 20000
+update customer set c_acctbal = 2489, c_nationkey = 9 where customer.c_custkey >= 1484902
+update part set p_retailprice = 1450 where part.p_partkey > 1959903 and part.p_retailprice <= 1901 and part.p_partkey > 1799911
+update part set p_size = 7 where part.p_retailprice > 988 and part.p_partkey > 1959903
+update part set p_retailprice = 1956, p_partkey = 499976 where part.p_partkey <= 20000
+delete from part where part.p_size >= 47 and part.p_partkey < 20000
+update part set p_retailprice = 1879 where part.p_partkey <= 39999 and part.p_size > 44
+delete from part where part.p_retailprice < 1307 and part.p_partkey > 1959903
+update customer set c_nationkey = 9 where customer.c_custkey < 179989 and customer.c_custkey > 164990 and customer.c_nationkey != 2 and customer.c_nationkey >= 2
+update customer set c_nationkey = 0 where customer.c_custkey >= 1469903 and customer.c_custkey >= 254984 and customer.c_nationkey != 6
+update part set p_size = 39, p_partkey = 1399931, p_retailprice = 1197 where part.p_partkey <= 20000
+update part set p_retailprice = 1098 where part.p_partkey < 20000 and part.p_partkey <= 39999
+update customer set c_custkey = 404974, c_nationkey = 0, c_acctbal = 5105 where customer.c_custkey >= 1484902 and customer.c_nationkey > 10
+update customer set c_custkey = 1109927 where customer.c_nationkey != 4 and customer.c_acctbal <= 4560 and customer.c_custkey >= 1484902
+insert into part select * from part where part.p_size <= 31 and part.p_size = 5 and part.p_size > 1 and part.p_size = 5 and part.p_size != 16 and part.p_partkey < 39999
+update customer set c_acctbal = 2271, c_nationkey = 10 where customer.c_custkey > 1484902
+update customer set c_nationkey = 15 where customer.c_custkey < 15000 and customer.c_acctbal <= 7612 and customer.c_acctbal > 91
+delete from part where part.p_partkey < 39999 and part.p_partkey <= 939954
+insert into part select * from part where part.p_partkey > 859958 and part.p_retailprice <= 1692 and part.p_retailprice <= 1802 and part.p_partkey >= 1319935 and part.p_size = 46 and part.p_partkey < 1359933 and part.p_partkey <= 1979902
+delete from part where part.p_retailprice <= 1824 and part.p_retailprice != 1043 and part.p_size != 6 and part.p_size = 6 and part.p_size < 33 and part.p_partkey < 20000 and part.p_retailprice <= 1054 and part.p_size != 47 and part.p_retailprice <= 1340
+delete from part where part.p_size <= 38 and part.p_partkey < 1139944 and part.p_partkey <= 39999
+update customer set c_nationkey = 8 where customer.c_custkey <= 29999
+delete from part where part.p_partkey >= 1959903 and part.p_partkey != 399981 and part.p_size < 4
+delete from part where part.p_size = 6 and part.p_partkey > 1959903
+delete from customer where customer.c_custkey > 1484902
+delete from part where part.p_partkey < 579972 and part.p_retailprice > 1307 and part.p_size < 30 and part.p_retailprice <= 1934 and part.p_partkey >= 559973
+delete from part where part.p_partkey != 1519925 and part.p_size = 33 and part.p_partkey > 1959903
+update part set p_size = 43 where part.p_partkey < 20000 and part.p_retailprice <= 1538
+insert into part select * from part where part.p_partkey > 1979902
+delete from part where part.p_partkey < 20000
+update part set p_partkey = 259988 where part.p_partkey > 1959903
+delete from part where part.p_partkey <= 39999 and part.p_partkey < 639969 and part.p_retailprice > 1736
+update part set p_size = 19 where part.p_partkey <= 1719915 and part.p_retailprice <= 1791 and part.p_partkey <= 39999 and part.p_size >= 19 and part.p_size < 42
+delete from part where part.p_partkey != 1 and part.p_partkey < 39999 and part.p_retailprice < 933
+update part set p_partkey = 1719915, p_retailprice = 1604 where part.p_size >= 41 and part.p_size >= 1 and part.p_partkey < 39999 and part.p_size = 47
+update part set p_size = 14, p_partkey = 599971 where part.p_partkey >= 639969 and part.p_partkey >= 1959903
+update part set p_retailprice = 966, p_size = 26 where part.p_partkey <= 20000 and part.p_retailprice < 1274
+delete from customer where customer.c_custkey < 284982 and customer.c_custkey > 269983
+select partsupp.ps_partkey, lineitem.l_suppkey from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_orderkey = 44999926) order by partsupp.ps_partkey ASC;
+delete from customer where customer.c_nationkey >= 2 and customer.c_custkey > 1484902
+update customer set c_nationkey = 18 where customer.c_custkey > 734952 and customer.c_custkey > 1469903
+delete from part where part.p_partkey < 39999
+insert into customer select * from customer where customer.c_custkey > 1484902
+update part set p_retailprice = 1923 where part.p_partkey <= 20000 and part.p_size >= 13 and part.p_retailprice >= 1219 and part.p_retailprice = 1912 and part.p_retailprice != 1131
+insert into part select * from part where part.p_partkey > 1959903
+insert into customer select * from customer where customer.c_custkey <= 29999 and customer.c_nationkey <= 20
+delete from part where part.p_partkey < 39999
+update customer set c_custkey = 764950, c_nationkey = 22, c_acctbal = 4560 where customer.c_custkey <= 15000 and customer.c_nationkey = 16 and customer.c_nationkey != 16
+update part set p_size = 9, p_partkey = 1179942 where part.p_partkey > 1979902
+insert into part select * from part where part.p_partkey < 39999
+delete from customer where customer.c_custkey >= 1484902 and customer.c_acctbal >= 8484
+update part set p_size = 1, p_retailprice = 1549 where part.p_partkey < 39999
+delete from customer where customer.c_custkey < 29999
+update customer set c_nationkey = 21 where customer.c_acctbal != 8593 and customer.c_custkey < 15000 and customer.c_nationkey != 6
+update customer set c_nationkey = 16, c_acctbal = 2380 where customer.c_custkey <= 15000 and customer.c_nationkey >= 17 and customer.c_acctbal <= 7285 and customer.c_custkey <= 1364910 and customer.c_acctbal > 1508
+delete from part where part.p_partkey <= 39999 and part.p_size != 22
+insert into part select * from part where part.p_partkey <= 20000 and part.p_size < 45
+insert into part select * from part where part.p_retailprice < 1274 and part.p_partkey < 39999
+delete from customer where customer.c_custkey != 554964 and customer.c_custkey >= 1469903 and customer.c_nationkey >= 8 and customer.c_acctbal >= 4124
+insert into customer select * from customer where customer.c_nationkey >= 4 and customer.c_custkey <= 1049931 and customer.c_custkey > 1034932 and customer.c_custkey > 569963
+update customer set c_nationkey = 9, c_acctbal = 1072 where customer.c_custkey < 15000
+insert into part select * from part where part.p_retailprice = 900 and part.p_partkey <= 39999
+insert into customer select * from customer where customer.c_custkey >= 1484902
+delete from part where part.p_partkey > 1959903 and part.p_partkey >= 1 and part.p_partkey > 1039949 and part.p_size = 7 and part.p_size = 12
+update customer set c_custkey = 1364910, c_nationkey = 15 where customer.c_custkey >= 1469903 and customer.c_custkey >= 989935 and customer.c_acctbal < 1617 and customer.c_nationkey != 0
+delete from part where part.p_partkey <= 1159943 and part.p_partkey <= 1139944 and part.p_size > 18 and part.p_partkey >= 1119945
+delete from customer where customer.c_custkey <= 15000 and customer.c_nationkey = 14 and customer.c_custkey <= 1094928
+insert into customer select * from customer where customer.c_custkey >= 1484902 and customer.c_acctbal > 7612 and customer.c_nationkey != 2
+delete from part where part.p_partkey > 1959903
+update part set p_partkey = 959953, p_retailprice = 1626 where part.p_partkey < 39999
+update part set p_size = 16 where part.p_partkey <= 39999 and part.p_size <= 45 and part.p_retailprice < 1472
+delete from part where part.p_retailprice = 1318 and part.p_size < 28 and part.p_partkey < 20000
+delete from part where part.p_size = 39 and part.p_partkey <= 39999 and part.p_size < 32 and part.p_retailprice > 1956 and part.p_size > 49
+update customer set c_acctbal = -454, c_custkey = 15000, c_nationkey = 21 where customer.c_custkey >= 1484902 and customer.c_custkey > 764950 and customer.c_nationkey > 18 and customer.c_nationkey != 10
+delete from customer where customer.c_custkey <= 239985 and customer.c_custkey > 209987 and customer.c_custkey != 674956
+delete from customer where customer.c_custkey <= 29999
+insert into customer select * from customer where customer.c_nationkey = 13 and customer.c_custkey <= 15000
+update part set p_size = 41, p_retailprice = 1736 where part.p_partkey > 1959903
+insert into part select * from part where part.p_partkey != 1019950 and part.p_partkey <= 20000
+insert into part select * from part where part.p_partkey > 1959903
+insert into customer select * from customer where customer.c_custkey > 1469903 and customer.c_nationkey >= 21
+delete from customer where customer.c_custkey >= 1484902 and customer.c_acctbal > 9465
+update part set p_retailprice = 1461, p_size = 45 where part.p_partkey >= 1979902
+update part set p_size = 1, p_retailprice = 1571 where part.p_partkey >= 1979902
+insert into part select * from part where part.p_partkey > 1959903
+update customer set c_acctbal = 4560 where customer.c_custkey > 1469903
+update part set p_size = 13 where part.p_retailprice != 1197 and part.p_partkey <= 39999
+update part set p_partkey = 1759913 where part.p_size <= 21 and part.p_size < 25 and part.p_partkey < 20000
+delete from part where part.p_partkey <= 20000
+delete from part where part.p_partkey >= 1979902
+insert into part select * from part where part.p_partkey < 39999 and part.p_retailprice > 1494
+delete from part where part.p_partkey < 1939904 and part.p_partkey >= 1919905 and part.p_retailprice = 1021 and part.p_retailprice <= 1791
+update customer set c_nationkey = 17, c_custkey = 1274916 where customer.c_custkey > 644958 and customer.c_custkey > 1484902
+update part set p_size = 1 where part.p_partkey < 39999
+delete from customer where customer.c_custkey <= 15000
+insert into part select * from part where part.p_partkey > 1959903
+insert into customer select * from customer where customer.c_custkey < 29999
+insert into customer select * from customer where customer.c_acctbal <= 2707 and customer.c_acctbal > 4342 and customer.c_custkey <= 15000 and customer.c_acctbal < -454
+delete from part where part.p_retailprice != 1879 and part.p_retailprice != 1252 and part.p_partkey >= 1979902
+insert into customer select * from customer where customer.c_custkey > 1469903
+update customer set c_nationkey = 10 where customer.c_custkey <= 15000 and customer.c_nationkey != 21
+delete from part where part.p_partkey <= 39999 and part.p_size <= 46
+update customer set c_acctbal = 9683, c_custkey = 1034932 where customer.c_custkey > 1484902
+update part set p_size = 25 where part.p_retailprice <= 1395 and part.p_partkey <= 1419930 and part.p_retailprice <= 1824 and part.p_retailprice != 1065 and part.p_partkey <= 20000
+update part set p_partkey = 459978, p_retailprice = 1417, p_size = 50 where part.p_partkey > 1959903
+insert into customer select * from customer where customer.c_custkey > 1484902
+delete from customer where customer.c_custkey >= 1484902 and customer.c_acctbal >= 963
+insert into part select * from part where part.p_retailprice < 922 and part.p_size <= 29 and part.p_retailprice >= 988 and part.p_partkey >= 1979902 and part.p_partkey >= 539974 and part.p_size <= 19
+update customer set c_acctbal = 3579 where customer.c_acctbal <= 2162 and customer.c_custkey >= 1484902 and customer.c_nationkey >= 8 and customer.c_acctbal <= 6631
+delete from part where part.p_partkey < 39999
+insert into customer select * from customer where customer.c_custkey <= 1274916 and customer.c_custkey >= 1244918
+select lineitem.l_orderkey, partsupp.ps_partkey, orders.o_shippriority,  min(orders.o_orderkey) from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where orders.o_orderkey = (select orders.o_orderkey from orders where orders.o_totalprice > 196103 and  orders.o_orderkey = 6599990 and  orders.o_shippriority >= 0) group by lineitem.l_orderkey, partsupp.ps_partkey, orders.o_shippriority having min(orders.o_orderkey) >= 90 order by partsupp.ps_partkey DESC, orders.o_shippriority DESC;
+update customer set c_acctbal = 2162, c_custkey = 1334912 where customer.c_custkey < 29999 and customer.c_acctbal >= 7503 and customer.c_nationkey = 8
+delete from customer where customer.c_custkey < 15000 and customer.c_acctbal <= 1835
+update part set p_retailprice = 1813 where part.p_partkey >= 1539924 and part.p_partkey >= 79997 and part.p_partkey >= 1959903
+update customer set c_acctbal = 1835 where customer.c_custkey >= 1469903
+update part set p_size = 44, p_partkey = 579972, p_retailprice = 1637 where part.p_partkey >= 1959903
+update part set p_retailprice = 1406, p_size = 4 where part.p_size != 35 and part.p_partkey > 1959903
+update customer set c_nationkey = 6, c_acctbal = 9138 where customer.c_custkey < 29999
+delete from customer where customer.c_custkey >= 1229919 and customer.c_custkey <= 1244918 and customer.c_custkey >= 434972 and customer.c_custkey > 584962
+delete from part where part.p_retailprice != 1923 and part.p_partkey <= 1859908 and part.p_partkey >= 1839909
+insert into part select * from part where part.p_partkey > 1959903
+insert into part select * from part where part.p_partkey > 1339934 and part.p_retailprice >= 1824 and part.p_partkey <= 1379932
+insert into part select * from part where part.p_retailprice = 1846 and part.p_retailprice = 1186 and part.p_partkey > 1979902 and part.p_partkey != 79997
+delete from part where part.p_partkey < 39999
+insert into part select * from part where part.p_retailprice <= 1329 and part.p_retailprice >= 1120 and part.p_partkey < 20000
+insert into customer select * from customer where customer.c_nationkey = 17 and customer.c_custkey != 809947 and customer.c_nationkey > 7 and customer.c_custkey >= 1484902
+update customer set c_nationkey = 21 where customer.c_custkey < 15000 and customer.c_acctbal != 7503
+delete from customer where customer.c_custkey <= 15000
+insert into part select * from part where part.p_partkey >= 1959903
+delete from part where part.p_size <= 22 and part.p_retailprice > 1450 and part.p_partkey <= 20000
+delete from customer where customer.c_custkey <= 15000
+insert into part select * from part where part.p_retailprice = 1307 and part.p_retailprice = 1373 and part.p_partkey < 139994 and part.p_retailprice < 1142 and part.p_partkey <= 20000
+delete from customer where customer.c_acctbal != -781 and customer.c_custkey >= 1484902
+update part set p_size = 17 where part.p_partkey < 39999 and part.p_size > 15 and part.p_retailprice <= 1087
+delete from part where part.p_retailprice != 1296 and part.p_partkey > 1979902 and part.p_size = 31 and part.p_size != 38
+select customer.c_nationkey from customer where customer.c_custkey = (select customer.c_custkey from customer where customer.c_custkey >= 1439905) order by customer.c_nationkey ASC;
+delete from customer where customer.c_nationkey = 7 and customer.c_custkey >= 1469903 and customer.c_custkey != 644958
+insert into part select * from part where part.p_partkey > 1959903
+delete from part where part.p_size >= 13 and part.p_partkey <= 39999
+insert into customer select * from customer where customer.c_custkey < 29999
+update customer set c_nationkey = 5 where customer.c_custkey <= 15000
+update part set p_retailprice = 1362, p_size = 4 where part.p_retailprice <= 1241 and part.p_partkey <= 20000
+delete from part where part.p_partkey >= 1979902
+update part set p_retailprice = 1142 where part.p_retailprice != 1824 and part.p_partkey >= 1979902
+update customer set c_acctbal = 3361, c_nationkey = 12, c_custkey = 569963 where customer.c_custkey < 29999
+update customer set c_nationkey = 19, c_custkey = 1334912, c_acctbal = 6849 where customer.c_custkey < 29999 and customer.c_custkey <= 419973
+delete from part where part.p_retailprice < 1835 and part.p_size <= 2 and part.p_partkey != 959953 and part.p_partkey <= 39999
+insert into customer select * from customer where customer.c_acctbal >= 5977 and customer.c_custkey <= 29999 and customer.c_custkey != 179989 and customer.c_acctbal < 854 and customer.c_custkey < 389975
+update customer set c_nationkey = 9, c_custkey = 1094928 where customer.c_custkey > 1484902
+update customer set c_acctbal = 9029, c_custkey = 689955 where customer.c_custkey < 15000 and customer.c_acctbal > 1072 and customer.c_custkey != 824946 and customer.c_acctbal <= 6631 and customer.c_nationkey != 6 and customer.c_nationkey < 14
+delete from customer where customer.c_nationkey < 16 and customer.c_custkey >= 1484902
+delete from customer where customer.c_custkey != 1424906 and customer.c_custkey <= 15000
+delete from part where part.p_partkey <= 20000
+delete from customer where customer.c_nationkey = 5 and customer.c_custkey < 29999
+select orders.o_shippriority, lineitem.l_linenumber, partsupp.ps_partkey from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_partkey = 1839909 and  lineitem.l_linenumber < 2);
+delete from customer where customer.c_acctbal >= 3688 and customer.c_acctbal > 2053 and customer.c_custkey >= 1484902 and customer.c_nationkey = 22
+delete from customer where customer.c_custkey <= 29999
+update customer set c_custkey = 839945 where customer.c_nationkey >= 2 and customer.c_custkey >= 1469903
+delete from orders where orders.o_orderkey < 4199994 and orders.o_totalprice > 475053 and orders.o_shippriority > 0 and orders.o_totalprice <= 480632 and orders.o_orderkey > 29999951 and orders.o_orderkey >= 40199934
+delete from customer where customer.c_nationkey < 1 and customer.c_custkey >= 1469903
+update customer set c_nationkey = 0 where customer.c_custkey < 29999
+update customer set c_nationkey = 20, c_acctbal = 8157, c_custkey = 389975 where customer.c_acctbal < 4669 and customer.c_custkey > 1484902
+update part set p_retailprice = 944, p_partkey = 1479927, p_size = 35 where part.p_partkey <= 39999 and part.p_size <= 24
+delete from customer where customer.c_nationkey = 3 and customer.c_custkey >= 1484902 and customer.c_custkey > 224986
+delete from part where part.p_partkey < 20000
+insert into customer select * from customer where customer.c_custkey > 1349911 and customer.c_custkey >= 1469903
+select lineitem.l_discount, orders.o_totalprice, partsupp.ps_suppkey from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_orderkey = 43799928);
+delete from customer where customer.c_acctbal != 9465 and customer.c_custkey <= 15000
+delete from part where part.p_partkey != 419980 and part.p_partkey < 39999
+delete from customer where customer.c_acctbal > -236 and customer.c_acctbal < 6958 and customer.c_custkey < 15000 and customer.c_nationkey != 13 and customer.c_nationkey > 3
+delete from part where part.p_partkey >= 1959903 and part.p_retailprice = 1692 and part.p_retailprice = 1428
+delete from part where part.p_size >= 39 and part.p_partkey >= 319985 and part.p_partkey >= 1959903 and part.p_size = 50 and part.p_size = 50 and part.p_partkey > 459978
+delete from part where part.p_partkey >= 1959903
+insert into part select * from part where part.p_partkey <= 39999
+delete from part where part.p_partkey <= 20000
+select lineitem.l_linenumber, partsupp.ps_availqty,  avg(partsupp.ps_availqty) from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_quantity > 21 and  lineitem.l_tax <= 0 and  lineitem.l_orderkey = 1) group by lineitem.l_linenumber, partsupp.ps_availqty having avg(partsupp.ps_availqty) >= 636;
+delete from customer where customer.c_nationkey >= 22 and customer.c_acctbal > 91 and customer.c_custkey < 29999 and customer.c_custkey <= 1169923
+delete from customer where customer.c_custkey > 1469903
+delete from customer where customer.c_custkey < 29999 and customer.c_custkey < 329979
+delete from part where part.p_partkey > 1979902 and part.p_retailprice <= 1824
+update part set p_partkey = 219990 where part.p_retailprice < 1076 and part.p_retailprice != 1813 and part.p_partkey <= 39999
+delete from customer where customer.c_custkey > 1469903
+update customer set c_nationkey = 1 where customer.c_custkey < 29999
+insert into part select * from part where part.p_partkey > 1979902
+delete from part where part.p_partkey >= 1279937 and part.p_partkey >= 1959903
+insert into part select * from part where part.p_partkey > 1979902
+update part set p_partkey = 1579922, p_retailprice = 1417, p_size = 19 where part.p_size <= 48 and part.p_partkey <= 20000
+delete from part where part.p_partkey < 1959903 and part.p_retailprice < 1142 and part.p_partkey > 739964 and part.p_partkey <= 1479927 and part.p_partkey > 879957 and part.p_partkey >= 1439929
+delete from customer where customer.c_custkey <= 29999
+update part set p_size = 3, p_retailprice = 1351 where part.p_retailprice >= 1967 and part.p_partkey <= 20000 and part.p_retailprice = 1472
+delete from part where part.p_retailprice <= 1659 and part.p_partkey <= 20000
+update customer set c_acctbal = 5541 where customer.c_acctbal >= 6849 and customer.c_custkey > 479969 and customer.c_custkey < 509967
+select customer.c_custkey from customer where customer.c_custkey = (select customer.c_custkey from customer where customer.c_custkey >= 1439905);
+delete from part where part.p_partkey >= 1979902
+delete from part where part.p_retailprice >= 1428 and part.p_partkey >= 1979902
+insert into customer select * from customer where customer.c_nationkey = 12 and customer.c_custkey < 29999 and customer.c_custkey <= 1229919
+update customer set c_custkey = 1094928 where customer.c_custkey < 15000
+delete from customer where customer.c_nationkey = 16 and customer.c_custkey >= 1484902
+delete from customer where customer.c_nationkey = 13 and customer.c_custkey < 15000
+delete from part where part.p_retailprice != 1241 and part.p_partkey >= 1979902 and part.p_retailprice < 1175
+update customer set c_custkey = 839945, c_nationkey = 14 where customer.c_custkey <= 449971 and customer.c_custkey >= 15000 and customer.c_custkey < 29999 and customer.c_custkey < 164990 and customer.c_nationkey = 12
+delete from part where part.p_partkey >= 1959903
+insert into customer select * from customer where customer.c_custkey <= 29999 and customer.c_nationkey = 8
+update customer set c_acctbal = 8266, c_custkey = 629959 where customer.c_custkey > 1469903
+delete from customer where customer.c_custkey > 1469903 and customer.c_custkey > 59997
+update part set p_size = 22 where part.p_size != 7 and part.p_size < 35 and part.p_partkey <= 20000 and part.p_partkey < 459978
+delete from customer where customer.c_custkey >= 1469903
+delete from part where part.p_partkey >= 1959903 and part.p_retailprice = 900 and part.p_partkey >= 199991 and part.p_size = 45 and part.p_partkey > 1119945 and part.p_size < 48 and part.p_size <= 11 and part.p_retailprice <= 1362
+delete from customer where customer.c_custkey < 15000 and customer.c_nationkey < 14
+update customer set c_custkey = 404974 where customer.c_custkey > 959937 and customer.c_custkey <= 989935
+insert into part select * from part where part.p_partkey >= 1959903 and part.p_retailprice < 1373 and part.p_size < 18
+update part set p_size = 19 where part.p_size >= 10 and part.p_retailprice != 1648 and part.p_size >= 1 and part.p_partkey >= 1959903
+update part set p_size = 43, p_retailprice = 1208, p_partkey = 1759913 where part.p_partkey <= 39999 and part.p_retailprice <= 1747
+update part set p_partkey = 1899906, p_size = 13 where part.p_partkey >= 1959903
+update customer set c_custkey = 929939, c_nationkey = 16 where customer.c_custkey < 29999
+update customer set c_custkey = 119993, c_nationkey = 18, c_acctbal = 2707 where customer.c_custkey <= 15000
+delete from customer where customer.c_custkey >= 1484902
+delete from part where part.p_partkey > 1979902 and part.p_retailprice >= 1604 and part.p_retailprice >= 1527
+insert into customer select * from customer where customer.c_custkey < 254984 and customer.c_nationkey != 22 and customer.c_custkey < 449971 and customer.c_nationkey < 7 and customer.c_nationkey > 13 and customer.c_custkey >= 224986
+update customer set c_nationkey = 16 where customer.c_nationkey < 4 and customer.c_custkey > 1469903
+update part set p_retailprice = 1956, p_partkey = 219990, p_size = 10 where part.p_partkey <= 39999
+insert into customer select * from customer where customer.c_nationkey >= 9 and customer.c_custkey < 404974 and customer.c_custkey <= 15000
+update part set p_retailprice = 1670, p_partkey = 1219940 where part.p_partkey >= 1959903
+delete from part where part.p_partkey > 1959903 and part.p_size <= 38 and part.p_retailprice <= 1494 and part.p_size < 40
+delete from part where part.p_partkey <= 20000
+update part set p_size = 41 where part.p_partkey > 1979902 and part.p_retailprice = 1637 and part.p_size <= 13
+delete from part where part.p_partkey > 1979902 and part.p_size <= 8
+delete from part where part.p_retailprice <= 1857 and part.p_size < 15 and part.p_partkey < 20000
+update part set p_partkey = 659968, p_retailprice = 1131 where part.p_partkey > 1959903
+insert into customer select * from customer where customer.c_custkey >= 1484902 and customer.c_custkey >= 899941
+delete from customer where customer.c_custkey <= 15000 and customer.c_acctbal != 6086 and customer.c_acctbal >= 6304 and customer.c_acctbal > 2271
+delete from part where part.p_partkey >= 1979902 and part.p_size <= 11
+delete from customer where customer.c_custkey < 1244918 and customer.c_custkey != 104994 and customer.c_custkey >= 1214920
+delete from part where part.p_size <= 32 and part.p_partkey >= 1979902 and part.p_retailprice > 1472
+update part set p_partkey = 759963 where part.p_partkey <= 759963 and part.p_retailprice >= 1945 and part.p_partkey < 479977 and part.p_partkey < 119995 and part.p_partkey < 39999
+delete from customer where customer.c_nationkey = 20 and customer.c_custkey > 1484902
+update part set p_partkey = 1639919 where part.p_partkey >= 1959903
+update part set p_retailprice = 1219 where part.p_partkey >= 1979902
+insert into customer select * from customer where customer.c_custkey < 29999
+update part set p_retailprice = 1725, p_size = 42, p_partkey = 799961 where part.p_retailprice < 1131 and part.p_partkey > 1979902 and part.p_retailprice <= 1989 and part.p_retailprice >= 1967
+update part set p_size = 50 where part.p_retailprice <= 1406 and part.p_partkey >= 1979902 and part.p_partkey != 679967
+update part set p_size = 5, p_retailprice = 1263 where part.p_partkey >= 1959903
+delete from customer where customer.c_custkey <= 15000
+update customer set c_custkey = 764950 where customer.c_acctbal <= 1726 and customer.c_acctbal < 8811 and customer.c_nationkey > 11 and customer.c_custkey <= 29999
+delete from part where part.p_size = 45 and part.p_partkey > 1959903 and part.p_partkey != 539974
+update customer set c_custkey = 569963 where customer.c_custkey != 929939 and customer.c_custkey <= 15000 and customer.c_acctbal >= -672
+update customer set c_nationkey = 8, c_acctbal = 7285 where customer.c_custkey <= 29999 and customer.c_custkey != 929939
+delete from customer where customer.c_custkey >= 1484902 and customer.c_nationkey < 18
+delete from customer where customer.c_custkey < 599961 and customer.c_custkey < 15000
+select lineitem.l_suppkey, partsupp.ps_availqty, part.p_retailprice, orders.o_shippriority from part join partsupp on partsupp.ps_partkey=part.p_partkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey where orders.o_orderkey = (select orders.o_orderkey from orders where orders.o_shippriority < 0 and  orders.o_totalprice = 229577);
+update customer set c_nationkey = 13, c_acctbal = 2271 where customer.c_acctbal > 5759 and customer.c_custkey < 29999 and customer.c_acctbal < 9792 and customer.c_acctbal <= -672
+delete from customer where customer.c_custkey > 1199921 and customer.c_nationkey > 21 and customer.c_custkey >= 1469903
+insert into customer select * from customer where customer.c_nationkey <= 24 and customer.c_custkey < 29999 and customer.c_nationkey != 16
+insert into part select * from part where part.p_partkey > 1959903 and part.p_size <= 9 and part.p_size != 4 and part.p_size <= 44 and part.p_size < 18
+insert into customer select * from customer where customer.c_custkey <= 74996 and customer.c_nationkey = 4 and customer.c_custkey != 1304914 and customer.c_custkey <= 15000
+update part set p_size = 21 where part.p_partkey >= 199991 and part.p_retailprice > 1395 and part.p_retailprice != 1901 and part.p_partkey >= 1179942 and part.p_partkey >= 1959903 and part.p_retailprice != 1021
+update part set p_partkey = 1319935, p_size = 12 where part.p_size < 44 and part.p_partkey <= 20000
+insert into part select * from part where part.p_partkey >= 259988 and part.p_size <= 16 and part.p_partkey < 279987
+update customer set c_acctbal = -563 where customer.c_nationkey = 8 and customer.c_custkey <= 29999
+update part set p_retailprice = 1538 where part.p_partkey > 1979902 and part.p_retailprice >= 1120
+update part set p_retailprice = 1120 where part.p_size != 30 and part.p_partkey > 1159943 and part.p_size >= 36 and part.p_partkey > 1959903
+delete from part where part.p_partkey >= 1959903
+update customer set c_nationkey = 17 where customer.c_custkey >= 1124926 and customer.c_custkey > 1484902
+delete from customer where customer.c_custkey > 1484902
+delete from customer where customer.c_custkey >= 1469903
+insert into customer select * from customer where customer.c_custkey < 15000
+delete from customer where customer.c_custkey < 29999 and customer.c_custkey != 899941
+insert into part select * from part where part.p_partkey < 39999
+insert into customer select * from customer where customer.c_acctbal > 7067 and customer.c_custkey <= 15000 and customer.c_acctbal < 9683
+update part set p_partkey = 419980 where part.p_size < 40 and part.p_partkey >= 1979902
+update part set p_partkey = 1639919 where part.p_size = 29 and part.p_retailprice < 1824 and part.p_retailprice < 1120 and part.p_partkey < 39999
+delete from part where part.p_partkey < 39999
+delete from part where part.p_partkey > 1959903 and part.p_retailprice <= 1989 and part.p_retailprice > 1417
+delete from part where part.p_partkey <= 20000 and part.p_partkey < 1379932
+delete from customer where customer.c_custkey != 149991 and customer.c_nationkey >= 17 and customer.c_custkey >= 1484902
+update part set p_partkey = 879957 where part.p_partkey < 20000
+insert into part select * from part where part.p_partkey <= 39999 and part.p_retailprice >= 1626 and part.p_retailprice <= 1384
+delete from customer where customer.c_custkey > 1484902
+update customer set c_nationkey = 9, c_acctbal = 9029 where customer.c_custkey > 1469903
+delete from customer where customer.c_nationkey > 6 and customer.c_acctbal >= 9356 and customer.c_custkey >= 1469903
+insert into customer select * from customer where customer.c_custkey >= 1469903 and customer.c_acctbal != 9356 and customer.c_custkey > 134992 and customer.c_acctbal != 5977 and customer.c_nationkey >= 15
+delete from customer where customer.c_custkey > 419973 and customer.c_custkey <= 449971 and customer.c_acctbal != 2598 and customer.c_nationkey = 1 and customer.c_nationkey != 2
+select lineitem.l_quantity, part.p_retailprice, partsupp.ps_availqty,  max(partsupp.ps_partkey) from part join partsupp on partsupp.ps_partkey=part.p_partkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_orderkey = (select lineitem.l_orderkey from lineitem where lineitem.l_orderkey = 51599915 and  lineitem.l_suppkey >= 17983 and  lineitem.l_discount < 0) group by lineitem.l_quantity, part.p_retailprice, partsupp.ps_availqty having max(partsupp.ps_partkey) >= 437;
+delete from customer where customer.c_acctbal >= 5105 and customer.c_custkey >= 1469903
+delete from customer where customer.c_custkey < 1394908 and customer.c_custkey >= 1379909 and customer.c_acctbal < 3579 and customer.c_custkey >= 104994 and customer.c_nationkey != 4
+delete from customer where customer.c_custkey <= 29999
+update customer set c_custkey = 1274916 where customer.c_custkey >= 1484902
+select nation.n_regionkey, customer.c_nationkey, region.r_regionkey from region join nation on nation.n_regionkey=region.r_regionkey join customer on customer.c_nationkey=nation.n_nationkey where customer.c_custkey = (select customer.c_custkey from customer where customer.c_custkey > 1124926 and  customer.c_acctbal >= 6195 and  customer.c_custkey > 1484902 and  customer.c_custkey > 1244918);
+update part set p_size = 42, p_retailprice = 1769 where part.p_partkey <= 20000 and part.p_retailprice > 1769 and part.p_retailprice != 1626
+update part set p_partkey = 1059948 where part.p_size <= 2 and part.p_partkey > 1959903
+update part set p_retailprice = 1791 where part.p_partkey >= 1959903
+update part set p_partkey = 1299936, p_size = 7 where part.p_partkey > 1959903
+delete from orders where orders.o_orderkey != 39599935 and orders.o_orderkey > 46199924 and orders.o_totalprice > 536422 and orders.o_orderkey <= 36599940

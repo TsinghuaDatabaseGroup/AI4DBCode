@@ -1,0 +1,2 @@
+{"parts": [{"text": "0000000000000000000000", "attachment": []}]}
+{"text": "(z)=(z^2+4.2z+5.43)/(z^4-2.7z^3+2.5z^2+2.43z-0.56", "file_key": "a473b196ab3ed5929b23e43fc920e5e0/course-v1:NEU+CS514+2015_T2/block-v1:NEU+CS514+2015_T2+type@openassessment+block@cb4147c7132946ac86fbd84fa0803b6d"}

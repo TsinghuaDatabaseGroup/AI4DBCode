@@ -1,0 +1,10 @@
+course-v1:lzufe+00510663X+2016_T2
+course-v1:TsinghuaX+sanya10610183+2017_T2
+course-v1:BNU+btbu_2017053101X+2017_T2
+course-v1:TsinghuaX+10610183_2X+2017_T2
+course-v1:MITx+6_00_1x+sp
+course-v1:HLJUX+2017032101XLC+2017_T2
+course-v1:xgncepu+xg005+2016-T2
+course-v1:TsinghuaX+00690092X+2017_T1
+course-v1:TsinghuaX+30240184+sp
+course-v1:USTC+USTC2006001+sp

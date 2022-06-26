@@ -1,0 +1,100 @@
+insert into supplier select * from supplier where supplier.s_suppkey < 15985 and supplier.s_suppkey < 20980
+insert into supplier select * from supplier where supplier.s_suppkey >= 83917
+insert into supplier select * from supplier where supplier.s_suppkey > 86914 and supplier.s_suppkey >= 69931 and supplier.s_suppkey >= 47953
+insert into supplier select * from supplier where supplier.s_suppkey <= 8992
+insert into supplier select * from supplier where supplier.s_suppkey >= 89911
+insert into supplier select * from supplier where supplier.s_nationkey >= 18 and supplier.s_suppkey > 89911 and supplier.s_nationkey > 10
+insert into supplier select * from supplier where supplier.s_suppkey >= 86914 and supplier.s_nationkey > 9
+insert into customer select * from customer where customer.c_custkey <= 15000
+insert into supplier select * from supplier where supplier.s_suppkey > 89911
+insert into supplier select * from supplier where supplier.s_suppkey <= 13987
+insert into supplier select * from supplier where supplier.s_nationkey = 18 and supplier.s_suppkey > 90910
+insert into supplier select * from supplier where supplier.s_acctbal < -672 and supplier.s_acctbal >= -345 and supplier.s_acctbal > 4451 and supplier.s_acctbal > 9792 and supplier.s_suppkey > 90910
+insert into supplier select * from supplier where supplier.s_suppkey >= 88912
+insert into supplier select * from supplier where supplier.s_suppkey > 82918
+insert into supplier select * from supplier where supplier.s_acctbal > -672 and supplier.s_suppkey <= 13987
+insert into supplier select * from supplier where supplier.s_acctbal >= 200 and supplier.s_acctbal > 4233 and supplier.s_nationkey != 24 and supplier.s_suppkey <= 14986
+insert into supplier select * from supplier where supplier.s_suppkey > 89911 and supplier.s_acctbal <= 6631
+insert into supplier select * from supplier where supplier.s_suppkey < 10990 and supplier.s_nationkey < 9
+insert into supplier select * from supplier where supplier.s_suppkey >= 83917 and supplier.s_nationkey = 2
+insert into customer select * from customer where customer.c_custkey < 15000
+insert into supplier select * from supplier where supplier.s_suppkey > 39961 and supplier.s_acctbal < -781 and supplier.s_suppkey > 1999 and supplier.s_suppkey != 70930 and supplier.s_nationkey < 21 and supplier.s_suppkey < 48952 and supplier.s_acctbal >= 2489 and supplier.s_nationkey != 17
+insert into supplier select * from supplier where supplier.s_acctbal < 4887 and supplier.s_suppkey <= 8992
+insert into supplier select * from supplier where supplier.s_acctbal = 4996 and supplier.s_acctbal != 6740 and supplier.s_suppkey > 86914 and supplier.s_nationkey < 18
+insert into supplier select * from supplier where supplier.s_suppkey != 82918 and supplier.s_suppkey >= 87913 and supplier.s_acctbal < 9792
+insert into supplier select * from supplier where supplier.s_suppkey <= 11989 and supplier.s_acctbal != 3688
+insert into supplier select * from supplier where supplier.s_nationkey < 4 and supplier.s_suppkey <= 23977 and supplier.s_suppkey != 30970 and supplier.s_nationkey > 8 and supplier.s_suppkey != 41959 and supplier.s_suppkey >= 13987
+insert into customer select * from customer where customer.c_acctbal > 2162 and customer.c_custkey > 1484902
+insert into supplier select * from supplier where supplier.s_nationkey >= 15 and supplier.s_nationkey >= 12 and supplier.s_suppkey < 11989
+insert into supplier select * from supplier where supplier.s_suppkey < 15985 and supplier.s_nationkey != 2
+insert into supplier select * from supplier where supplier.s_nationkey < 6 and supplier.s_suppkey > 90910
+insert into supplier select * from supplier where supplier.s_suppkey < 15985
+insert into supplier select * from supplier where supplier.s_suppkey <= 10990
+insert into supplier select * from supplier where supplier.s_suppkey >= 85915
+insert into part select * from part where part.p_partkey > 1979902
+insert into supplier select * from supplier where supplier.s_suppkey >= 86914
+insert into supplier select * from supplier where supplier.s_suppkey != 35965 and supplier.s_suppkey >= 83917
+insert into supplier select * from supplier where supplier.s_suppkey != 24976 and supplier.s_suppkey <= 9991
+insert into part select * from part where part.p_partkey <= 20000
+insert into supplier select * from supplier where supplier.s_suppkey >= 87913 and supplier.s_acctbal > 9465 and supplier.s_acctbal < 3143
+insert into supplier select * from supplier where supplier.s_suppkey > 83917 and supplier.s_nationkey < 21
+insert into supplier select * from supplier where supplier.s_acctbal > 5868 and supplier.s_suppkey < 9991
+insert into supplier select * from supplier where supplier.s_suppkey < 13987 and supplier.s_acctbal <= 7503
+insert into supplier select * from supplier where supplier.s_nationkey > 23 and supplier.s_acctbal >= 2925 and supplier.s_acctbal <= 91 and supplier.s_acctbal >= 3797 and supplier.s_acctbal <= -18 and supplier.s_acctbal > 200 and supplier.s_acctbal = 4233 and supplier.s_suppkey < 11989
+insert into supplier select * from supplier where supplier.s_acctbal <= 2598 and supplier.s_acctbal != -454 and supplier.s_suppkey >= 87913
+insert into supplier select * from supplier where supplier.s_acctbal < 3579 and supplier.s_suppkey <= 13987 and supplier.s_suppkey != 76924
+insert into supplier select * from supplier where supplier.s_suppkey <= 12988 and supplier.s_acctbal >= 4778 and supplier.s_suppkey <= 78922 and supplier.s_acctbal > 1508 and supplier.s_nationkey < 6 and supplier.s_nationkey < 6
+insert into supplier select * from supplier where supplier.s_suppkey > 87913 and supplier.s_nationkey < 7 and supplier.s_suppkey > 21979 and supplier.s_acctbal <= 91 and supplier.s_acctbal > -454 and supplier.s_acctbal > 5868 and supplier.s_acctbal != 9138
+insert into supplier select * from supplier where supplier.s_suppkey > 59941 and supplier.s_suppkey < 85915 and supplier.s_suppkey >= 74926 and supplier.s_nationkey >= 19 and supplier.s_nationkey < 8
+insert into supplier select * from supplier where supplier.s_suppkey < 12988 and supplier.s_suppkey >= 1000
+insert into supplier select * from supplier where supplier.s_suppkey < 9991 and supplier.s_suppkey < 41959
+insert into part select * from part where part.p_partkey > 1979902 and part.p_retailprice <= 944 and part.p_size = 5 and part.p_retailprice >= 1472 and part.p_retailprice >= 1989 and part.p_partkey > 719965 and part.p_size = 21 and part.p_partkey >= 1579922
+insert into supplier select * from supplier where supplier.s_nationkey = 5 and supplier.s_suppkey <= 13987 and supplier.s_suppkey != 80920 and supplier.s_acctbal = 9683
+insert into supplier select * from supplier where supplier.s_suppkey <= 12988
+insert into supplier select * from supplier where supplier.s_suppkey < 8992
+insert into supplier select * from supplier where supplier.s_acctbal > 527 and supplier.s_suppkey >= 68932 and supplier.s_suppkey < 80920
+insert into supplier select * from supplier where supplier.s_suppkey < 13987
+insert into supplier select * from supplier where supplier.s_suppkey > 90910 and supplier.s_acctbal != -999
+insert into supplier select * from supplier where supplier.s_suppkey > 83917
+insert into supplier select * from supplier where supplier.s_suppkey < 20980 and supplier.s_suppkey > 3997
+insert into supplier select * from supplier where supplier.s_suppkey < 14986 and supplier.s_nationkey = 6 and supplier.s_nationkey = 22
+insert into supplier select * from supplier where supplier.s_suppkey < 9991 and supplier.s_suppkey != 94906
+insert into supplier select * from supplier where supplier.s_suppkey >= 89911
+insert into supplier select * from supplier where supplier.s_suppkey < 59941 and supplier.s_suppkey >= 48952 and supplier.s_suppkey > 30970 and supplier.s_nationkey <= 15
+insert into supplier select * from supplier where supplier.s_nationkey < 20 and supplier.s_acctbal != 3579 and supplier.s_nationkey < 24 and supplier.s_suppkey >= 91909 and supplier.s_nationkey != 3
+insert into supplier select * from supplier where supplier.s_suppkey < 14986
+insert into supplier select * from supplier where supplier.s_acctbal < 5432 and supplier.s_nationkey = 22 and supplier.s_suppkey <= 15985
+insert into supplier select * from supplier where supplier.s_acctbal != 8266 and supplier.s_nationkey > 13 and supplier.s_suppkey > 87913
+insert into supplier select * from supplier where supplier.s_acctbal <= 3579 and supplier.s_suppkey > 88912 and supplier.s_acctbal <= 2707 and supplier.s_nationkey >= 6 and supplier.s_nationkey > 23
+insert into supplier select * from supplier where supplier.s_suppkey > 89911
+insert into customer select * from customer where customer.c_nationkey >= 4 and customer.c_custkey <= 15000 and customer.c_acctbal >= 4778
+insert into supplier select * from supplier where supplier.s_nationkey = 5 and supplier.s_suppkey >= 86914 and supplier.s_acctbal >= 8593 and supplier.s_nationkey <= 9 and supplier.s_acctbal > 6631 and supplier.s_nationkey <= 9
+insert into supplier select * from supplier where supplier.s_suppkey >= 87913 and supplier.s_nationkey = 24
+insert into supplier select * from supplier where supplier.s_acctbal > 636 and supplier.s_nationkey >= 20 and supplier.s_suppkey < 9991 and supplier.s_suppkey <= 96904
+insert into supplier select * from supplier where supplier.s_suppkey <= 23977 and supplier.s_nationkey >= 2 and supplier.s_suppkey < 8992 and supplier.s_acctbal < 4342 and supplier.s_acctbal != 2162
+insert into supplier select * from supplier where supplier.s_suppkey <= 14986
+insert into part select * from part where part.p_partkey < 20000 and part.p_size > 14
+insert into supplier select * from supplier where supplier.s_acctbal <= 2271 and supplier.s_nationkey >= 9 and supplier.s_acctbal > 6522 and supplier.s_suppkey >= 38962 and supplier.s_acctbal < 6522 and supplier.s_suppkey > 89911
+insert into supplier select * from supplier where supplier.s_acctbal >= 2489 and supplier.s_suppkey <= 9991 and supplier.s_nationkey != 23 and supplier.s_nationkey = 0
+insert into supplier select * from supplier where supplier.s_acctbal = 8593 and supplier.s_suppkey < 16984 and supplier.s_suppkey < 14986 and supplier.s_nationkey != 18
+insert into part select * from part where part.p_partkey > 1979902
+insert into supplier select * from supplier where supplier.s_suppkey >= 85915
+insert into supplier select * from supplier where supplier.s_acctbal > 8157 and supplier.s_suppkey > 91909 and supplier.s_suppkey != 45955 and supplier.s_acctbal > -345 and supplier.s_nationkey != 6 and supplier.s_acctbal <= 1290 and supplier.s_acctbal <= 2271
+insert into part select * from part where part.p_size >= 43 and part.p_partkey >= 739964 and part.p_partkey > 1979902
+insert into part select * from part where part.p_size = 30 and part.p_partkey >= 1979902
+insert into customer select * from customer where customer.c_custkey < 15000 and customer.c_nationkey = 0 and customer.c_custkey != 15000 and customer.c_nationkey > 1 and customer.c_nationkey = 15
+insert into part select * from part where part.p_partkey >= 1979902
+insert into supplier select * from supplier where supplier.s_suppkey != 36964 and supplier.s_acctbal >= 1399 and supplier.s_acctbal = 418 and supplier.s_suppkey > 91909 and supplier.s_acctbal != 4342
+insert into part select * from part where part.p_partkey < 20000 and part.p_retailprice != 1527 and part.p_size > 42
+insert into customer select * from customer where customer.c_custkey >= 1244918 and customer.c_custkey < 1259917
+insert into supplier select * from supplier where supplier.s_suppkey <= 71929 and supplier.s_suppkey <= 9991 and supplier.s_acctbal = 854
+insert into supplier select * from supplier where supplier.s_suppkey >= 88912
+insert into supplier select * from supplier where supplier.s_suppkey > 85915
+insert into supplier select * from supplier where supplier.s_suppkey < 10990
+insert into supplier select * from supplier where supplier.s_suppkey >= 82918
+insert into supplier select * from supplier where supplier.s_suppkey != 91909 and supplier.s_suppkey <= 12988 and supplier.s_acctbal >= 3688
+insert into supplier select * from supplier where supplier.s_suppkey <= 10990
+insert into supplier select * from supplier where supplier.s_nationkey >= 18 and supplier.s_suppkey > 87913
+insert into part select * from part where part.p_partkey > 1979902
+insert into supplier select * from supplier where supplier.s_suppkey < 9991 and supplier.s_acctbal < 4669 and supplier.s_suppkey <= 10990 and supplier.s_nationkey >= 3 and supplier.s_acctbal >= 3470
+insert into supplier select * from supplier where supplier.s_suppkey <= 15985

@@ -1,0 +1,18 @@
+name: testenv
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+
+  - numpy-base=1.19.2=py38hfa32c7d_0
+
+  - python=3.8.5=h7579374_1
+  - pytorch-gpu=1.7.1=cuda102py38hf05f184_1
+
+  - pip:
+    - jupyter
+    - pandas==1.0.3
+    - nflows==0.14
+    - torch==1.11.0
+
+prefix: /home/jiayi/.conda/envs/testenv

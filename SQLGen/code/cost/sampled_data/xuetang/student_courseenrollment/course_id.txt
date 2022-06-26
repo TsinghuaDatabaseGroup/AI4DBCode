@@ -1,0 +1,10 @@
+course-v1:JLU+30640014X+181921
+course-v1:TsinghuaX+MOOC101_2015_2+sp
+course-v1:NUDT+500505501+2017_T1
+course-v1:NU+bupt_14051301+2019_T1
+course-v1:ZUELX+B0800280+sp
+course-v1:TsinghuaX+30240243X+2016_T1
+course-v1:CIE+CIE2016006_p1+sp
+course-v1:FUDANx+ECON130080+2018_T1
+course-v1:MicrosoftX+Microsoft106+2017_T2
+course-v1:XJTU+20171025001+sp

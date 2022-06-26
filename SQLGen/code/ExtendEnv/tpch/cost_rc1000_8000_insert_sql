@@ -1,0 +1,2240 @@
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 17 and supplier.s_acctbal < 6304 and supplier.s_suppkey != 69931
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 7993
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 7830
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 418
+insert into supplier select * from supplier where supplier.s_nationkey <= 14
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 5759
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 62938
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 1508
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 3797
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 5541 and supplier.s_suppkey != 9991
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 3034
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 5650 and supplier.s_acctbal <= 963
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 28972
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 7503 and supplier.s_suppkey >= 24976
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 963
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 6849 and supplier.s_acctbal > 4778 and supplier.s_suppkey >= 66934
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 10990
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 36964
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 6994
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 10990
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 46954 and supplier.s_suppkey <= 33967
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 2998
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 5432 and supplier.s_suppkey < 30970
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 20980
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > -236 and supplier.s_suppkey < 15985
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 84916
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 87913
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 8992
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 19981 and supplier.s_suppkey < 57943
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 24976
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 35965
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 88912
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 42958
+insert into supplier select * from supplier where supplier.s_suppkey <= 89911 and supplier.s_acctbal != 3252
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 67933 and supplier.s_suppkey != 38962 and supplier.s_suppkey < 42958
+insert into supplier select * from supplier where supplier.s_suppkey > 52948
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 58942
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 55945 and supplier.s_acctbal = 4778 and supplier.s_acctbal != 8811
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 5995
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 71929
+insert into supplier select * from supplier where supplier.s_acctbal > 5541 and supplier.s_acctbal = -781
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 6849
+insert into supplier select * from supplier where supplier.s_suppkey < 29971 and supplier.s_suppkey < 49951
+insert into supplier select * from supplier where supplier.s_suppkey < 17983
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 963 and supplier.s_suppkey <= 53947
+insert into orders select * from orders where orders.o_orderkey >= 20399967 and orders.o_orderkey < 3599995
+insert into supplier select * from supplier where supplier.s_suppkey != 91909 and supplier.s_suppkey > 4996
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 1999
+insert into supplier select * from supplier where supplier.s_suppkey <= 24976 and supplier.s_suppkey >= 3997
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 32968 and supplier.s_acctbal > 3034
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 50950 and supplier.s_suppkey <= 33967
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 3579
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 5995 and supplier.s_acctbal >= 9792 and supplier.s_acctbal != 4015 and supplier.s_acctbal >= 5977 and supplier.s_acctbal < 7830 and supplier.s_suppkey >= 72928 and supplier.s_acctbal != 6086
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 23977
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 28972 and supplier.s_acctbal > 4560 and supplier.s_acctbal = 7176
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 6304 and supplier.s_suppkey != 8992
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 20980
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 8992 and supplier.s_suppkey > 68932 and supplier.s_acctbal = 4778
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 1290 and supplier.s_acctbal = -127
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 309
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 9792 and supplier.s_suppkey >= 37963
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 19981
+insert into supplier select * from supplier where supplier.s_acctbal = 2162
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 53947 and supplier.s_acctbal >= 9138 and supplier.s_suppkey > 55945 and supplier.s_acctbal <= 3688
+insert into supplier select * from supplier where supplier.s_suppkey > 76924 and supplier.s_acctbal < 1508 and supplier.s_acctbal < 6522
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 68932
+insert into supplier select * from supplier where supplier.s_suppkey < 39961
+insert into supplier select * from supplier where supplier.s_acctbal = 4996 and supplier.s_suppkey > 69931
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 854
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 9465
+insert into supplier select * from supplier where supplier.s_suppkey != 3997 and supplier.s_suppkey < 94906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 3579
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 19981 and supplier.s_acctbal > 4124 and supplier.s_acctbal = 9574
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 37963
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 5868 and supplier.s_acctbal >= 4233 and supplier.s_suppkey != 68932
+insert into supplier select * from supplier where supplier.s_suppkey < 42958
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 5759 and supplier.s_acctbal >= 8811
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 45955
+insert into supplier select * from supplier where supplier.s_suppkey > 68932 and supplier.s_acctbal = 4342 and supplier.s_acctbal < 6522
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 9356
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 5432
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 15985 and supplier.s_acctbal <= 7067
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 2489 and supplier.s_acctbal >= 6086 and supplier.s_acctbal <= 1181
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 98902
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 5105
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 9029 and supplier.s_acctbal = 9465 and supplier.s_suppkey != 16984
+insert into supplier select * from supplier where supplier.s_suppkey != 63937 and supplier.s_acctbal > 745
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 77923 and supplier.s_acctbal > 5977 and supplier.s_nationkey >= 17
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 22
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 7394 and supplier.s_acctbal < 5105
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 7612 and supplier.s_acctbal < 6849
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 6631 and supplier.s_nationkey >= 20
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 8157 and supplier.s_acctbal != 5977
+insert into supplier select * from supplier where supplier.s_suppkey <= 94906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 9
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 3361
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 23 and supplier.s_acctbal = 7721
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 9356
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 95905
+insert into supplier select * from supplier where supplier.s_acctbal < 6849 and supplier.s_suppkey >= 7993 and supplier.s_suppkey != 5995 and supplier.s_suppkey != 58942 and supplier.s_suppkey <= 70930 and supplier.s_nationkey > 11 and supplier.s_nationkey != 16 and supplier.s_suppkey <= 48952
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > -236
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 16984
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 1508 and supplier.s_nationkey > 14
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 4451 and supplier.s_suppkey > 39961
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 5868 and supplier.s_acctbal = 6740
+insert into supplier select * from supplier where supplier.s_acctbal != 4887
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 15 and supplier.s_acctbal > 3361 and supplier.s_suppkey != 57943
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 39961 and supplier.s_acctbal > 963
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 9574
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 13 and supplier.s_acctbal = 854 and supplier.s_nationkey >= 9 and supplier.s_suppkey >= 78922 and supplier.s_acctbal = 6740
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 9356
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 9138 and supplier.s_nationkey > 6
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 23
+insert into supplier select * from supplier where supplier.s_suppkey != 14986
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 5 and supplier.s_acctbal = 200
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 9356
+insert into supplier select * from supplier where supplier.s_acctbal < -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 74926
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 16 and supplier.s_acctbal = -127 and supplier.s_acctbal >= 9247 and supplier.s_acctbal >= 8593 and supplier.s_acctbal > 6522 and supplier.s_suppkey <= 24976 and supplier.s_suppkey != 43957
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 23
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 5650 and supplier.s_suppkey != 31969 and supplier.s_acctbal >= 9029
+insert into supplier select * from supplier where supplier.s_acctbal > 6086 and supplier.s_nationkey > 23 and supplier.s_acctbal = 3579
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 6 and supplier.s_acctbal != 2598 and supplier.s_acctbal < 9247
+insert into supplier select * from supplier where supplier.s_acctbal = 6086 and supplier.s_acctbal = 9138
+insert into supplier select * from supplier where supplier.s_acctbal <= 8702
+insert into supplier select * from supplier where supplier.s_acctbal <= 9465
+insert into supplier select * from supplier where supplier.s_acctbal != 7285 and supplier.s_acctbal >= 7176
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 7612
+insert into supplier select * from supplier where supplier.s_acctbal >= 6195 and supplier.s_acctbal = 9683
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 28972
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 69931
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 3034 and supplier.s_acctbal <= 7721 and supplier.s_suppkey >= 49951 and supplier.s_nationkey != 24 and supplier.s_nationkey > 2
+insert into supplier select * from supplier where supplier.s_nationkey < 4
+insert into supplier select * from supplier where supplier.s_nationkey < 4 and supplier.s_acctbal >= -890
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 4451 and supplier.s_acctbal <= 1726 and supplier.s_nationkey <= 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 11 and supplier.s_suppkey < 49951 and supplier.s_acctbal = 6304
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 2162
+insert into supplier select * from supplier where supplier.s_acctbal = 636 and supplier.s_acctbal > 5868
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 15985 and supplier.s_acctbal = 1508
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 8920
+insert into supplier select * from supplier where supplier.s_acctbal > 8484
+insert into supplier select * from supplier where supplier.s_nationkey != 19
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 8266 and supplier.s_suppkey != 38962
+insert into supplier select * from supplier where supplier.s_nationkey >= 3 and supplier.s_acctbal != 9574 and supplier.s_acctbal > 5214
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= -999 and supplier.s_acctbal < 7612
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 8048 and supplier.s_nationkey >= 22 and supplier.s_acctbal = -236 and supplier.s_acctbal < 527 and supplier.s_suppkey < 28972
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 6994
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 4560 and supplier.s_acctbal <= 309
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 16
+insert into supplier select * from supplier where supplier.s_nationkey < 24 and supplier.s_nationkey = 17 and supplier.s_acctbal > 1944
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 12988 and supplier.s_acctbal < 2598
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 43957
+insert into supplier select * from supplier where supplier.s_suppkey > 34966
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 6 and supplier.s_nationkey > 13
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 22
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 15
+insert into supplier select * from supplier where supplier.s_acctbal > 9792 and supplier.s_nationkey < 5 and supplier.s_suppkey < 31969
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 3252
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 25975
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 4 and supplier.s_suppkey < 74926 and supplier.s_acctbal = 5323
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 3688
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 8811
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 4124 and supplier.s_suppkey < 29971
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 36964 and supplier.s_suppkey < 80920 and supplier.s_acctbal < 8266
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 20 and supplier.s_acctbal >= 8157
+insert into supplier select * from supplier where supplier.s_nationkey = 16
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 7612
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 93907 and supplier.s_nationkey != 15
+insert into supplier select * from supplier where supplier.s_acctbal > 2162 and supplier.s_suppkey < 97903
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 8157 and supplier.s_suppkey <= 41959 and supplier.s_suppkey > 4996
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 4778
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 8266 and supplier.s_nationkey >= 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 7612
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 9792
+insert into supplier select * from supplier where supplier.s_suppkey < 28972 and supplier.s_acctbal < 5105 and supplier.s_suppkey <= 46954 and supplier.s_acctbal = 8920 and supplier.s_nationkey != 16
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 20980 and supplier.s_acctbal > 9683 and supplier.s_acctbal <= 963
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 4 and supplier.s_suppkey != 71929
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 0 and supplier.s_suppkey >= 41959
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 7721 and supplier.s_nationkey != 9
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > -236
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 18
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 8484 and supplier.s_suppkey != 15985
+insert into supplier select * from supplier where supplier.s_nationkey = 4
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 8 and supplier.s_acctbal < 3252 and supplier.s_nationkey <= 10
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 2053
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 14 and supplier.s_suppkey <= 81919
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 4015
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 80920 and supplier.s_nationkey > 0 and supplier.s_nationkey != 23
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 13987 and supplier.s_acctbal <= 4124 and supplier.s_suppkey >= 22978
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 8992
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 9574 and supplier.s_suppkey >= 10990 and supplier.s_acctbal >= 5759
+insert into supplier select * from supplier where supplier.s_nationkey = 16 and supplier.s_acctbal > 2162
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 44956
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 0
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 38962
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 0 and supplier.s_acctbal >= 4887
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 84916
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 9574 and supplier.s_nationkey != 21
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 3797
+insert into supplier select * from supplier where supplier.s_nationkey < 16 and supplier.s_acctbal = 3906 and supplier.s_acctbal = 3252 and supplier.s_acctbal >= 9792 and supplier.s_suppkey <= 54946 and supplier.s_acctbal < 7830 and supplier.s_acctbal > 4233
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 22
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 92908
+insert into supplier select * from supplier where supplier.s_acctbal = 8048 and supplier.s_acctbal = 6304
+insert into supplier select * from supplier where supplier.s_acctbal < 7939 and supplier.s_acctbal > 200 and supplier.s_nationkey < 13
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 11 and supplier.s_acctbal < 6413 and supplier.s_acctbal < -890
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 15985
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 12
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 9
+insert into supplier select * from supplier where supplier.s_nationkey > 0
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 8920
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 18
+insert into supplier select * from supplier where supplier.s_nationkey < 7
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 21
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 7176 and supplier.s_suppkey <= 34966 and supplier.s_acctbal > 1399
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 12
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 22 and supplier.s_acctbal != 3252
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 7721 and supplier.s_nationkey = 8 and supplier.s_suppkey > 47953 and supplier.s_nationkey >= 16
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 1835 and supplier.s_nationkey >= 14
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 12 and supplier.s_suppkey < 39961 and supplier.s_acctbal = 3688 and supplier.s_nationkey >= 10 and supplier.s_acctbal <= 2162
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 41959 and supplier.s_suppkey != 3997
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 31969 and supplier.s_acctbal <= 7721 and supplier.s_suppkey > 59941
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 23
+insert into supplier select * from supplier where supplier.s_acctbal <= 5977 and supplier.s_nationkey < 14 and supplier.s_suppkey > 15985
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 8
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 54946
+insert into supplier select * from supplier where supplier.s_acctbal <= 3470 and supplier.s_suppkey != 58942 and supplier.s_suppkey < 7993 and supplier.s_nationkey < 14 and supplier.s_suppkey != 54946 and supplier.s_acctbal > 1617
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 6
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 6413
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 21979
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 4996 and supplier.s_nationkey > 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 7939 and supplier.s_suppkey < 39961
+insert into supplier select * from supplier where supplier.s_acctbal < 7721
+insert into supplier select * from supplier where supplier.s_nationkey < 7
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 2
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 8048
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 91909
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 73927 and supplier.s_suppkey > 32968 and supplier.s_acctbal != 2380
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 418
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 6
+insert into supplier select * from supplier where supplier.s_nationkey > 21
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 24 and supplier.s_nationkey >= 21
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > -454 and supplier.s_acctbal <= 4342
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 53947
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 9574 and supplier.s_nationkey <= 6
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 11 and supplier.s_suppkey > 20980 and supplier.s_nationkey <= 4 and supplier.s_acctbal > 3034 and supplier.s_suppkey > 89911
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 8 and supplier.s_acctbal < 2816
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 21979
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 7 and supplier.s_suppkey != 34966 and supplier.s_nationkey >= 13
+insert into supplier select * from supplier where supplier.s_acctbal < 4015 and supplier.s_acctbal > 3470
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 7 and supplier.s_suppkey != 60940
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 1399 and supplier.s_acctbal <= -672 and supplier.s_acctbal = 9029
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 7394
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 87913 and supplier.s_acctbal > -18
+insert into supplier select * from supplier where supplier.s_suppkey >= 36964
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 19
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 7993 and supplier.s_acctbal != 1290 and supplier.s_suppkey <= 47953
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 83917
+insert into supplier select * from supplier where supplier.s_suppkey >= 18982 and supplier.s_suppkey >= 14986
+insert into supplier select * from supplier where supplier.s_acctbal >= -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 3
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 95905 and supplier.s_suppkey < 40960
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 10 and supplier.s_acctbal <= 4342
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 42958
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 9247 and supplier.s_nationkey >= 17 and supplier.s_acctbal <= 3034
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 8484
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 94906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 94906 and supplier.s_nationkey <= 9
+insert into supplier select * from supplier where supplier.s_acctbal = 527
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 10 and supplier.s_acctbal >= -345
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 5977
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 17
+insert into supplier select * from supplier where supplier.s_nationkey != 24 and supplier.s_suppkey > 56944 and supplier.s_acctbal != 7612
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 2271 and supplier.s_acctbal < 6740
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 4
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 8375
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 72928 and supplier.s_nationkey != 2
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 57943 and supplier.s_suppkey != 63937
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 9247
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 14 and supplier.s_nationkey > 14
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 15
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 18982 and supplier.s_nationkey <= 22
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 6413
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 59941 and supplier.s_nationkey != 4
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 63937
+insert into supplier select * from supplier where supplier.s_acctbal >= 7939 and supplier.s_nationkey >= 21
+insert into supplier select * from supplier where supplier.s_acctbal < 6522
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 7067
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 6086
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 9
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 29971 and supplier.s_acctbal >= 7939
+insert into supplier select * from supplier where supplier.s_nationkey > 23 and supplier.s_acctbal = 6522 and supplier.s_acctbal >= 2489
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 7503
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 2489 and supplier.s_acctbal >= 8702 and supplier.s_acctbal >= 9138
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 21
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 4
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 2489 and supplier.s_acctbal > 3470
+insert into supplier select * from supplier where supplier.s_suppkey != 37963
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 82918
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 7939
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 23 and supplier.s_acctbal <= -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 7285
+insert into supplier select * from supplier where supplier.s_suppkey > 48952 and supplier.s_acctbal = 4233
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 636
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 2 and supplier.s_acctbal >= 9138
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 5
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 2
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 6522 and supplier.s_nationkey < 18 and supplier.s_suppkey != 12988
+insert into supplier select * from supplier where supplier.s_nationkey >= 13 and supplier.s_nationkey > 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 21 and supplier.s_nationkey >= 23
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 76924 and supplier.s_acctbal >= 3361
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 9 and supplier.s_suppkey < 54946 and supplier.s_acctbal < 9792
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 2
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 8920 and supplier.s_acctbal <= -890
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 42958 and supplier.s_nationkey <= 24
+insert into supplier select * from supplier where supplier.s_suppkey >= 40960 and supplier.s_acctbal >= 9792 and supplier.s_acctbal = 2162 and supplier.s_acctbal < 2707 and supplier.s_nationkey < 5
+insert into supplier select * from supplier where supplier.s_suppkey < 51949 and supplier.s_acctbal != 6849
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 1 and supplier.s_nationkey < 3 and supplier.s_nationkey > 15
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 11 and supplier.s_acctbal <= -454
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 64936
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 8920 and supplier.s_suppkey != 10990
+insert into supplier select * from supplier where supplier.s_nationkey != 18 and supplier.s_acctbal != 7503
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 24
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 82918
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= -236
+insert into supplier select * from supplier where supplier.s_acctbal >= 9247
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 17 and supplier.s_acctbal >= 2925
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 47953
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 9247
+insert into supplier select * from supplier where supplier.s_nationkey >= 2 and supplier.s_acctbal > 3906 and supplier.s_acctbal <= 963
+insert into supplier select * from supplier where supplier.s_nationkey >= 11
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 7 and supplier.s_acctbal != 9247 and supplier.s_acctbal <= 6304
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 8593 and supplier.s_nationkey < 0
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal != 7721
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 83917 and supplier.s_acctbal >= 4451
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 9991 and supplier.s_suppkey != 92908 and supplier.s_acctbal < 1290
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 35965 and supplier.s_suppkey != 67933 and supplier.s_suppkey >= 25975 and supplier.s_acctbal >= 5214
+insert into supplier select * from supplier where supplier.s_nationkey < 2
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 7
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 4 and supplier.s_nationkey < 19
+insert into supplier select * from supplier where supplier.s_suppkey != 23977 and supplier.s_nationkey > 20
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 23 and supplier.s_acctbal = 7394
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 6849 and supplier.s_suppkey != 85915
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 59941
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 2053
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 1835 and supplier.s_acctbal >= 8484
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 6 and supplier.s_nationkey < 4 and supplier.s_nationkey != 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 309 and supplier.s_suppkey > 7993
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 44956
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 41959 and supplier.s_acctbal != 5650
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 9574 and supplier.s_acctbal < 8920 and supplier.s_acctbal > 4669
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 15 and supplier.s_suppkey < 22978 and supplier.s_acctbal > 2598
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 8 and supplier.s_acctbal > 3034 and supplier.s_suppkey >= 90910
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 4560 and supplier.s_acctbal < -781 and supplier.s_nationkey >= 5
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < -890
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 9 and supplier.s_acctbal < 9029 and supplier.s_acctbal = 3361
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 27973 and supplier.s_nationkey < 14
+insert into supplier select * from supplier where supplier.s_nationkey = 10 and supplier.s_suppkey >= 5995 and supplier.s_acctbal <= 3906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 18 and supplier.s_acctbal >= 2489 and supplier.s_acctbal = 6522
+insert into supplier select * from supplier where supplier.s_acctbal >= 6413
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 19
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 18982 and supplier.s_acctbal = 1835 and supplier.s_acctbal != 5323 and supplier.s_acctbal = -236
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 8375
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 83917 and supplier.s_acctbal < 527
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 5105
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = -563
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 5868
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 5
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 2 and supplier.s_suppkey != 35965
+insert into supplier select * from supplier where supplier.s_acctbal = -672
+insert into supplier select * from supplier where supplier.s_acctbal = 6086
+insert into supplier select * from supplier where supplier.s_acctbal < 9465 and supplier.s_nationkey >= 16
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 8157 and supplier.s_acctbal != 2489
+insert into supplier select * from supplier where supplier.s_acctbal <= 7067
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 0 and supplier.s_acctbal != 6086
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = -999
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 7
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 4996 and supplier.s_suppkey >= 16984 and supplier.s_acctbal != 3143
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 36964 and supplier.s_nationkey >= 14 and supplier.s_acctbal < 2271
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 10 and supplier.s_acctbal = 6195 and supplier.s_acctbal <= 4669
+insert into supplier select * from supplier where supplier.s_acctbal >= -18 and supplier.s_acctbal != 9138
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 27973 and supplier.s_suppkey >= 82918
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 8 and supplier.s_acctbal > 5432
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey > 15
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 57943
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 5432
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 8484
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 7067
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey < 74926
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 76924 and supplier.s_acctbal >= 1617
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey < 18
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 21 and supplier.s_acctbal < 8484
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 9991 and supplier.s_acctbal <= -454
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 15
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey = 0
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 90910 and supplier.s_acctbal < 2271 and supplier.s_acctbal = 3143
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 57943
+insert into supplier select * from supplier where supplier.s_nationkey < 2 and supplier.s_acctbal > 2489
+insert into supplier select * from supplier where supplier.s_acctbal > 9356 and supplier.s_nationkey != 20
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal = 418 and supplier.s_acctbal <= 6413
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 3361 and supplier.s_nationkey <= 2 and supplier.s_acctbal > 8157
+insert into supplier select * from supplier where supplier.s_suppkey > 81919
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal < 3034
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 48952
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey <= 0 and supplier.s_acctbal = 2271 and supplier.s_acctbal > 2489
+insert into supplier select * from supplier where supplier.s_nationkey >= 9 and supplier.s_acctbal != 3579
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey >= 8 and supplier.s_acctbal = 3906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 16 and supplier.s_acctbal < 6086
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 1944
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_nationkey != 6
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 2998
+insert into supplier select * from supplier where supplier.s_suppkey != 35965
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey >= 83917 and supplier.s_acctbal > 3906
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 11989 and supplier.s_acctbal != 6195
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal >= 418 and supplier.s_acctbal >= 5323
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal <= 9792 and supplier.s_acctbal > 7067
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey != 97903 and supplier.s_acctbal > 854 and supplier.s_acctbal < 9465 and supplier.s_suppkey < 60940
+insert into supplier select * from supplier where supplier.s_nationkey <= 1
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_acctbal > 7176
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 72928
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey <= 24976 and supplier.s_acctbal >= -345 and supplier.s_acctbal <= 9465 and supplier.s_nationkey >= 14 and supplier.s_acctbal >= 2707
+insert into supplier select * from supplier
+insert into supplier select * from supplier where supplier.s_suppkey > 52948 and supplier.s_nationkey != 19 and supplier.s_acctbal >= 8048
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier
+insert into supplier select * from supplier

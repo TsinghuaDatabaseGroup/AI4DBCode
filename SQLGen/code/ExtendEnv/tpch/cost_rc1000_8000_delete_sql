@@ -1,0 +1,100 @@
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_suppkey != 16984
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_suppkey <= 59941
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_suppkey > 51949
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_suppkey != 37963
+delete from supplier where supplier.s_acctbal > 4015
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_nationkey > 9 and supplier.s_nationkey > 9 and supplier.s_nationkey != 8
+delete from supplier where supplier.s_nationkey != 23
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_nationkey != 10 and supplier.s_nationkey <= 3
+delete from supplier 
+delete from supplier where supplier.s_nationkey != 19
+delete from supplier 
+delete from supplier where supplier.s_acctbal >= -345 and supplier.s_suppkey >= 75925
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_nationkey < 1 and supplier.s_suppkey != 57943
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_suppkey < 47953
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_acctbal >= 6958 and supplier.s_acctbal <= -890 and supplier.s_nationkey != 4
+delete from supplier 
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_nationkey > 21 and supplier.s_nationkey = 5
+delete from supplier where supplier.s_acctbal > 7285 and supplier.s_nationkey = 19
+delete from supplier 
+delete from supplier where supplier.s_acctbal > 4560 and supplier.s_nationkey = 21
+delete from supplier where supplier.s_nationkey > 21
+delete from supplier 
+delete from supplier where supplier.s_suppkey > 77923
+delete from supplier where supplier.s_suppkey > 44956 and supplier.s_suppkey > 7993 and supplier.s_nationkey > 5 and supplier.s_acctbal > 6304
+delete from supplier 
+delete from supplier 
+delete from supplier where supplier.s_acctbal > 6304
+delete from supplier where supplier.s_acctbal > 6304
+delete from supplier where supplier.s_suppkey > 31969
+delete from supplier where supplier.s_nationkey > 5 and supplier.s_nationkey > 5 and supplier.s_suppkey >= 53947
+delete from supplier where supplier.s_acctbal > 7394 and supplier.s_acctbal > 6304
+delete from supplier where supplier.s_nationkey > 5
+delete from supplier 
+delete from supplier where supplier.s_nationkey > 21
+delete from supplier where supplier.s_acctbal >= 2053 and supplier.s_suppkey > 50950 and supplier.s_nationkey = 19 and supplier.s_suppkey > 7993 and supplier.s_nationkey > 21 and supplier.s_acctbal > 6304 and supplier.s_acctbal > 6304
+delete from supplier where supplier.s_nationkey > 21
+delete from supplier where supplier.s_acctbal > 6304
+delete from supplier where supplier.s_nationkey > 21 and supplier.s_nationkey > 21
+delete from supplier where supplier.s_suppkey > 53947
+delete from supplier where supplier.s_nationkey > 21
+delete from supplier 

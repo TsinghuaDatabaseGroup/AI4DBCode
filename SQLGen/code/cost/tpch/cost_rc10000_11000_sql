@@ -1,0 +1,4 @@
+select supplier.s_name, nation.n_regionkey,  min(supplier.s_acctbal) from supplier join nation on nation.n_nationkey=supplier.s_nationkey where nation.n_regionkey > 1 group by supplier.s_name, nation.n_regionkey having min(supplier.s_acctbal) < -411.17 order by nation.n_regionkey ASC, supplier.s_name ASC;
+select supplier.s_nationkey, nation.n_comment from supplier join nation on nation.n_nationkey=supplier.s_nationkey where supplier.s_nationkey <= 7 order by supplier.s_nationkey DESC;
+select supplier.s_comment, nation.n_nationkey,  avg(supplier.s_suppkey) from nation join supplier on supplier.s_nationkey=nation.n_nationkey where supplier.s_nationkey < 15.0 group by supplier.s_comment, nation.n_nationkey order by supplier.s_comment ASC, nation.n_nationkey ASC;
+select supplier.s_comment,  max(supplier.s_comment) from supplier where supplier.s_nationkey < 24.0 group by supplier.s_comment;

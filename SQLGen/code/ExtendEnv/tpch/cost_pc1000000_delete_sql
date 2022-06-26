@@ -1,0 +1,100 @@
+delete from lineitem where lineitem.l_partkey >= 1979902
+delete from partsupp where partsupp.ps_suppkey < 17983 and partsupp.ps_suppkey >= 44956 and partsupp.ps_partkey >= 319985
+delete from lineitem where lineitem.l_partkey <= 20000
+delete from lineitem where lineitem.l_suppkey <= 10990 and lineitem.l_partkey <= 159993 and lineitem.l_linenumber <= 3 and lineitem.l_suppkey != 40960
+delete from partsupp where partsupp.ps_partkey > 1099946 and partsupp.ps_availqty != 2773 and partsupp.ps_availqty < 8911 and partsupp.ps_suppkey > 97903 and partsupp.ps_suppkey >= 88912 and partsupp.ps_partkey > 1239939
+delete from partsupp where partsupp.ps_partkey < 239989 and partsupp.ps_suppkey <= 9991
+delete from partsupp where partsupp.ps_partkey <= 1599921 and partsupp.ps_suppkey > 51949 and partsupp.ps_suppkey <= 4996 and partsupp.ps_supplycost >= 820
+delete from lineitem where lineitem.l_partkey >= 379982 and lineitem.l_linenumber <= 3 and lineitem.l_quantity <= 38 and lineitem.l_suppkey = 88912 and lineitem.l_quantity = 32
+delete from partsupp where partsupp.ps_suppkey < 16984 and partsupp.ps_suppkey > 60940 and partsupp.ps_suppkey = 83917 and partsupp.ps_partkey > 119995 and partsupp.ps_availqty < 8020
+delete from lineitem where lineitem.l_linenumber != 4 and lineitem.l_orderkey > 53999911 and lineitem.l_linenumber >= 6
+delete from lineitem where lineitem.l_partkey >= 1199941 and lineitem.l_quantity = 35 and lineitem.l_suppkey < 59941 and lineitem.l_quantity != 31 and lineitem.l_suppkey > 73927
+delete from lineitem where lineitem.l_linenumber = 6 and lineitem.l_orderkey >= 52199914
+delete from partsupp where partsupp.ps_suppkey >= 98902 and partsupp.ps_suppkey > 98902 and partsupp.ps_partkey < 1239939
+delete from partsupp where partsupp.ps_suppkey < 22978 and partsupp.ps_availqty > 4852 and partsupp.ps_suppkey = 7993 and partsupp.ps_suppkey >= 4996 and partsupp.ps_suppkey <= 47953
+delete from partsupp where partsupp.ps_supplycost > 343 and partsupp.ps_supplycost != 46 and partsupp.ps_availqty = 7921 and partsupp.ps_supplycost < 343 and partsupp.ps_supplycost != 568 and partsupp.ps_suppkey >= 61939 and partsupp.ps_partkey > 1739914 and partsupp.ps_suppkey > 89911 and partsupp.ps_availqty >= 5743
+delete from lineitem where lineitem.l_suppkey = 56944 and lineitem.l_extendedprice != 42500 and lineitem.l_extendedprice < 74740 and lineitem.l_quantity <= 26 and lineitem.l_quantity != 15 and lineitem.l_partkey >= 399981
+delete from orders where orders.o_shippriority < 0 and orders.o_orderkey != 2399997 and orders.o_shippriority < 0 and orders.o_totalprice <= 229577 and orders.o_orderkey != 50999916 and orders.o_orderkey != 10799983
+delete from orders where orders.o_shippriority <= 0 and orders.o_custkey = 1289915 and orders.o_shippriority != 0 and orders.o_custkey != 1319913 and orders.o_orderkey >= 16799973 and orders.o_totalprice != 263051
+delete from partsupp where partsupp.ps_suppkey > 52948 and partsupp.ps_suppkey <= 29971 and partsupp.ps_partkey > 279987
+delete from partsupp where partsupp.ps_suppkey <= 10990 and partsupp.ps_suppkey > 30970 and partsupp.ps_suppkey <= 36964 and partsupp.ps_availqty != 3070 and partsupp.ps_partkey >= 679967
+delete from orders where orders.o_custkey < 479969 and orders.o_totalprice <= 240735 and orders.o_custkey < 914940 and orders.o_totalprice <= 352315 and orders.o_custkey >= 269983 and orders.o_totalprice < 279788
+delete from partsupp where partsupp.ps_partkey < 1259938 and partsupp.ps_supplycost >= 514 and partsupp.ps_suppkey < 1000
+delete from lineitem where lineitem.l_partkey <= 20000
+delete from partsupp where partsupp.ps_suppkey > 96904 and partsupp.ps_partkey < 639969
+delete from orders where orders.o_custkey > 1319913 and orders.o_custkey >= 764950 and orders.o_custkey <= 524966 and orders.o_custkey != 1184922 and orders.o_custkey != 1109927 and orders.o_shippriority <= 0 and orders.o_custkey = 869943
+delete from lineitem where lineitem.l_orderkey < 8399987 and lineitem.l_suppkey <= 82918 and lineitem.l_linenumber = 6
+delete from partsupp where partsupp.ps_suppkey <= 40960 and partsupp.ps_suppkey != 97903 and partsupp.ps_partkey <= 59998 and partsupp.ps_availqty < 4357
+delete from partsupp where partsupp.ps_suppkey < 17983 and partsupp.ps_partkey > 1859908
+delete from lineitem where lineitem.l_discount < 0 and lineitem.l_linenumber != 5 and lineitem.l_partkey >= 1079947 and lineitem.l_suppkey < 8992 and lineitem.l_suppkey >= 79921
+delete from lineitem where lineitem.l_suppkey = 52948 and lineitem.l_orderkey != 37799938 and lineitem.l_partkey > 419980
+delete from lineitem where lineitem.l_partkey < 20000
+delete from partsupp where partsupp.ps_supplycost != 82 and partsupp.ps_suppkey != 2998 and partsupp.ps_suppkey >= 97903 and partsupp.ps_availqty != 7327 and partsupp.ps_availqty = 2971 and partsupp.ps_partkey >= 1139944 and partsupp.ps_supplycost < 649
+delete from lineitem where lineitem.l_partkey <= 20000 and lineitem.l_discount <= 0
+delete from lineitem where lineitem.l_extendedprice = 93460 and lineitem.l_partkey < 20000
+delete from orders where orders.o_shippriority != 0 and orders.o_totalprice < 408105 and orders.o_shippriority = 0 and orders.o_custkey < 74996 and orders.o_custkey = 959937 and orders.o_custkey > 749951 and orders.o_custkey < 464970
+delete from partsupp where partsupp.ps_suppkey > 41959 and partsupp.ps_availqty != 1288 and partsupp.ps_suppkey >= 51949 and partsupp.ps_supplycost <= 343 and partsupp.ps_partkey > 559973 and partsupp.ps_suppkey <= 1
+delete from partsupp where partsupp.ps_partkey < 859958 and partsupp.ps_suppkey < 1999 and partsupp.ps_suppkey < 52948
+delete from lineitem where lineitem.l_orderkey >= 17999971 and lineitem.l_linenumber > 6 and lineitem.l_linenumber > 7
+delete from lineitem where lineitem.l_partkey > 1979902
+delete from lineitem where lineitem.l_orderkey < 42599930 and lineitem.l_suppkey = 80920 and lineitem.l_linenumber = 4 and lineitem.l_orderkey >= 1799998 and lineitem.l_discount >= 0 and lineitem.l_partkey <= 1539924
+delete from partsupp where partsupp.ps_suppkey >= 30970 and partsupp.ps_partkey <= 39999 and partsupp.ps_supplycost <= 865 and partsupp.ps_partkey <= 1419930
+delete from lineitem where lineitem.l_partkey < 20000
+delete from partsupp where partsupp.ps_suppkey >= 79921 and partsupp.ps_suppkey < 40960 and partsupp.ps_supplycost > 109 and partsupp.ps_suppkey = 49951 and partsupp.ps_suppkey < 88912 and partsupp.ps_supplycost <= 190
+delete from lineitem where lineitem.l_partkey <= 20000 and lineitem.l_extendedprice >= 86180 and lineitem.l_quantity > 6 and lineitem.l_extendedprice >= 60180
+delete from partsupp where partsupp.ps_suppkey >= 34966 and partsupp.ps_suppkey = 40960 and partsupp.ps_suppkey > 71929 and partsupp.ps_suppkey < 15985
+delete from lineitem where lineitem.l_orderkey > 10199984 and lineitem.l_partkey > 1979902
+delete from partsupp where partsupp.ps_partkey < 1519925 and partsupp.ps_suppkey >= 87913 and partsupp.ps_availqty < 2377 and partsupp.ps_suppkey > 20980 and partsupp.ps_suppkey < 34966 and partsupp.ps_availqty != 1486
+delete from orders where orders.o_shippriority = 0 and orders.o_custkey < 269983 and orders.o_totalprice != 117997 and orders.o_custkey = 1139925 and orders.o_custkey != 254984 and orders.o_orderkey > 14399977
+delete from lineitem where lineitem.l_linenumber = 7 and lineitem.l_partkey > 1979902
+delete from partsupp where partsupp.ps_partkey <= 39999 and partsupp.ps_suppkey >= 33967 and partsupp.ps_partkey <= 1239939 and partsupp.ps_partkey != 1979902
+delete from partsupp where partsupp.ps_availqty = 1189 and partsupp.ps_supplycost = 748 and partsupp.ps_supplycost > 793 and partsupp.ps_suppkey < 14986 and partsupp.ps_suppkey <= 88912 and partsupp.ps_suppkey >= 45955 and partsupp.ps_partkey > 659968
+delete from partsupp where partsupp.ps_partkey > 1499926 and partsupp.ps_suppkey <= 3997 and partsupp.ps_availqty != 4753 and partsupp.ps_supplycost = 127
+delete from lineitem where lineitem.l_partkey > 1979902 and lineitem.l_discount <= 0
+delete from partsupp where partsupp.ps_supplycost < 667 and partsupp.ps_partkey >= 579972 and partsupp.ps_suppkey >= 94906 and partsupp.ps_suppkey <= 1999
+delete from partsupp where partsupp.ps_suppkey < 36964 and partsupp.ps_partkey >= 319985 and partsupp.ps_supplycost >= 802 and partsupp.ps_suppkey > 73927 and partsupp.ps_availqty = 3268
+delete from lineitem where lineitem.l_partkey < 20000 and lineitem.l_quantity <= 8 and lineitem.l_quantity >= 34 and lineitem.l_tax < 0
+delete from partsupp where partsupp.ps_partkey >= 659968 and partsupp.ps_suppkey < 1000 and partsupp.ps_availqty < 595
+delete from lineitem where lineitem.l_suppkey = 81919 and lineitem.l_partkey != 1599921 and lineitem.l_orderkey < 14399977 and lineitem.l_tax <= 0 and lineitem.l_suppkey = 35965 and lineitem.l_linenumber >= 7
+delete from lineitem where lineitem.l_partkey > 1979902
+delete from lineitem where lineitem.l_partkey > 1979902
+delete from lineitem where lineitem.l_orderkey < 25799958 and lineitem.l_partkey < 20000
+delete from lineitem where lineitem.l_partkey < 1539924 and lineitem.l_tax != 0 and lineitem.l_suppkey = 77923 and lineitem.l_tax < 0 and lineitem.l_tax = 0 and lineitem.l_orderkey >= 49199919
+delete from lineitem where lineitem.l_linenumber < 6 and lineitem.l_partkey <= 20000
+delete from partsupp where partsupp.ps_suppkey >= 29971 and partsupp.ps_suppkey >= 1 and partsupp.ps_availqty <= 3763 and partsupp.ps_suppkey > 1 and partsupp.ps_suppkey = 57943
+delete from lineitem where lineitem.l_quantity <= 25 and lineitem.l_partkey < 20000
+delete from lineitem where lineitem.l_partkey >= 1979902
+delete from partsupp where partsupp.ps_suppkey > 96904 and partsupp.ps_availqty >= 6832 and partsupp.ps_suppkey > 71929 and partsupp.ps_partkey >= 1379932 and partsupp.ps_partkey >= 339984
+delete from partsupp where partsupp.ps_partkey < 1819910 and partsupp.ps_supplycost = 397 and partsupp.ps_suppkey >= 97903 and partsupp.ps_partkey > 1 and partsupp.ps_suppkey <= 49951 and partsupp.ps_supplycost >= 784 and partsupp.ps_availqty >= 2179 and partsupp.ps_suppkey = 12988 and partsupp.ps_availqty <= 5248
+delete from lineitem where lineitem.l_suppkey >= 93907 and lineitem.l_partkey <= 699966 and lineitem.l_partkey <= 1339934 and lineitem.l_partkey >= 459978 and lineitem.l_quantity < 42
+delete from lineitem where lineitem.l_orderkey <= 1199999 and lineitem.l_linenumber <= 3
+delete from partsupp where partsupp.ps_partkey <= 799961 and partsupp.ps_suppkey > 97903
+delete from lineitem where lineitem.l_partkey < 299986 and lineitem.l_linenumber < 1 and lineitem.l_orderkey < 49799918
+delete from lineitem where lineitem.l_suppkey = 97903 and lineitem.l_partkey > 379982 and lineitem.l_orderkey >= 14999976 and lineitem.l_quantity = 32
+delete from partsupp where partsupp.ps_partkey <= 1659918 and partsupp.ps_suppkey >= 89911 and partsupp.ps_suppkey < 31969
+delete from lineitem where lineitem.l_partkey <= 79997 and lineitem.l_partkey < 399981 and lineitem.l_suppkey >= 77923 and lineitem.l_extendedprice >= 58100
+delete from partsupp where partsupp.ps_suppkey != 29971 and partsupp.ps_suppkey >= 62938 and partsupp.ps_partkey != 1539924 and partsupp.ps_suppkey > 11989 and partsupp.ps_suppkey < 45955 and partsupp.ps_partkey <= 1399931
+delete from lineitem where lineitem.l_orderkey > 46799923 and lineitem.l_linenumber > 6
+delete from partsupp where partsupp.ps_supplycost < 226 and partsupp.ps_supplycost < 478 and partsupp.ps_suppkey >= 38962 and partsupp.ps_suppkey < 32968 and partsupp.ps_suppkey < 27973 and partsupp.ps_partkey > 759963 and partsupp.ps_suppkey >= 70930
+delete from lineitem where lineitem.l_partkey <= 1679917 and lineitem.l_quantity != 47 and lineitem.l_suppkey = 72928
+delete from partsupp where partsupp.ps_suppkey <= 42958 and partsupp.ps_suppkey != 21979 and partsupp.ps_supplycost >= 154 and partsupp.ps_supplycost > 73 and partsupp.ps_suppkey > 69931 and partsupp.ps_suppkey = 2998 and partsupp.ps_supplycost >= 10 and partsupp.ps_suppkey >= 83917 and partsupp.ps_availqty >= 8218
+delete from lineitem where lineitem.l_orderkey <= 2399997 and lineitem.l_linenumber <= 1 and lineitem.l_linenumber != 4 and lineitem.l_partkey > 939954 and lineitem.l_discount > 0 and lineitem.l_suppkey != 5995 and lineitem.l_orderkey <= 29399952
+delete from partsupp where partsupp.ps_suppkey <= 40960 and partsupp.ps_availqty != 100 and partsupp.ps_suppkey != 82918 and partsupp.ps_suppkey >= 60940 and partsupp.ps_partkey > 499976 and partsupp.ps_suppkey < 75925
+delete from lineitem where lineitem.l_suppkey != 19981 and lineitem.l_partkey >= 1979902
+delete from orders where orders.o_shippriority < 0 and orders.o_orderkey >= 17399972 and orders.o_orderkey != 43799928 and orders.o_orderkey != 7199989 and orders.o_shippriority < 0 and orders.o_shippriority <= 0
+delete from partsupp where partsupp.ps_suppkey > 44956 and partsupp.ps_suppkey < 21979 and partsupp.ps_partkey < 1519925
+delete from partsupp where partsupp.ps_suppkey >= 19981 and partsupp.ps_suppkey = 54946 and partsupp.ps_suppkey <= 18982 and partsupp.ps_suppkey >= 22978
+delete from partsupp where partsupp.ps_partkey >= 119995 and partsupp.ps_suppkey >= 80920 and partsupp.ps_suppkey <= 90910 and partsupp.ps_supplycost > 550 and partsupp.ps_partkey >= 1759913
+delete from lineitem where lineitem.l_suppkey = 74926 and lineitem.l_partkey >= 559973
+delete from lineitem where lineitem.l_partkey < 1619920 and lineitem.l_suppkey = 31969
+delete from partsupp where partsupp.ps_partkey > 539974 and partsupp.ps_suppkey > 97903 and partsupp.ps_supplycost > 451 and partsupp.ps_suppkey < 48952
+delete from lineitem where lineitem.l_orderkey <= 37799938 and lineitem.l_discount != 0 and lineitem.l_suppkey = 82918 and lineitem.l_partkey <= 1479927
+delete from orders where orders.o_custkey >= 1244918 and orders.o_shippriority >= 0 and orders.o_custkey >= 239985 and orders.o_shippriority < 0 and orders.o_orderkey != 27599955 and orders.o_shippriority != 0
+delete from lineitem where lineitem.l_quantity <= 11 and lineitem.l_partkey >= 1979902
+delete from partsupp where partsupp.ps_suppkey <= 17983 and partsupp.ps_suppkey >= 71929 and partsupp.ps_suppkey = 94906 and partsupp.ps_supplycost < 658 and partsupp.ps_suppkey >= 5995
+delete from lineitem where lineitem.l_extendedprice >= 65380 and lineitem.l_orderkey > 10199984 and lineitem.l_quantity < 9 and lineitem.l_linenumber > 7
+delete from partsupp where partsupp.ps_suppkey > 94906 and partsupp.ps_availqty <= 7921 and partsupp.ps_suppkey <= 44956 and partsupp.ps_partkey > 579972
+delete from partsupp where partsupp.ps_suppkey <= 2998 and partsupp.ps_partkey < 639969
+delete from lineitem where lineitem.l_suppkey = 62938 and lineitem.l_partkey < 1459928
+delete from partsupp where partsupp.ps_partkey < 59998 and partsupp.ps_suppkey >= 56944
+delete from orders where orders.o_shippriority != 0 and orders.o_shippriority >= 0 and orders.o_shippriority >= 0 and orders.o_totalprice <= 413684 and orders.o_custkey > 764950 and orders.o_totalprice < 157050

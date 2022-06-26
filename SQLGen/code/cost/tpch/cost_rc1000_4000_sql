@@ -1,0 +1,4 @@
+select supplier.s_acctbal, nation.n_regionkey from nation join supplier on supplier.s_nationkey=nation.n_nationkey where supplier.s_suppkey < 32079;
+select nation.n_nationkey, supplier.s_acctbal, region.r_regionkey from region join nation on nation.n_regionkey=region.r_regionkey join supplier on supplier.s_nationkey=nation.n_nationkey where supplier.s_suppkey >= 89913;
+select nation.n_regionkey, customer.c_nationkey from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_custkey <= 15207 order by nation.n_regionkey ASC, customer.c_nationkey DESC;
+select partsupp.ps_partkey, supplier.s_acctbal from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_partkey = 1664239 order by partsupp.ps_partkey ASC;

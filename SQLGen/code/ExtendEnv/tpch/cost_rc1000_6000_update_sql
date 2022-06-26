@@ -1,0 +1,100 @@
+update supplier set s_suppkey = 69931, s_acctbal = 8048 where supplier.s_nationkey >= 12 and supplier.s_suppkey < 29971
+update supplier set s_nationkey = 1 where supplier.s_nationkey <= 15 and supplier.s_suppkey >= 48952
+update supplier set s_nationkey = 13 where supplier.s_suppkey <= 48952
+update supplier set s_acctbal = 636 where supplier.s_suppkey <= 35965
+update part set p_partkey = 1299936, p_size = 39 where part.p_size >= 1 and part.p_size < 49 and part.p_retailprice > 1274 and part.p_partkey >= 1979902 and part.p_retailprice != 1241 and part.p_retailprice = 1736
+update supplier set s_acctbal = 1072 where supplier.s_suppkey >= 61939
+update supplier set s_suppkey = 48952, s_nationkey = 19 where supplier.s_suppkey > 77923 and supplier.s_acctbal >= 2380 and supplier.s_acctbal != -18
+update supplier set s_suppkey = 3997, s_nationkey = 1 where supplier.s_suppkey < 42958
+update customer set c_custkey = 1064930, c_nationkey = 19 where customer.c_custkey >= 1454904 and customer.c_nationkey >= 4
+update supplier set s_suppkey = 84916 where supplier.s_suppkey >= 89911 and supplier.s_suppkey >= 59941
+update supplier set s_suppkey = 89911 where supplier.s_suppkey >= 52948
+update supplier set s_suppkey = 96904 where supplier.s_suppkey > 62938
+update supplier set s_acctbal = 2707 where supplier.s_suppkey >= 83917
+update supplier set s_suppkey = 61939 where supplier.s_suppkey > 58942 and supplier.s_suppkey <= 93907 and supplier.s_suppkey != 49951
+update supplier set s_acctbal = -563 where supplier.s_suppkey > 65935 and supplier.s_suppkey >= 1000
+update supplier set s_suppkey = 97903 where supplier.s_suppkey < 8992
+update supplier set s_suppkey = 12988 where supplier.s_suppkey < 46954 and supplier.s_suppkey <= 95905
+update supplier set s_suppkey = 37963 where supplier.s_suppkey <= 36964
+update supplier set s_suppkey = 1 where supplier.s_suppkey > 68932
+update supplier set s_suppkey = 48952 where supplier.s_suppkey < 34966
+update supplier set s_suppkey = 58942 where supplier.s_suppkey > 56944
+update supplier set s_suppkey = 25975 where supplier.s_suppkey <= 40960
+update part set p_partkey = 119995 where part.p_partkey > 1979902
+update supplier set s_suppkey = 25975 where supplier.s_suppkey < 60940 and supplier.s_suppkey >= 17983
+update supplier set s_suppkey = 20980 where supplier.s_suppkey > 84916
+update supplier set s_suppkey = 41959 where supplier.s_suppkey <= 56944 and supplier.s_suppkey <= 28972
+update supplier set s_suppkey = 9991 where supplier.s_suppkey >= 68932
+update supplier set s_suppkey = 66934 where supplier.s_suppkey >= 50950 and supplier.s_suppkey > 29971
+update supplier set s_suppkey = 98902 where supplier.s_suppkey > 56944 and supplier.s_suppkey >= 83917
+update supplier set s_suppkey = 94906 where supplier.s_suppkey != 73927 and supplier.s_suppkey < 30970
+update supplier set s_suppkey = 85915 where supplier.s_suppkey < 12988 and supplier.s_suppkey <= 10990
+update supplier set s_suppkey = 51949 where supplier.s_suppkey < 52948
+update supplier set s_suppkey = 39961 where supplier.s_suppkey <= 21979
+update supplier set s_suppkey = 70930 where supplier.s_suppkey < 46954
+update supplier set s_suppkey = 4996 where supplier.s_suppkey > 64936
+update supplier set s_suppkey = 36964 where supplier.s_suppkey >= 85915
+update supplier set s_suppkey = 3997 where supplier.s_suppkey <= 39961
+update supplier set s_suppkey = 48952 where supplier.s_suppkey < 20980
+update supplier set s_suppkey = 79921 where supplier.s_suppkey != 88912 and supplier.s_suppkey <= 74926 and supplier.s_suppkey >= 40960
+update supplier set s_suppkey = 32968 where supplier.s_suppkey >= 51949
+update supplier set s_suppkey = 80920 where supplier.s_suppkey >= 52948
+update supplier set s_suppkey = 38962 where supplier.s_suppkey < 34966
+update supplier set s_suppkey = 78922 where supplier.s_suppkey >= 85915
+update customer set c_nationkey = 13 where customer.c_custkey < 29999
+update supplier set s_suppkey = 29971 where supplier.s_suppkey >= 42958 and supplier.s_suppkey <= 57943 and supplier.s_suppkey > 22978
+update supplier set s_suppkey = 2998 where supplier.s_suppkey < 43957
+update supplier set s_suppkey = 90910 where supplier.s_suppkey < 91909 and supplier.s_suppkey < 44956
+update supplier set s_suppkey = 78922 where supplier.s_suppkey > 78922
+update supplier set s_suppkey = 64936 where supplier.s_suppkey <= 49951
+update supplier set s_suppkey = 77923 where supplier.s_suppkey >= 50950
+update supplier set s_suppkey = 14986 where supplier.s_suppkey >= 88912
+update supplier set s_suppkey = 32968 where supplier.s_suppkey < 9991
+update supplier set s_suppkey = 79921 where supplier.s_suppkey >= 72928
+update supplier set s_suppkey = 95905 where supplier.s_suppkey != 82918 and supplier.s_suppkey >= 20980 and supplier.s_suppkey <= 50950 and supplier.s_suppkey > 41959
+update supplier set s_suppkey = 50950 where supplier.s_suppkey < 42958
+update supplier set s_suppkey = 47953 where supplier.s_suppkey <= 80920 and supplier.s_suppkey >= 32968 and supplier.s_suppkey < 84916
+update supplier set s_suppkey = 66934 where supplier.s_suppkey > 1 and supplier.s_suppkey <= 40960
+update supplier set s_suppkey = 60940 where supplier.s_suppkey != 8992 and supplier.s_suppkey < 29971
+update supplier set s_suppkey = 33967 where supplier.s_suppkey <= 48952
+update supplier set s_suppkey = 47953 where supplier.s_suppkey <= 93907 and supplier.s_suppkey > 64936 and supplier.s_suppkey > 81919 and supplier.s_suppkey > 1 and supplier.s_suppkey >= 33967
+update supplier set s_suppkey = 95905 where supplier.s_suppkey <= 21979
+update supplier set s_suppkey = 79921 where supplier.s_suppkey > 66934 and supplier.s_suppkey != 17983 and supplier.s_suppkey != 49951 and supplier.s_suppkey != 5995
+update supplier set s_suppkey = 86914 where supplier.s_suppkey < 16984 and supplier.s_suppkey <= 63937
+update supplier set s_suppkey = 53947 where supplier.s_suppkey != 81919 and supplier.s_suppkey >= 89911
+update supplier set s_suppkey = 1000 where supplier.s_suppkey >= 81919
+update supplier set s_suppkey = 46954 where supplier.s_suppkey > 82918
+update supplier set s_suppkey = 47953 where supplier.s_suppkey > 81919
+update supplier set s_suppkey = 42958 where supplier.s_suppkey > 57943 and supplier.s_suppkey != 62938 and supplier.s_suppkey > 14986
+update supplier set s_suppkey = 29971 where supplier.s_suppkey > 41959 and supplier.s_suppkey < 80920 and supplier.s_suppkey > 1 and supplier.s_suppkey < 67933
+update supplier set s_suppkey = 59941 where supplier.s_suppkey >= 56944
+update supplier set s_suppkey = 84916 where supplier.s_suppkey != 22978 and supplier.s_suppkey > 90910
+update supplier set s_suppkey = 72928 where supplier.s_suppkey >= 82918
+update supplier set s_suppkey = 29971 where supplier.s_suppkey <= 31969
+update supplier set s_suppkey = 62938 where supplier.s_suppkey != 77923 and supplier.s_suppkey <= 44956
+update supplier set s_suppkey = 34966 where supplier.s_suppkey >= 48952
+update supplier set s_suppkey = 1 where supplier.s_suppkey <= 37963
+update supplier set s_suppkey = 67933 where supplier.s_suppkey >= 84916
+update supplier set s_suppkey = 92908 where supplier.s_suppkey >= 79921
+update supplier set s_suppkey = 81919 where supplier.s_suppkey > 26974 and supplier.s_suppkey < 37963
+update supplier set s_suppkey = 1 where supplier.s_suppkey > 25975 and supplier.s_suppkey <= 66934
+update supplier set s_suppkey = 94906 where supplier.s_suppkey > 55945 and supplier.s_suppkey > 74926
+update supplier set s_suppkey = 53947 where supplier.s_suppkey > 76924 and supplier.s_suppkey > 51949
+update supplier set s_suppkey = 77923 where supplier.s_suppkey > 80920
+update supplier set s_suppkey = 84916 where supplier.s_suppkey < 18982
+update supplier set s_suppkey = 35965 where supplier.s_suppkey > 59941
+update supplier set s_suppkey = 37963 where supplier.s_suppkey <= 47953
+update supplier set s_suppkey = 39961 where supplier.s_suppkey < 10990
+update supplier set s_suppkey = 15985 where supplier.s_suppkey > 59941
+update supplier set s_suppkey = 12988 where supplier.s_suppkey < 21979
+update supplier set s_suppkey = 38962 where supplier.s_suppkey <= 11989
+update supplier set s_suppkey = 65935 where supplier.s_suppkey <= 22978
+update supplier set s_suppkey = 29971 where supplier.s_suppkey < 49951
+update supplier set s_suppkey = 53947 where supplier.s_suppkey >= 88912
+update supplier set s_suppkey = 75925 where supplier.s_suppkey <= 29971
+update supplier set s_suppkey = 52948 where supplier.s_suppkey < 51949
+update supplier set s_suppkey = 63937 where supplier.s_suppkey > 60940
+update supplier set s_suppkey = 9991 where supplier.s_suppkey <= 26974
+update supplier set s_suppkey = 20980 where supplier.s_suppkey >= 77923
+update supplier set s_suppkey = 15985 where supplier.s_suppkey < 15985 and supplier.s_suppkey != 82918
+update supplier set s_suppkey = 77923 where supplier.s_suppkey >= 77923 and supplier.s_suppkey >= 1

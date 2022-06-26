@@ -1,0 +1,10 @@
+course-v1:JaverianaX+HacPac.1602x.09+3T2016
+course-v1:TsinghuaX+00310222X+2018_T2
+course-v1:TsinghuaX+lz00690212X+2018_T1
+course-v1:Yifanga+ASEC114+2017_T2
+course-v1:YC+20190730+2019_T2
+course-v1:SDUx+131000110+2015__T2
+course-v1:hzic+2018082803+2018_T2
+course-v1:sdjtu+gy001+2017-T2
+course-v1:ZZU+10002+2018_T1
+course-v1:HDC+LB05203a+2015_T2

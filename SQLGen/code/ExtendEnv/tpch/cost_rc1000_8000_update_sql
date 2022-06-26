@@ -1,0 +1,100 @@
+update supplier set s_suppkey = 72928 where supplier.s_suppkey <= 57943 and supplier.s_suppkey <= 82918
+update supplier set s_acctbal = -781
+update supplier set s_acctbal = 4778, s_nationkey = 1 where supplier.s_nationkey <= 20 and supplier.s_acctbal = 2925
+update supplier set s_nationkey = 18 where supplier.s_acctbal >= 2380 and supplier.s_acctbal <= -18 and supplier.s_acctbal <= 7830 and supplier.s_acctbal != 6522 and supplier.s_acctbal <= 4015 and supplier.s_suppkey <= 69931 and supplier.s_acctbal <= 3906 and supplier.s_suppkey < 8992
+update supplier set s_suppkey = 21979, s_acctbal = 2162
+update supplier set s_nationkey = 7, s_acctbal = 4342
+update supplier set s_suppkey = 26974
+update supplier set s_nationkey = 7
+update supplier set s_suppkey = 59941
+update supplier set s_acctbal = 4887 where supplier.s_acctbal < 2925 and supplier.s_acctbal > 3143
+update supplier set s_suppkey = 76924, s_acctbal = 6740
+update supplier set s_suppkey = 31969, s_nationkey = 18 where supplier.s_suppkey <= 75925
+update supplier set s_nationkey = 18, s_acctbal = 6631
+update supplier set s_nationkey = 21
+update supplier set s_nationkey = 24, s_acctbal = 9574 where supplier.s_acctbal = 4887 and supplier.s_acctbal > 5432 and supplier.s_nationkey != 20
+update supplier set s_suppkey = 43957 where supplier.s_acctbal >= 1399 and supplier.s_acctbal = 5323
+update supplier set s_acctbal = -345 where supplier.s_acctbal >= 8048
+update supplier set s_nationkey = 3
+update supplier set s_nationkey = 18, s_acctbal = 1181, s_suppkey = 46954
+update supplier set s_suppkey = 63937 where supplier.s_nationkey != 0
+update supplier set s_acctbal = 9138 where supplier.s_suppkey >= 35965 and supplier.s_suppkey >= 72928
+update supplier set s_acctbal = 7830, s_suppkey = 23977 where supplier.s_nationkey > 13 and supplier.s_acctbal <= 5214
+update supplier set s_nationkey = 7, s_suppkey = 62938 where supplier.s_nationkey != 15
+update supplier set s_suppkey = 7993, s_acctbal = 8920, s_nationkey = 22
+update supplier set s_nationkey = 3 where supplier.s_nationkey = 4
+update supplier set s_suppkey = 19981, s_acctbal = 5323, s_nationkey = 13 where supplier.s_acctbal <= 2489
+update supplier set s_acctbal = 6740 where supplier.s_nationkey != 13
+update supplier set s_suppkey = 42958, s_acctbal = 3579, s_nationkey = 10 where supplier.s_acctbal < 1181
+update supplier set s_acctbal = 418, s_nationkey = 8, s_suppkey = 24976 where supplier.s_acctbal >= 7067
+update supplier set s_acctbal = 2707, s_suppkey = 81919, s_nationkey = 23
+update supplier set s_acctbal = 3470 where supplier.s_acctbal < 9792 and supplier.s_acctbal <= -672
+update supplier set s_acctbal = 5759, s_nationkey = 10, s_suppkey = 64936 where supplier.s_nationkey > 16
+update supplier set s_nationkey = 0, s_suppkey = 56944
+update supplier set s_nationkey = 1 where supplier.s_acctbal >= 6413 and supplier.s_acctbal >= 5977 and supplier.s_nationkey != 7
+update supplier set s_suppkey = 14986, s_nationkey = 11 where supplier.s_acctbal = 9138 and supplier.s_nationkey >= 9 and supplier.s_acctbal = 1944
+update supplier set s_nationkey = 9, s_suppkey = 33967
+update supplier set s_nationkey = 24, s_suppkey = 43957, s_acctbal = 5214 where supplier.s_nationkey >= 9
+update supplier set s_suppkey = 60940, s_nationkey = 6, s_acctbal = 200
+update supplier set s_suppkey = 30970, s_acctbal = 4996, s_nationkey = 13 where supplier.s_suppkey >= 20980
+update supplier set s_nationkey = 10, s_suppkey = 36964, s_acctbal = 3906 where supplier.s_acctbal != 8702
+update supplier set s_suppkey = 54946, s_nationkey = 0, s_acctbal = 9574 where supplier.s_acctbal > 9247
+update supplier set s_acctbal = 5214, s_suppkey = 84916, s_nationkey = 23
+update supplier set s_acctbal = 2271, s_nationkey = 21, s_suppkey = 26974
+update supplier set s_suppkey = 68932, s_acctbal = 6631, s_nationkey = 23
+update supplier set s_acctbal = 200, s_suppkey = 85915, s_nationkey = 20
+update supplier set s_nationkey = 6, s_suppkey = 53947, s_acctbal = 3252 where supplier.s_nationkey > 16
+update supplier set s_acctbal = 5541, s_suppkey = 37963, s_nationkey = 8 where supplier.s_suppkey > 76924
+update supplier set s_acctbal = 6849, s_nationkey = 2, s_suppkey = 75925 where supplier.s_nationkey = 14
+update supplier set s_acctbal = 9356, s_nationkey = 23, s_suppkey = 63937
+update supplier set s_nationkey = 16, s_acctbal = 5105, s_suppkey = 63937
+update supplier set s_acctbal = 1617, s_nationkey = 22, s_suppkey = 24976
+update supplier set s_acctbal = 7394, s_suppkey = 34966, s_nationkey = 6 where supplier.s_acctbal = 7830
+update supplier set s_suppkey = 36964 where supplier.s_acctbal <= 4778
+update supplier set s_nationkey = 23, s_suppkey = 93907, s_acctbal = 3034
+update supplier set s_acctbal = 7285, s_suppkey = 19981, s_nationkey = 23
+update supplier set s_suppkey = 62938, s_acctbal = 5977, s_nationkey = 5
+update supplier set s_acctbal = -345, s_nationkey = 1 where supplier.s_nationkey = 20
+update supplier set s_suppkey = 69931, s_acctbal = 5868, s_nationkey = 18
+update supplier set s_acctbal = 9792, s_nationkey = 13, s_suppkey = 92908
+update supplier set s_nationkey = 19, s_acctbal = 91, s_suppkey = 48952
+update supplier set s_nationkey = 12, s_acctbal = 6086, s_suppkey = 72928 where supplier.s_acctbal != 7067
+update supplier set s_acctbal = 4451, s_suppkey = 77923, s_nationkey = 16
+update supplier set s_suppkey = 2998, s_nationkey = 5, s_acctbal = 1508
+update supplier set s_acctbal = 7067, s_suppkey = 84916, s_nationkey = 15 where supplier.s_acctbal = 7612 and supplier.s_suppkey > 14986
+update supplier set s_acctbal = 8484, s_nationkey = 9, s_suppkey = 60940 where supplier.s_nationkey != 20
+update supplier set s_nationkey = 20, s_acctbal = 5214, s_suppkey = 40960 where supplier.s_acctbal <= 8593
+update supplier set s_nationkey = 12, s_acctbal = 4778 where supplier.s_nationkey != 23
+update supplier set s_acctbal = 7176, s_suppkey = 46954, s_nationkey = 23
+update part set p_partkey = 799961 where part.p_partkey < 79997
+update supplier set s_acctbal = 4124, s_nationkey = 0, s_suppkey = 48952
+update supplier set s_nationkey = 24, s_acctbal = 4451, s_suppkey = 92908 where supplier.s_nationkey > 18
+update supplier set s_suppkey = 43957, s_acctbal = 418, s_nationkey = 0 where supplier.s_acctbal >= 8157
+update supplier set s_acctbal = 7067, s_nationkey = 17, s_suppkey = 17983 where supplier.s_acctbal = 963
+update supplier set s_acctbal = 6304, s_suppkey = 33967, s_nationkey = 0 where supplier.s_acctbal >= 9029
+update supplier set s_suppkey = 11989, s_nationkey = 9, s_acctbal = 4451 where supplier.s_acctbal <= 3034 and supplier.s_acctbal > 7830
+update supplier set s_acctbal = 3688, s_nationkey = 11, s_suppkey = 79921 where supplier.s_nationkey < 13
+update supplier set s_acctbal = -563, s_nationkey = 19, s_suppkey = 34966
+update supplier set s_suppkey = 67933, s_acctbal = 2707, s_nationkey = 19 where supplier.s_nationkey < 20
+update supplier set s_acctbal = 7394, s_nationkey = 10, s_suppkey = 42958
+update supplier set s_acctbal = 1181, s_nationkey = 1, s_suppkey = 62938 where supplier.s_acctbal > 9683
+update supplier set s_acctbal = 2707, s_nationkey = 24, s_suppkey = 78922
+update supplier set s_acctbal = -781, s_nationkey = 16, s_suppkey = 12988
+update supplier set s_acctbal = 1181, s_nationkey = 7, s_suppkey = 88912 where supplier.s_acctbal > 3906
+update supplier set s_acctbal = 3470, s_nationkey = 6, s_suppkey = 96904
+update supplier set s_nationkey = 1, s_acctbal = 4015, s_suppkey = 11989 where supplier.s_acctbal = -345
+update supplier set s_acctbal = 2489, s_nationkey = 6, s_suppkey = 8992 where supplier.s_nationkey >= 20
+update supplier set s_suppkey = 55945, s_nationkey = 20, s_acctbal = 4669
+update supplier set s_acctbal = 9683, s_nationkey = 1, s_suppkey = 34966 where supplier.s_acctbal >= 4015
+update supplier set s_suppkey = 95905, s_acctbal = 3470
+update supplier set s_suppkey = 50950, s_acctbal = 1399, s_nationkey = 4 where supplier.s_acctbal >= 6740
+update supplier set s_acctbal = 6522, s_nationkey = 2, s_suppkey = 78922
+update supplier set s_acctbal = 7067, s_nationkey = 24, s_suppkey = 19981 where supplier.s_acctbal > 8484
+update supplier set s_acctbal = 4669, s_nationkey = 20, s_suppkey = 59941
+update supplier set s_acctbal = 2925, s_nationkey = 7, s_suppkey = 67933 where supplier.s_acctbal != 7612
+update supplier set s_acctbal = 3579, s_nationkey = 9, s_suppkey = 84916 where supplier.s_acctbal <= 8484
+update supplier set s_acctbal = -999, s_nationkey = 9, s_suppkey = 93907 where supplier.s_acctbal > 8375
+update supplier set s_acctbal = 5541, s_nationkey = 23, s_suppkey = 66934 where supplier.s_acctbal < 2380
+update supplier set s_acctbal = 2053, s_nationkey = 23, s_suppkey = 76924
+update supplier set s_acctbal = -563, s_nationkey = 8, s_suppkey = 14986 where supplier.s_acctbal = 6631
+update supplier set s_acctbal = 4342, s_nationkey = 19, s_suppkey = 61939 where supplier.s_acctbal = -781

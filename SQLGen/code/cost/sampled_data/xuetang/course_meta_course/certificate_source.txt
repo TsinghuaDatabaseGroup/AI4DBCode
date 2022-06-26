@@ -1,0 +1,2 @@
+{}
+{"small_thumbnail":"http://storage.xuetangx.com/public/verify_certificate/ulab_small_thumbnail.png","preview":"http://storage.xuetangx.com/public/verify_certificate/ulab_preview.png","thumbnail":"http://storage.xuetangx.com/public/verify_certificate/ulab_thumbnail.png"}

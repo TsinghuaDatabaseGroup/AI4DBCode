@@ -1,0 +1,100 @@
+delete from supplier where supplier.s_suppkey > 84916 and supplier.s_suppkey > 36964 and supplier.s_suppkey > 56944
+delete from supplier where supplier.s_suppkey >= 87913
+delete from supplier where supplier.s_suppkey > 72928 and supplier.s_suppkey < 88912
+delete from supplier where supplier.s_suppkey >= 50950 and supplier.s_suppkey > 87913
+delete from supplier where supplier.s_suppkey <= 14986
+delete from supplier where supplier.s_suppkey >= 83917 and supplier.s_suppkey != 57943
+delete from supplier where supplier.s_suppkey <= 43957 and supplier.s_suppkey <= 97903 and supplier.s_suppkey <= 14986
+delete from supplier where supplier.s_suppkey > 85915
+delete from supplier where supplier.s_suppkey > 87913 and supplier.s_suppkey > 32968
+delete from supplier where supplier.s_suppkey < 8992
+delete from supplier where supplier.s_suppkey != 30970 and supplier.s_suppkey != 1 and supplier.s_suppkey > 87913
+delete from supplier where supplier.s_suppkey < 10990
+delete from supplier where supplier.s_suppkey >= 84916
+delete from supplier where supplier.s_suppkey >= 87913
+delete from supplier where supplier.s_suppkey >= 87913 and supplier.s_suppkey > 49951
+delete from supplier where supplier.s_suppkey != 10990 and supplier.s_suppkey != 18982 and supplier.s_suppkey < 12988 and supplier.s_suppkey != 79921
+delete from supplier where supplier.s_suppkey >= 53947 and supplier.s_suppkey >= 83917
+delete from supplier where supplier.s_suppkey <= 28972 and supplier.s_suppkey >= 13987
+delete from supplier where supplier.s_suppkey < 9991
+delete from supplier where supplier.s_suppkey <= 9991
+delete from supplier where supplier.s_suppkey >= 84916
+delete from supplier where supplier.s_suppkey > 85915 and supplier.s_suppkey >= 36964
+delete from supplier where supplier.s_suppkey < 11989
+delete from supplier where supplier.s_suppkey <= 74926 and supplier.s_suppkey >= 61939
+delete from supplier where supplier.s_suppkey != 94906 and supplier.s_suppkey < 69931 and supplier.s_suppkey <= 13987
+delete from supplier where supplier.s_suppkey >= 82918
+delete from supplier where supplier.s_suppkey < 9991 and supplier.s_nationkey < 6
+delete from supplier where supplier.s_suppkey != 86914 and supplier.s_suppkey <= 12988
+delete from supplier where supplier.s_suppkey <= 16984 and supplier.s_suppkey <= 38962
+delete from supplier where supplier.s_suppkey >= 85915 and supplier.s_nationkey = 9
+delete from supplier where supplier.s_suppkey <= 11989
+delete from supplier where supplier.s_suppkey < 14986
+delete from supplier where supplier.s_suppkey < 11989
+delete from supplier where supplier.s_suppkey <= 14986 and supplier.s_suppkey < 18982
+delete from supplier where supplier.s_suppkey > 82918 and supplier.s_suppkey > 54946
+delete from supplier where supplier.s_suppkey > 89911
+delete from supplier where supplier.s_suppkey != 59941 and supplier.s_nationkey != 17 and supplier.s_suppkey >= 89911
+delete from supplier where supplier.s_suppkey < 11989
+delete from supplier where supplier.s_suppkey < 83917 and supplier.s_nationkey <= 20 and supplier.s_suppkey <= 8992
+delete from supplier where supplier.s_suppkey > 15985 and supplier.s_suppkey >= 31969 and supplier.s_suppkey > 85915
+delete from supplier where supplier.s_suppkey != 70930 and supplier.s_suppkey >= 82918
+delete from supplier where supplier.s_suppkey < 10990
+delete from supplier where supplier.s_suppkey > 86914
+delete from supplier where supplier.s_suppkey <= 10990
+delete from supplier where supplier.s_nationkey <= 11 and supplier.s_nationkey >= 0 and supplier.s_nationkey < 9 and supplier.s_nationkey > 7 and supplier.s_suppkey >= 87913 and supplier.s_nationkey > 17
+delete from supplier where supplier.s_nationkey >= 24 and supplier.s_nationkey < 12 and supplier.s_nationkey <= 14 and supplier.s_suppkey <= 8992
+delete from supplier where supplier.s_suppkey >= 83917
+delete from supplier where supplier.s_suppkey > 88912
+delete from supplier where supplier.s_suppkey >= 85915 and supplier.s_nationkey < 14 and supplier.s_suppkey >= 22978
+delete from supplier where supplier.s_suppkey < 14986
+delete from supplier where supplier.s_suppkey > 87913 and supplier.s_suppkey != 6994
+delete from supplier where supplier.s_nationkey <= 11 and supplier.s_suppkey >= 89911
+delete from supplier where supplier.s_suppkey < 52948 and supplier.s_suppkey > 39961
+delete from supplier where supplier.s_suppkey < 14986 and supplier.s_suppkey <= 28972
+delete from supplier where supplier.s_suppkey <= 14986
+delete from supplier where supplier.s_suppkey <= 29971 and supplier.s_suppkey < 61939 and supplier.s_suppkey >= 18982 and supplier.s_suppkey < 62938
+delete from supplier where supplier.s_suppkey >= 83917 and supplier.s_nationkey >= 10
+delete from supplier where supplier.s_suppkey < 22978 and supplier.s_suppkey >= 12988 and supplier.s_suppkey != 9991 and supplier.s_nationkey = 9
+delete from supplier where supplier.s_suppkey <= 9991
+delete from supplier where supplier.s_suppkey >= 82918
+delete from supplier where supplier.s_suppkey > 87913
+delete from supplier where supplier.s_suppkey >= 86914
+delete from supplier where supplier.s_suppkey > 84916
+delete from supplier where supplier.s_suppkey >= 90910
+delete from supplier where supplier.s_suppkey > 84916 and supplier.s_suppkey > 90910
+delete from supplier where supplier.s_acctbal < 2598 and supplier.s_nationkey = 9 and supplier.s_suppkey >= 53947 and supplier.s_nationkey > 16 and supplier.s_suppkey != 56944 and supplier.s_acctbal < 6304 and supplier.s_suppkey <= 67933
+delete from supplier where supplier.s_suppkey <= 14986
+delete from supplier where supplier.s_suppkey < 12988 and supplier.s_suppkey < 18982 and supplier.s_suppkey <= 93907
+delete from supplier where supplier.s_nationkey != 9 and supplier.s_suppkey <= 8992
+delete from supplier where supplier.s_suppkey > 86914
+delete from supplier where supplier.s_suppkey != 96904 and supplier.s_suppkey <= 22978 and supplier.s_acctbal <= 9465 and supplier.s_suppkey < 14986 and supplier.s_acctbal <= 9356
+delete from supplier where supplier.s_suppkey > 82918
+delete from supplier where supplier.s_nationkey > 9 and supplier.s_suppkey != 97903 and supplier.s_suppkey != 3997 and supplier.s_nationkey != 10 and supplier.s_suppkey > 90910 and supplier.s_nationkey <= 13 and supplier.s_acctbal = 3470 and supplier.s_suppkey >= 37963
+delete from supplier where supplier.s_suppkey <= 8992
+delete from supplier where supplier.s_suppkey < 8992
+delete from supplier where supplier.s_nationkey >= 10 and supplier.s_suppkey < 8992 and supplier.s_acctbal >= 4669
+delete from supplier where supplier.s_suppkey != 8992 and supplier.s_nationkey = 7 and supplier.s_nationkey = 8 and supplier.s_nationkey != 5 and supplier.s_suppkey <= 8992
+delete from part where part.p_partkey >= 1979902 and part.p_size < 17 and part.p_partkey != 1459928
+delete from supplier where supplier.s_suppkey <= 8992 and supplier.s_acctbal <= -781 and supplier.s_nationkey > 2 and supplier.s_nationkey > 4 and supplier.s_acctbal >= 7067
+delete from supplier where supplier.s_suppkey != 3997 and supplier.s_suppkey < 8992
+delete from part where part.p_partkey >= 1979902 and part.p_retailprice > 1329 and part.p_retailprice > 1439
+delete from supplier where supplier.s_suppkey < 8992
+delete from supplier where supplier.s_suppkey < 8992
+delete from part where part.p_partkey > 1979902
+delete from part where part.p_partkey > 1979902
+delete from supplier where supplier.s_suppkey != 8992 and supplier.s_suppkey <= 8992 and supplier.s_acctbal > 8157
+delete from supplier where supplier.s_nationkey < 15 and supplier.s_suppkey < 8992 and supplier.s_suppkey <= 14986 and supplier.s_nationkey <= 3
+delete from supplier where supplier.s_nationkey = 18 and supplier.s_suppkey > 84916
+delete from supplier where supplier.s_suppkey >= 82918
+delete from supplier where supplier.s_suppkey > 89911
+delete from supplier where supplier.s_suppkey < 10990
+delete from customer where customer.c_acctbal < -18 and customer.c_nationkey = 22 and customer.c_custkey <= 15000
+delete from supplier where supplier.s_acctbal < 7830 and supplier.s_suppkey >= 86914 and supplier.s_nationkey != 14 and supplier.s_suppkey > 54946
+delete from supplier where supplier.s_suppkey <= 14986
+delete from supplier where supplier.s_suppkey >= 86914
+delete from supplier where supplier.s_suppkey >= 89911 and supplier.s_nationkey > 14 and supplier.s_nationkey = 13 and supplier.s_nationkey <= 3
+delete from part where part.p_size <= 14 and part.p_partkey >= 1979902 and part.p_retailprice != 1769 and part.p_partkey != 979952
+delete from customer where customer.c_acctbal != -236 and customer.c_custkey < 15000
+delete from supplier where supplier.s_suppkey <= 79921 and supplier.s_suppkey <= 16984
+delete from supplier where supplier.s_suppkey > 82918

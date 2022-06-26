@@ -1,0 +1,395 @@
+select * from customer where customer.c_acctbal > 3906;
+select * from lineitem where lineitem.l_quantity = 9 and lineitem.l_suppkey >= 23977;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where supplier.s_nationkey > 22 and supplier.s_acctbal > 5323 and part.p_retailprice > 1395;
+select * from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where lineitem.l_orderkey > 600000 and orders.o_custkey > 1244918 and lineitem.l_tax = 0 and orders.o_totalprice != 112418 and orders.o_shippriority >= 0;
+update customer set c_custkey = 509967 where customer.c_custkey > 689955
+update part set p_partkey = 659968, p_retailprice = 1824 where part.p_size <= 26
+select * from part where part.p_size < 44 and part.p_retailprice > 1395;
+select * from part where part.p_size < 31 and part.p_retailprice > 1131;
+select * from region join nation on nation.n_regionkey=region.r_regionkey join supplier on supplier.s_nationkey=nation.n_nationkey join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 49;
+select * from customer where customer.c_custkey <= 1259917 and customer.c_acctbal != 5432 and customer.c_nationkey < 18;
+delete from customer where customer.c_acctbal < 5541
+select * from lineitem where lineitem.l_extendedprice < 66420 and lineitem.l_quantity = 47 and lineitem.l_linenumber != 6;
+update customer set c_nationkey = 2, c_custkey = 494968 where customer.c_acctbal < 5432
+delete from customer where customer.c_acctbal != 2489 and customer.c_nationkey >= 9
+select * from orders join customer on customer.c_custkey=orders.o_custkey where orders.o_totalprice < 23154;
+select * from customer where customer.c_nationkey < 20 and customer.c_acctbal != 7285 and customer.c_custkey > 359977;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey join customer on customer.c_nationkey=nation.n_nationkey where customer.c_custkey = 689955 and partsupp.ps_partkey != 1439929;
+delete from part where part.p_retailprice >= 1395 and part.p_retailprice <= 1912
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey join region on region.r_regionkey=nation.n_regionkey where customer.c_custkey <= 929939;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_size = 43;
+select * from customer where customer.c_acctbal >= 3470;
+select * from customer where customer.c_nationkey != 21 and customer.c_acctbal < 5432 and customer.c_custkey != 1094928;
+delete from customer where customer.c_acctbal < 5432
+insert into part select * from part where part.p_partkey <= 899956
+select * from part where part.p_size >= 27 and part.p_retailprice != 1395;
+delete from customer where customer.c_acctbal < 5323
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where partsupp.ps_partkey > 1459928 and part.p_size < 24 and part.p_retailprice <= 1395 and part.p_partkey <= 1459928 and partsupp.ps_availqty > 1783 and partsupp.ps_supplycost <= 658;
+update customer set c_acctbal = 2053 where customer.c_custkey >= 689955
+update customer set c_nationkey = 3 where customer.c_custkey != 509967 and customer.c_acctbal < 5432
+select * from customer where customer.c_acctbal < 6086 and customer.c_custkey < 1469903;
+select * from lineitem where lineitem.l_linenumber < 2 and lineitem.l_quantity > 43 and lineitem.l_partkey != 1799911 and lineitem.l_discount > 0 and lineitem.l_extendedprice != 85140 and lineitem.l_orderkey < 31799948;
+delete from part where part.p_retailprice >= 1395 and part.p_partkey >= 239989
+select * from customer where customer.c_acctbal <= 8484 and customer.c_custkey >= 359977;
+select * from part where part.p_retailprice < 1824 and part.p_size != 49 and part.p_partkey > 839959;
+update customer set c_acctbal = 5432, c_custkey = 509967, c_nationkey = 3 where customer.c_acctbal < 5432
+select * from customer where customer.c_custkey != 344978 and customer.c_acctbal != 7721 and customer.c_nationkey < 14;
+update customer set c_custkey = 509967, c_acctbal = 5432, c_nationkey = 5 where customer.c_acctbal <= 5432
+select * from customer where customer.c_nationkey <= 20 and customer.c_custkey <= 1049931;
+select * from customer where customer.c_acctbal <= 5868;
+update part set p_size = 48 where part.p_partkey < 1799911 and part.p_retailprice > 1395 and part.p_retailprice != 1395
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 25;
+select * from orders where orders.o_orderkey < 2999996;
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_availqty < 892 and lineitem.l_orderkey <= 16799973 and lineitem.l_extendedprice >= 27940;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where partsupp.ps_partkey < 1879907 and lineitem.l_discount = 0 and lineitem.l_quantity > 39 and partsupp.ps_availqty < 9802;
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 1;
+select * from part where part.p_retailprice > 1505;
+select * from customer where customer.c_nationkey >= 9;
+select * from part where part.p_size > 6 and part.p_retailprice <= 1648 and part.p_partkey < 1779912;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where nation.n_regionkey = 1;
+select * from customer join orders on orders.o_custkey=customer.c_custkey join lineitem on lineitem.l_orderkey=orders.o_orderkey where lineitem.l_discount = 0 and customer.c_nationkey >= 1 and lineitem.l_linenumber < 3 and lineitem.l_suppkey >= 60940;
+select * from customer where customer.c_acctbal <= 4887;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey where lineitem.l_quantity = 27 and partsupp.ps_partkey >= 379982;
+select * from customer where customer.c_nationkey > 8;
+select * from part where part.p_size > 26;
+update part set p_partkey = 139994 where part.p_retailprice > 1516
+select * from part where part.p_size != 50 and part.p_partkey >= 39999 and part.p_retailprice > 1461;
+select * from part where part.p_retailprice != 1263 and part.p_size > 24 and part.p_partkey != 1739914;
+delete from customer where customer.c_acctbal > 2925
+select * from part where part.p_retailprice <= 1549;
+select * from part where part.p_partkey >= 1039949;
+select * from part where part.p_retailprice != 955 and part.p_partkey >= 979952;
+delete from customer where customer.c_acctbal != 5432 and customer.c_acctbal < 5432
+delete from orders where orders.o_orderkey <= 8999986 and orders.o_custkey < 509967
+select * from customer where customer.c_custkey < 854944;
+update customer set c_acctbal = 5432, c_nationkey = 0 where customer.c_custkey > 584962
+select * from part where part.p_partkey > 299986 and part.p_size < 33;
+select * from customer where customer.c_nationkey < 15;
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_retailprice > 1604 and partsupp.ps_availqty != 7822 and partsupp.ps_suppkey >= 64936 and part.p_size >= 41 and partsupp.ps_partkey <= 1579922;
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where partsupp.ps_availqty < 7327 and supplier.s_suppkey < 22978 and supplier.s_nationkey < 23 and lineitem.l_tax = 0;
+insert into customer select * from customer where customer.c_acctbal < 5432
+select * from customer where customer.c_acctbal <= 5432 and customer.c_nationkey != 14;
+select * from part where part.p_partkey >= 59998 and part.p_size < 40 and part.p_retailprice <= 1637;
+select * from lineitem where lineitem.l_discount <= 0 and lineitem.l_partkey > 279987 and lineitem.l_linenumber > 4;
+select * from customer where customer.c_custkey > 659957;
+select * from partsupp where partsupp.ps_supplycost > 658 and partsupp.ps_suppkey > 85915 and partsupp.ps_partkey >= 1179942;
+delete from customer where customer.c_acctbal <= 5541
+select * from part where part.p_partkey < 999951;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_size = 29 and part.p_partkey < 1899906;
+select * from customer where customer.c_acctbal > 2925;
+select * from part where part.p_retailprice <= 1560 and part.p_size <= 43;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal < 6740 and customer.c_nationkey > 3;
+select * from orders where orders.o_totalprice != 62207 and orders.o_shippriority >= 0 and orders.o_custkey < 74996;
+delete from customer where customer.c_custkey > 524966 and customer.c_custkey >= 509967 and customer.c_custkey != 509967
+select * from partsupp where partsupp.ps_suppkey < 1999;
+select * from orders where orders.o_orderkey <= 2999996;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_orderkey < 5999991 and partsupp.ps_partkey > 1239939 and lineitem.l_partkey >= 1079947;
+delete from customer where customer.c_custkey > 629959
+select * from part where part.p_partkey <= 999951;
+update part set p_size = 43, p_retailprice = 1824 where part.p_partkey > 1079947
+select * from lineitem where lineitem.l_quantity = 31 and lineitem.l_extendedprice < 70580;
+select * from customer where customer.c_acctbal < 5432;
+select * from partsupp where partsupp.ps_suppkey <= 14986 and partsupp.ps_availqty >= 1090 and partsupp.ps_partkey >= 1079947 and partsupp.ps_supplycost > 658;
+select * from region join nation on nation.n_regionkey=region.r_regionkey join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal <= 6413 and region.r_regionkey != 2;
+select * from customer where customer.c_acctbal <= 5432;
+select * from part where part.p_partkey >= 919955;
+select * from lineitem where lineitem.l_tax > 0 and lineitem.l_quantity = 12;
+update customer set c_acctbal = 5432 where customer.c_custkey != 509967 and customer.c_acctbal < 5432
+update customer set c_custkey = 509967, c_acctbal = 5432 where customer.c_acctbal < 5432
+select * from part where part.p_retailprice > 988 and part.p_size > 24;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey where lineitem.l_linenumber != 4 and lineitem.l_tax <= 0 and partsupp.ps_availqty > 8218;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_nationkey > 5 and customer.c_acctbal > 1290;
+insert into customer select * from customer where customer.c_custkey > 689955
+update part set p_partkey = 939954 where part.p_retailprice >= 1395 and part.p_partkey >= 299986
+update customer set c_nationkey = 3 where customer.c_acctbal < 5759 and customer.c_custkey != 554964
+insert into part select * from part where part.p_retailprice > 1538
+select * from part where part.p_retailprice <= 1560 and part.p_partkey < 1759913;
+update customer set c_custkey = 509967 where customer.c_acctbal <= 5432
+delete from customer where customer.c_acctbal <= 5323
+select * from part where part.p_retailprice != 1131 and part.p_partkey < 1079947;
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey where lineitem.l_linenumber >= 7 and lineitem.l_discount > 0 and partsupp.ps_partkey > 659968 and lineitem.l_extendedprice <= 66420 and lineitem.l_orderkey != 47399922;
+delete from part where part.p_retailprice > 1395 and part.p_partkey <= 1799911 and part.p_size <= 48
+select * from part where part.p_partkey != 1259938 and part.p_size <= 24;
+update customer set c_nationkey = 14, c_acctbal = 5432, c_custkey = 269983 where customer.c_acctbal < 5432 and customer.c_acctbal < 5432
+select * from customer where customer.c_custkey < 824946;
+select * from customer where customer.c_custkey > 674956;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where supplier.s_acctbal > 3797 and nation.n_nationkey = 5;
+select * from part where part.p_partkey > 439979 and part.p_retailprice <= 1681 and part.p_size < 46;
+select * from customer where customer.c_nationkey >= 11;
+select * from orders where orders.o_orderkey > 56999906;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_availqty >= 9802;
+insert into part select * from part where part.p_retailprice > 1395 and part.p_partkey > 219990
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where lineitem.l_extendedprice > 87220 and lineitem.l_suppkey < 79921;
+select * from orders where orders.o_custkey >= 1169923 and orders.o_totalprice < 67786;
+select * from part where part.p_size > 25;
+delete from part where part.p_retailprice < 1538
+select * from partsupp where partsupp.ps_suppkey <= 1999;
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 7;
+select * from customer where customer.c_nationkey != 13 and customer.c_custkey >= 509967;
+select * from part where part.p_size > 24;
+select * from part where part.p_partkey < 899956;
+delete from partsupp where partsupp.ps_suppkey <= 60940 and partsupp.ps_availqty < 5149 and partsupp.ps_partkey > 1799911 and partsupp.ps_supplycost <= 658
+select * from customer where customer.c_custkey <= 899941;
+select * from part where part.p_retailprice < 1494;
+update customer set c_custkey = 1094928 where customer.c_acctbal < 5432
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey join orders on orders.o_custkey=customer.c_custkey where customer.c_nationkey = 3;
+select * from part where part.p_partkey < 1959903 and part.p_size >= 25;
+select * from lineitem where lineitem.l_tax > 0 and lineitem.l_quantity >= 50;
+select * from part where part.p_size < 31 and part.p_retailprice > 1175 and part.p_partkey != 1319935;
+select * from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey where lineitem.l_suppkey <= 21979 and orders.o_orderkey >= 55799908 and lineitem.l_discount >= 0 and orders.o_shippriority <= 0;
+select * from customer where customer.c_acctbal < 5541;
+select * from part where part.p_partkey >= 999951;
+select * from part where part.p_retailprice <= 1494 and part.p_partkey != 1619920;
+select * from orders join customer on customer.c_custkey=orders.o_custkey join nation on nation.n_nationkey=customer.c_nationkey join supplier on supplier.s_nationkey=nation.n_nationkey join partsupp on partsupp.ps_suppkey=supplier.s_suppkey where orders.o_orderkey = 32999946 and orders.o_shippriority = 0;
+select * from part where part.p_partkey > 899956;
+select * from part where part.p_retailprice >= 1516;
+select * from customer where customer.c_acctbal <= 9683 and customer.c_custkey < 884942;
+update customer set c_custkey = 509967, c_nationkey = 11 where customer.c_acctbal < 5432 and customer.c_custkey != 509967
+select * from customer join orders on orders.o_custkey=customer.c_custkey where customer.c_nationkey > 12 and customer.c_acctbal >= 6740 and orders.o_custkey <= 464970;
+select * from part where part.p_partkey <= 1079947;
+select * from customer where customer.c_nationkey <= 13;
+select * from customer where customer.c_nationkey > 9;
+update customer set c_nationkey = 1 where customer.c_acctbal < 5432
+select * from part where part.p_partkey <= 1199941 and part.p_size >= 13;
+select * from part where part.p_size >= 26;
+select * from part where part.p_retailprice >= 1483;
+select * from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey where orders.o_orderkey >= 58799903 and lineitem.l_partkey != 499976 and lineitem.l_extendedprice <= 56020;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal <= 5432;
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_tax = 0 and supplier.s_suppkey > 20980 and lineitem.l_discount != 0 and partsupp.ps_supplycost > 658 and partsupp.ps_suppkey != 20980 and lineitem.l_quantity <= 33;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_partkey > 1959903;
+select * from part where part.p_retailprice >= 1538;
+update customer set c_nationkey = 12 where customer.c_acctbal < 5432 and customer.c_acctbal != 5432
+select * from orders where orders.o_custkey > 509967 and orders.o_shippriority >= 0 and orders.o_totalprice > 285367;
+select * from customer where customer.c_acctbal != 6522 and customer.c_nationkey < 14 and customer.c_custkey != 509967;
+delete from part where part.p_retailprice > 1395 and part.p_partkey > 379982 and part.p_partkey != 1599921
+select * from part where part.p_size < 25;
+select * from customer where customer.c_nationkey >= 10;
+select * from part where part.p_retailprice >= 1395 and part.p_partkey >= 379982;
+delete from customer where customer.c_acctbal < 5432 and customer.c_acctbal < 5541
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 16;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal > 3034 and customer.c_custkey != 719953;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_custkey <= 854944;
+select * from customer where customer.c_nationkey <= 15;
+update customer set c_nationkey = 12, c_acctbal = 5432 where customer.c_acctbal < 5432
+select * from part where part.p_partkey != 939954 and part.p_size <= 26;
+select * from orders join lineitem on lineitem.l_orderkey=orders.o_orderkey join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey join region on region.r_regionkey=nation.n_regionkey where supplier.s_nationkey <= 19 and nation.n_regionkey = 4;
+select * from orders where orders.o_custkey > 1409907 and orders.o_totalprice > 51049;
+select * from part where part.p_size <= 26;
+select * from lineitem where lineitem.l_extendedprice <= 94500 and lineitem.l_suppkey < 12988 and lineitem.l_orderkey < 7199989 and lineitem.l_tax >= 0;
+update customer set c_nationkey = 4 where customer.c_acctbal <= 5432
+update customer set c_custkey = 509967, c_nationkey = 5 where customer.c_acctbal < 5432
+update customer set c_custkey = 509967 where customer.c_acctbal < 5432
+select * from customer where customer.c_nationkey <= 15 and customer.c_custkey <= 1484902;
+select * from customer where customer.c_custkey >= 509967 and customer.c_nationkey < 24;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where partsupp.ps_suppkey < 73927 and lineitem.l_quantity = 48;
+insert into customer select * from customer where customer.c_acctbal <= 5323
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal > 3470 and nation.n_regionkey != 3;
+insert into customer select * from customer where customer.c_custkey > 599961
+select * from customer where customer.c_nationkey <= 14;
+select * from part where part.p_partkey > 1079947;
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where partsupp.ps_partkey > 219990 and lineitem.l_partkey >= 1959903;
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join part on part.p_partkey=partsupp.ps_partkey where lineitem.l_orderkey < 8999986 and partsupp.ps_suppkey != 81919 and lineitem.l_tax <= 0;
+select * from part where part.p_partkey >= 899956;
+select * from customer where customer.c_custkey < 839945;
+update part set p_retailprice = 1395, p_partkey = 279987 where part.p_partkey > 279987 and part.p_retailprice > 1395 and part.p_size != 48 and part.p_size <= 48
+select * from customer where customer.c_custkey > 599961;
+update customer set c_custkey = 509967, c_nationkey = 11 where customer.c_acctbal < 5432
+select * from customer join orders on orders.o_custkey=customer.c_custkey join lineitem on lineitem.l_orderkey=orders.o_orderkey where customer.c_acctbal <= 5541 and lineitem.l_extendedprice > 85140;
+delete from orders where orders.o_custkey < 509967 and orders.o_orderkey <= 8999986
+select * from part where part.p_partkey != 1559923 and part.p_retailprice < 1824 and part.p_size <= 28;
+select * from customer where customer.c_acctbal != 1944 and customer.c_custkey > 584962;
+select * from customer where customer.c_custkey >= 539965 and customer.c_nationkey != 4;
+select * from part where part.p_retailprice > 1461 and part.p_partkey != 399981 and part.p_size != 16;
+select * from customer where customer.c_acctbal < 5868 and customer.c_nationkey != 14;
+select * from orders where orders.o_custkey >= 1379909 and orders.o_orderkey <= 37799938;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where nation.n_nationkey < 23 and nation.n_regionkey = 0;
+select * from orders where orders.o_custkey < 74996;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey join customer on customer.c_custkey=orders.o_custkey join nation on nation.n_nationkey=customer.c_nationkey where lineitem.l_extendedprice > 88260;
+update customer set c_nationkey = 15 where customer.c_acctbal >= 3906
+select * from nation join supplier on supplier.s_nationkey=nation.n_nationkey join partsupp on partsupp.ps_suppkey=supplier.s_suppkey where supplier.s_suppkey >= 52948 and partsupp.ps_suppkey >= 95905;
+update part set p_partkey = 1799911 where part.p_retailprice > 1395 and part.p_partkey <= 1799911
+update customer set c_acctbal = 5432, c_custkey = 509967, c_nationkey = 12 where customer.c_acctbal <= 5432
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey join orders on orders.o_custkey=customer.c_custkey join lineitem on lineitem.l_orderkey=orders.o_orderkey where lineitem.l_quantity > 49 and lineitem.l_tax != 0;
+select * from customer where customer.c_custkey != 614960 and customer.c_acctbal < 5541;
+select * from customer join orders on orders.o_custkey=customer.c_custkey join lineitem on lineitem.l_orderkey=orders.o_orderkey where lineitem.l_partkey < 839959 and customer.c_nationkey = 19;
+select * from part where part.p_retailprice < 1538;
+delete from orders where orders.o_orderkey >= 55799908 and orders.o_orderkey > 49799918 and orders.o_custkey > 494968
+delete from lineitem where lineitem.l_quantity = 49 and lineitem.l_extendedprice < 66420
+insert into part select * from part where part.p_retailprice < 1681 and part.p_retailprice < 1549
+select * from region join nation on nation.n_regionkey=region.r_regionkey join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal < 5214 and nation.n_regionkey != 1;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where nation.n_regionkey != 0 and customer.c_custkey >= 539965;
+select * from customer where customer.c_acctbal <= 6958 and customer.c_nationkey < 22;
+select * from orders join customer on customer.c_custkey=orders.o_custkey where orders.o_orderkey != 9599985 and orders.o_totalprice <= 23154;
+select * from part where part.p_size >= 28;
+select * from customer where customer.c_acctbal != 5432 and customer.c_nationkey < 16;
+select * from part where part.p_size <= 39 and part.p_partkey <= 1319935;
+update customer set c_nationkey = 17, c_acctbal = 5432 where customer.c_acctbal < 5432
+select * from customer where customer.c_nationkey > 10;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey join orders on orders.o_custkey=customer.c_custkey where customer.c_acctbal != -127 and orders.o_totalprice <= 23154;
+select * from part where part.p_partkey < 979952;
+update customer set c_custkey = 509967, c_acctbal = 6195 where customer.c_acctbal <= 5432
+delete from part where part.p_retailprice < 1879 and part.p_retailprice > 1395
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey where lineitem.l_tax != 0 and lineitem.l_orderkey > 58799903;
+select * from lineitem where lineitem.l_quantity <= 16 and lineitem.l_suppkey > 85915 and lineitem.l_extendedprice < 24820;
+select * from part where part.p_retailprice > 1395 and part.p_size <= 45;
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey where supplier.s_acctbal < 1726 and supplier.s_nationkey > 22;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where partsupp.ps_partkey >= 1679917 and part.p_size < 8;
+select * from customer where customer.c_acctbal < 5541 and customer.c_custkey != 509967;
+select * from part where part.p_retailprice > 1527;
+select * from customer where customer.c_acctbal < 5105;
+select * from part where part.p_retailprice > 1483;
+select * from lineitem join orders on orders.o_orderkey=lineitem.l_orderkey where lineitem.l_linenumber = 3 and lineitem.l_partkey != 99996 and lineitem.l_discount <= 0;
+select * from part where part.p_partkey >= 979952;
+select * from customer where customer.c_custkey > 284982 and customer.c_acctbal < 6631 and customer.c_nationkey >= 0;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_nationkey <= 14;
+update customer set c_acctbal = 5432, c_nationkey = 5 where customer.c_acctbal < 5432
+select * from part where part.p_size >= 27;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where partsupp.ps_suppkey <= 14986 and lineitem.l_extendedprice >= 70580;
+select * from part where part.p_retailprice <= 1747 and part.p_size <= 40 and part.p_partkey >= 379982;
+select * from customer where customer.c_custkey < 899941;
+select * from nation join supplier on supplier.s_nationkey=nation.n_nationkey join partsupp on partsupp.ps_suppkey=supplier.s_suppkey where nation.n_regionkey < 3 and partsupp.ps_partkey < 119995;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where part.p_size >= 50;
+select * from partsupp where partsupp.ps_partkey <= 439979 and partsupp.ps_suppkey < 9991;
+delete from part where part.p_partkey <= 1799911 and part.p_retailprice != 1395 and part.p_size < 48 and part.p_retailprice >= 1395
+select * from part where part.p_size <= 25 and part.p_retailprice != 1692;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where supplier.s_nationkey = 21 and part.p_size < 30;
+insert into customer select * from customer where customer.c_acctbal < 5541
+select * from customer where customer.c_acctbal >= 3252;
+select * from customer where customer.c_acctbal < 6740 and customer.c_nationkey != 16 and customer.c_custkey <= 1184922;
+update customer set c_custkey = 1259917 where customer.c_acctbal <= 5432
+delete from customer where customer.c_acctbal < 7067 and customer.c_acctbal <= 5432
+select * from customer where customer.c_acctbal > 3579;
+update customer set c_nationkey = 1 where customer.c_acctbal <= 5432
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_custkey > 509967 and nation.n_nationkey != 7;
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey where lineitem.l_suppkey >= 18982 and lineitem.l_quantity = 46 and partsupp.ps_suppkey != 56944;
+select * from customer where customer.c_acctbal <= 5541;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey join region on region.r_regionkey=nation.n_regionkey where customer.c_nationkey <= 14;
+select * from part where part.p_partkey >= 939954;
+select * from customer where customer.c_acctbal > 3034;
+select * from part where part.p_retailprice < 1626 and part.p_partkey >= 439979 and part.p_size >= 2;
+select * from part where part.p_size >= 25;
+select * from customer where customer.c_acctbal < 6849 and customer.c_nationkey < 19 and customer.c_custkey != 839945;
+update part set p_partkey = 1019950 where part.p_retailprice >= 1505
+select * from customer where customer.c_nationkey < 16;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_nationkey >= 10;
+select * from region join nation on nation.n_regionkey=region.r_regionkey join customer on customer.c_nationkey=nation.n_nationkey where nation.n_regionkey != 2 and customer.c_custkey > 509967;
+select * from part where part.p_partkey != 1759913 and part.p_size <= 41 and part.p_retailprice >= 1428;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_size = 1;
+select * from customer where customer.c_acctbal < 6413 and customer.c_nationkey != 22 and customer.c_custkey != 1154924;
+select * from part where part.p_size != 36 and part.p_retailprice >= 1395 and part.p_partkey <= 1799911;
+select * from customer where customer.c_custkey >= 509967 and customer.c_nationkey <= 23;
+update part set p_partkey = 539974 where part.p_retailprice > 1516 and part.p_retailprice >= 1395
+update customer set c_custkey = 509967, c_nationkey = 2, c_acctbal = 3906 where customer.c_acctbal <= 5432
+select * from orders where orders.o_custkey < 74996 and orders.o_shippriority <= 0;
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where supplier.s_nationkey >= 18 and lineitem.l_linenumber <= 5 and partsupp.ps_supplycost <= 658 and partsupp.ps_partkey > 1799911;
+select * from part where part.p_partkey >= 259988 and part.p_retailprice > 1406 and part.p_size != 34;
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 18;
+select * from lineitem where lineitem.l_linenumber = 3 and lineitem.l_discount = 0;
+select * from customer where customer.c_custkey >= 689955;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_custkey <= 884942;
+select * from lineitem join orders on orders.o_orderkey=lineitem.l_orderkey where orders.o_totalprice > 346736;
+select * from orders where orders.o_orderkey > 28799953 and orders.o_custkey >= 1364910;
+select * from part where part.p_retailprice != 1065 and part.p_size < 38 and part.p_partkey <= 1459928;
+select * from customer where customer.c_custkey >= 539965 and customer.c_nationkey != 14;
+select * from customer where customer.c_acctbal < 7503 and customer.c_nationkey <= 20;
+delete from customer where customer.c_acctbal <= 5432 and customer.c_acctbal <= 5541 and customer.c_acctbal <= 5432
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey join region on region.r_regionkey=nation.n_regionkey where supplier.s_nationkey = 13 and partsupp.ps_suppkey >= 41959;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_custkey <= 824946;
+update customer set c_acctbal = 5432 where customer.c_acctbal <= 5432
+select * from customer join orders on orders.o_custkey=customer.c_custkey where orders.o_orderkey > 26399957 and orders.o_shippriority = 0 and customer.c_nationkey > 22;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_availqty < 1585 and part.p_partkey > 839959 and partsupp.ps_suppkey > 77923;
+select * from part where part.p_partkey <= 1239939 and part.p_retailprice >= 1230;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_custkey >= 509967 and customer.c_nationkey != 24;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where nation.n_regionkey = 3;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where supplier.s_suppkey < 47953 and supplier.s_nationkey = 12;
+insert into customer select * from customer where customer.c_acctbal <= 5432
+select * from customer where customer.c_acctbal < 5432 and customer.c_custkey != 509967;
+update customer set c_acctbal = 5432, c_nationkey = 23, c_custkey = 509967 where customer.c_acctbal < 5432
+select * from partsupp join lineitem on lineitem.l_partkey=partsupp.ps_partkey and lineitem.l_suppkey=partsupp.ps_suppkey join orders on orders.o_orderkey=lineitem.l_orderkey where lineitem.l_linenumber = 5 and lineitem.l_suppkey > 83917;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_custkey != 584962 and customer.c_nationkey >= 2 and customer.c_acctbal > 1944 and nation.n_regionkey != 1 and nation.n_nationkey != 5;
+select * from customer where customer.c_acctbal != 4233 and customer.c_nationkey <= 24 and customer.c_custkey >= 629959;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal > 1181 and customer.c_nationkey > 4;
+delete from customer where customer.c_acctbal <= 5432 and customer.c_acctbal != 5432
+update customer set c_custkey = 509967, c_nationkey = 4 where customer.c_acctbal < 5432 and customer.c_acctbal != 5432
+select * from customer where customer.c_custkey < 929939;
+select * from part where part.p_partkey <= 899956 and part.p_retailprice != 1252;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey where partsupp.ps_suppkey > 76924 and supplier.s_nationkey >= 7 and partsupp.ps_supplycost != 658 and supplier.s_suppkey > 9991 and partsupp.ps_availqty < 2971 and partsupp.ps_partkey >= 999951;
+select * from customer where customer.c_acctbal > 4015 and customer.c_custkey != 299981;
+delete from part where part.p_partkey <= 1799911 and part.p_retailprice > 1395
+insert into customer select * from customer where customer.c_acctbal <= 5541
+select * from customer where customer.c_nationkey >= 10 and customer.c_custkey != 1124926 and customer.c_acctbal != 8157;
+delete from part where part.p_size < 28
+select * from customer where customer.c_custkey != 509967 and customer.c_nationkey > 8 and customer.c_acctbal != 5432;
+select * from part where part.p_partkey <= 1819910 and part.p_retailprice > 1395 and part.p_size <= 47;
+select * from part where part.p_retailprice > 1494;
+select * from customer where customer.c_custkey >= 554964;
+update customer set c_nationkey = 16 where customer.c_acctbal < 5432
+select * from customer where customer.c_acctbal <= 5432 and customer.c_custkey != 704954;
+select * from customer where customer.c_acctbal <= 6086;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal < 5541;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_size = 34;
+select * from part where part.p_size != 13 and part.p_retailprice >= 1450;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey join orders on orders.o_custkey=customer.c_custkey where orders.o_orderkey > 45599925 and customer.c_custkey <= 284982 and orders.o_shippriority = 0;
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_size = 12;
+insert into customer select * from customer where customer.c_custkey >= 689955
+update lineitem set l_extendedprice = 66420, l_tax = 0, l_quantity = 43, l_linenumber = 4, l_partkey = 299986 where lineitem.l_partkey > 299986 and lineitem.l_orderkey >= 55799908 and lineitem.l_suppkey < 29971
+select * from part where part.p_size < 27;
+delete from customer where customer.c_acctbal <= 5432
+select * from part where part.p_partkey > 919955;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal < 5432;
+select * from lineitem where lineitem.l_linenumber >= 1 and lineitem.l_quantity <= 8 and lineitem.l_tax <= 0;
+select * from part where part.p_retailprice <= 1824 and part.p_size < 30;
+select * from customer where customer.c_acctbal < 4996;
+select * from customer where customer.c_custkey > 149991 and customer.c_nationkey > 9 and customer.c_acctbal != 9683;
+select * from customer where customer.c_acctbal >= 3034;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where nation.n_nationkey != 7 and customer.c_nationkey >= 9;
+select * from customer where customer.c_acctbal >= 3797;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey join region on region.r_regionkey=nation.n_regionkey where customer.c_nationkey > 10;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_size = 3;
+select * from partsupp join supplier on supplier.s_suppkey=partsupp.ps_suppkey where supplier.s_suppkey != 36964 and partsupp.ps_partkey > 1839909 and partsupp.ps_suppkey <= 26974;
+select * from part where part.p_retailprice > 1395 and part.p_partkey > 219990;
+select * from part where part.p_size < 26;
+select * from lineitem join partsupp on partsupp.ps_partkey=lineitem.l_partkey and partsupp.ps_suppkey=lineitem.l_suppkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey where supplier.s_nationkey >= 21 and lineitem.l_tax <= 0;
+select * from part where part.p_retailprice != 1197 and part.p_size >= 28 and part.p_partkey != 59998;
+update customer set c_acctbal = 1944, c_nationkey = 10 where customer.c_acctbal < 5432
+select * from customer where customer.c_acctbal >= 3361;
+select * from part where part.p_partkey != 1639919 and part.p_retailprice >= 900 and part.p_size >= 27;
+select * from part where part.p_size > 23;
+select * from part where part.p_size >= 24;
+select * from part where part.p_retailprice > 1373 and part.p_partkey != 219990 and part.p_size >= 12;
+update customer set c_custkey = 509967, c_nationkey = 21 where customer.c_acctbal < 5432
+select * from partsupp join part on part.p_partkey=partsupp.ps_partkey where part.p_partkey >= 179992 and part.p_size = 46 and part.p_retailprice != 1978;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal <= 5432 and nation.n_nationkey != 14;
+update customer set c_nationkey = 5, c_custkey = 509967 where customer.c_acctbal < 5432
+select * from customer join orders on orders.o_custkey=customer.c_custkey where orders.o_orderkey > 56999906;
+select * from part where part.p_retailprice > 1395 and part.p_partkey <= 1799911 and part.p_size != 33;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal > 4015;
+select * from customer where customer.c_acctbal != 4233 and customer.c_nationkey < 14;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey join region on region.r_regionkey=nation.n_regionkey where customer.c_custkey > 599961;
+select * from supplier join partsupp on partsupp.ps_suppkey=supplier.s_suppkey join part on part.p_partkey=partsupp.ps_partkey where supplier.s_suppkey > 91909 and partsupp.ps_suppkey > 71929;
+update customer set c_custkey = 509967 where customer.c_nationkey >= 9
+select * from customer where customer.c_acctbal >= 3143;
+delete from customer where customer.c_acctbal <= 5432 and customer.c_acctbal <= 5432
+update customer set c_custkey = 509967 where customer.c_acctbal < 5432 and customer.c_custkey != 509967
+select * from customer where customer.c_custkey <= 959937;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey join region on region.r_regionkey=nation.n_regionkey where customer.c_nationkey < 15;
+select * from customer where customer.c_custkey <= 839945;
+select * from nation join customer on customer.c_nationkey=nation.n_nationkey where customer.c_acctbal > 3906;
+select * from customer where customer.c_custkey <= 824946;
+select * from customer join orders on orders.o_custkey=customer.c_custkey where customer.c_custkey > 884942 and orders.o_totalprice <= 39891;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where partsupp.ps_availqty != 5545 and partsupp.ps_suppkey >= 97903 and partsupp.ps_partkey >= 219990;
+select * from customer where customer.c_custkey >= 539965;
+select * from customer where customer.c_acctbal != 5432 and customer.c_custkey >= 509967 and customer.c_nationkey != 1;
+select * from lineitem where lineitem.l_partkey >= 1859908 and lineitem.l_quantity >= 2 and lineitem.l_orderkey < 14999976;
+select * from customer where customer.c_acctbal >= 3688;
+select * from part where part.p_partkey <= 1059948;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_nationkey > 10;
+delete from part where part.p_partkey != 1079947 and part.p_partkey >= 1079947
+update customer set c_acctbal = 5541 where customer.c_acctbal < 5432
+update customer set c_custkey = 509967 where customer.c_acctbal < 5432 and customer.c_acctbal <= 5432 and customer.c_acctbal < 5432
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey join supplier on supplier.s_suppkey=partsupp.ps_suppkey join nation on nation.n_nationkey=supplier.s_nationkey where nation.n_regionkey = 3;
+select * from part join partsupp on partsupp.ps_partkey=part.p_partkey where part.p_partkey >= 1779912 and partsupp.ps_supplycost > 658 and part.p_size <= 44 and partsupp.ps_availqty > 4258 and partsupp.ps_partkey != 119995;
+select * from lineitem where lineitem.l_partkey > 20000 and lineitem.l_extendedprice > 88260 and lineitem.l_discount >= 0;
+select * from customer join nation on nation.n_nationkey=customer.c_nationkey where customer.c_acctbal <= 5541;
+insert into orders select * from orders where orders.o_totalprice <= 45470 and orders.o_custkey < 509967
+update customer set c_nationkey = 12, c_custkey = 509967, c_acctbal = 5432 where customer.c_acctbal < 5432 and customer.c_custkey != 509967 and customer.c_acctbal < 5432

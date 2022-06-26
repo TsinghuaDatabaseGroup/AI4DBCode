@@ -1,0 +1,10 @@
+block-v1:JLU+00691153X+151621+type@sequential+block@15ef8fbaf53e412ebd9617d685dedb6e
+block-v1:QHU+QHU2017072701X+2017_T2+type@problem+block@e3e80b9a29c4430591f6420b409f8c9b
+block-v1:ustcX+cppsu_LB05203a+2017_T2+type@sequential+block@bd939e9dd3bf4bb380603e3e1a9a8e2d
+block-v1:TsinghuaX+10610224X+2017-2018-T2+type@video+block@bb12105fe28d42dcb9445132ce417b4f
+i4x://TsinghuaX/20440333_2014X/problem/ca38817b6cf04b00bca2374bd765326a
+block-v1:JLU+291404+171811+type@problem+block@07457807926742dda0e718855492499f
+block-v1:365dx+136+2016_T1+type@video+block@3576b495d9ab47728992a6a91692cd20
+block-v1:JLU+310301+161711+type@chapter+block@39592fd256ea4faa9b337b9a9c60d6e2
+block-v1:sanya+10610224X+2018_T1+type@sequential+block@96151ccf80ea4158b5d6b56de7d153be
+block-v1:NEU+CCS0001+2015_T2+type@problem+block@0f1040421a264bfa90f712a0a2350690
