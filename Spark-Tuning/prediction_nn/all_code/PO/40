@@ -1,0 +1,531 @@
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+    Pregel(graph, initialMsg, maxIterations, activeDirection)(vprog, sendMsg, mergeMsg)
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+  final def getNumPartitions: Int = partitions.length
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+private[graphx]
+<SEP>
+
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+object Pregel extends Logging {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    var f: (Iterator[A], Iterator[B]) => Iterator[V],
+<SEP>
+    partitionsRDD.map(_.size.toLong).fold(0)(_ + _)
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+     oos.defaultWriteObject()
+<SEP>
+  (implicit override protected val vdTag: ClassTag[VD])
+<SEP>
+  implicit object ShippableVertexPartitionOpsConstructor
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+    val parts = partitionsRDD.zipPartitions(shuffled, true) { (thisIter, msgIter) =>
+<SEP>
+  override def getStorageLevel: StorageLevel = partitionsRDD.getStorageLevel
+<SEP>
+private[graphx] class ShippableVertexPartitionOps[VD: ClassTag](self: ShippableVertexPartition[VD])
+<SEP>
+    partitionsRDD.map(_.size.toLong).fold(0)(_ + _)
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val partitions = s.asInstanceOf[ZippedPartitionsPartition].partitions
+     f(rdd1.iterator(partitions(0), context), rdd2.iterator(partitions(1), context))
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+  val capacity: Int = index.capacity
+<SEP>
+    @transient private val rdds: Seq[RDD[_]],
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+
+<SEP>
+    partitionsRDD.map(_.size.toLong).fold(0)(_ + _)
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    @transient override val partitionsRDD: RDD[(PartitionID, EdgePartition[ED, VD])],
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+    val name: String,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+  @transient var name: String = _
+<SEP>
+    val routingTable: RoutingTablePartition)
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    var rdd2: RDD[B],
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    logInfo("Removing RDD " + id + " from persistence list")
+     sc.unpersistRDD(id, blocking)
+     storageLevel = StorageLevel.NONE
+     this
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val executors: Seq[String])
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+  override protected def unpersist(data: RDD[T]): Unit = data.unpersist(blocking = false)
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+    partitionsRDD.map(_.size.toLong).fold(0)(_ + _)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+class VertexRDDImpl[VD] private[graphx] (
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+      thisIter.map(_.aggregateUsingIndex(msgIter, reduceFunc))
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val mask: BitSet,
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String,
+<SEP>
+    SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    val newMask = new BitSet(self.capacity)
+     val newValues = new Array[VD2](self.capacity)
+     iter.foreach { product =>
+       val vid = product._1
+       val vdata = product._2
+       val pos = self.index.getPos(vid)
+       if (pos >= 0) {
+         if (newMask.get(pos)) {
+           newValues(pos) = reduceFunc(newValues(pos), vdata)
+         } else { // otherwise just store the new value
+           newMask.set(pos)
+           newValues(pos) = vdata
+         }
+       }
+     }
+     this.withValues(newValues).withMask(newMask)
+<SEP>
+    val id: Int,
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+    val resultSize: Long,
+<SEP>
+    @transient val partitionsRDD: RDD[ShippableVertexPartition[VD]],
+<SEP>
+    var rdd1: RDD[A],
+<SEP>
+    @transient val vertices: VertexRDD[VD],
+<SEP>
+  override val index: Int = idx
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+    vertices.unpersist(blocking)
+     // TODO: unpersist the replicated vertices in `replicatedVertexView` but leave the edges alone
+     this
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+    val stageId: Int,
+<SEP>
+private[graphx] class ShippableVertexPartitionOps[VD: ClassTag](self: ShippableVertexPartition[VD])
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+private[graphx] abstract class VertexPartitionBaseOps
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+      : VertexPartitionBaseOps[VD, ShippableVertexPartition] = shippablePartitionToOps(partition)
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+    val index: VertexIdToIndexMap,
+<SEP>
+  def size: Int = mask.cardinality()
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val parts = partitionsRDD.zipPartitions(shuffled, true) { (thisIter, msgIter) =>
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+  def partitions: Seq[Partition] = partitionValues
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+  def fold(zeroValue: T)(op: (T, T) => T): T = withScope {
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+    require(maxIterations > 0, s"Maximum number of iterations must be greater than 0," +
+       s" but got ${maxIterations}")
+ 
+     val checkpointInterval = graph.vertices.sparkContext.getConf
+       .getInt("spark.graphx.pregel.checkpointInterval", -1)
+     var g = graph.mapVertices((vid, vdata) => vprog(vid, vdata, initialMsg))
+     val graphCheckpointer = new PeriodicGraphCheckpointer[VD, ED](
+       checkpointInterval, graph.vertices.sparkContext)
+     graphCheckpointer.update(g)
+ 
+     // compute the messages
+     var messages = GraphXUtils.mapReduceTriplets(g, sendMsg, mergeMsg)
+     val messageCheckpointer = new PeriodicRDDCheckpointer[(VertexId, A)](
+       checkpointInterval, graph.vertices.sparkContext)
+     messageCheckpointer.update(messages.asInstanceOf[RDD[(VertexId, A)]])
+     var activeMessages = messages.count()
+ 
+     // Loop
+     var prevG: Graph[VD, ED] = null
+     var i = 0
+     while (activeMessages > 0 && i < maxIterations) {
+       // Receive the messages and update the vertices.
+       prevG = g
+       g = g.joinVertices(messages)(vprog)
+       graphCheckpointer.update(g)
+ 
+       val oldMessages = messages
+       // Send new messages, skipping edges where neither side received a message. We must cache
+       // messages so it can be materialized on the next line, allowing us to uncache the previous
+       // iteration.
+       messages = GraphXUtils.mapReduceTriplets(
+         g, sendMsg, mergeMsg, Some((oldMessages, activeDirection)))
+       // The call to count() materializes `messages` and the vertices of `g`. This hides oldMessages
+       // (depended on by the vertices of g) and the vertices of prevG (depended on by oldMessages
+       // and the vertices of g).
+       messageCheckpointer.update(messages.asInstanceOf[RDD[(VertexId, A)]])
+       activeMessages = messages.count()
+ 
+       logInfo("Pregel finished iteration " + i)
+ 
+       // Unpersist the RDDs hidden by newly-materialized RDDs
+       oldMessages.unpersist(blocking = false)
+       prevG.unpersistVertices(blocking = false)
+       prevG.edges.unpersist(blocking = false)
+       // count the iteration
+       i += 1
+     }
+     messageCheckpointer.unpersistDataSet()
+     graphCheckpointer.deleteAllCheckpoints()
+     messageCheckpointer.deleteAllCheckpoints()
+     g
+<SEP>
+class GraphImpl[VD: ClassTag, ED: ClassTag] protected (
+<SEP>
+    val diskUsed: Long,
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+object Pregel extends Logging {
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryUsed: Long,
+<SEP>
+    var jobResult = Utils.clone(zeroValue, sc.env.closureSerializer.newInstance())
+     val cleanOp = sc.clean(op)
+     val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+     val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+     sc.runJob(this, foldPartition, mergeResult)
+     jobResult
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+      thisIter.map(_.aggregateUsingIndex(msgIter, reduceFunc))
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+private[spark] class PeriodicRDDCheckpointer[T](
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+class EdgeRDDImpl[ED: ClassTag, VD: ClassTag] private[graphx] (
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val jobId: Int,
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    : ShippableVertexPartitionOps[VD] = new ShippableVertexPartitionOps(partition)
+<SEP>
+object Pregel extends Logging {
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     SparkEnv.get.shuffleManager.getReader(dep.shuffleHandle, split.index, split.index + 1, context)
+       .read()
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+    val values: Array[VD],
+<SEP>

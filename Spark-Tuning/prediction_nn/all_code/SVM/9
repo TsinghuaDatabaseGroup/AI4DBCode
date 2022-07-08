@@ -1,0 +1,773 @@
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+  override val partitioner = if (preservesPartitioning) firstParent[T].partitioner else None
+<SEP>
+    if (miniBatchFraction < 1.0 && convergenceTol > 0.0) {
+       logWarning("Testing against a convergenceTol when using miniBatchFraction " +
+         "< 1.0 can be unstable because of the stochasticity in sampling.")
+     }
+ 
+     if (numIterations * miniBatchFraction < 1.0) {
+       logWarning("Not all examples will be used if numIterations * miniBatchFraction < 1.0: " +
+         s"numIterations=$numIterations and miniBatchFraction=$miniBatchFraction")
+     }
+ 
+     val stochasticLossHistory = new ArrayBuffer[Double](numIterations)
+     // Record previous weight and current one to calculate solution vector difference
+ 
+     var previousWeights: Option[Vector] = None
+     var currentWeights: Option[Vector] = None
+ 
+     val numExamples = data.count()
+ 
+     // if no data, return initial weights to avoid NaNs
+     if (numExamples == 0) {
+       logWarning("GradientDescent.runMiniBatchSGD returning initial weights, no data found")
+       return (initialWeights, stochasticLossHistory.toArray)
+     }
+ 
+     if (numExamples * miniBatchFraction < 1) {
+       logWarning("The miniBatchFraction is too small")
+     }
+ 
+     // Initialize weights as a column vector
+     var weights = Vectors.dense(initialWeights.toArray)
+     val n = weights.size
+ 
+     /**
+      * For the first iteration, the regVal will be initialized as sum of weight squares
+      * if it's L2 updater; for L1 updater, the same logic is followed.
+      */
+     var regVal = updater.compute(
+       weights, Vectors.zeros(weights.size), 0, 1, regParam)._2
+ 
+     var converged = false // indicates whether converged based on convergenceTol
+     var i = 1
+     while (!converged && i <= numIterations) {
+       val bcWeights = data.context.broadcast(weights)
+       // Sample a subset (fraction miniBatchFraction) of the total data
+       // compute and sum up the subgradients on this subset (this is one map-reduce)
+       val (gradientSum, lossSum, miniBatchSize) = data.sample(false, miniBatchFraction, 42 + i)
+         .treeAggregate((BDV.zeros[Double](n), 0.0, 0L))(
+           seqOp = (c, v) => {
+             // c: (grad, loss, count), v: (label, features)
+             val l = gradient.compute(v._2, v._1, bcWeights.value, Vectors.fromBreeze(c._1))
+             (c._1, c._2 + l, c._3 + 1)
+           },
+           combOp = (c1, c2) => {
+             // c: (grad, loss, count)
+             (c1._1 += c2._1, c1._2 + c2._2, c1._3 + c2._3)
+           })
+       bcWeights.destroy(blocking = false)
+ 
+       if (miniBatchSize > 0) {
+         /**
+          * lossSum is computed using the weights from the previous iteration
+          * and regVal is the regularization value computed in the previous iteration as well.
+          */
+         stochasticLossHistory += lossSum / miniBatchSize + regVal
+         val update = updater.compute(
+           weights, Vectors.fromBreeze(gradientSum / miniBatchSize.toDouble),
+           stepSize, i, regParam)
+         weights = update._1
+         regVal = update._2
+ 
+         previousWeights = currentWeights
+         currentWeights = Some(weights)
+         if (previousWeights != None && currentWeights != None) {
+           converged = isConverged(previousWeights.get,
+             currentWeights.get, convergenceTol)
+         }
+       } else {
+         logWarning(s"Iteration ($i/$numIterations). The size of sampled batch is zero")
+       }
+       i += 1
+     }
+ 
+     logInfo("GradientDescent.runMiniBatchSGD finished. Last 10 stochastic losses %s".format(
+       stochasticLossHistory.takeRight(10).mkString(", ")))
+ 
+     (weights, stochasticLossHistory.toArray)
+<SEP>
+  final def getNumPartitions: Int = partitions.length
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+    combineByKeyWithClassTag(createCombiner, mergeValue, mergeCombiners)(null)
+<SEP>
+    val (weights, _) = GradientDescent.runMiniBatchSGD(
+<SEP>
+    new PairRDDFunctions(rdd)
+<SEP>
+  override val index: Int = prev.index
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+    for (i <- 0 until array.length) {
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+      serializer: Serializer = null)(implicit ct: ClassTag[C]): RDD[(K, C)] = self.withScope {
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+class JavaRDD[T](val rdd: RDD[T])(implicit val classTag: ClassTag[T])
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+      case _ => throw new Exception(
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      serializer: Serializer = null)(implicit ct: ClassTag[C]): RDD[(K, C)] = self.withScope {
+<SEP>
+    dependencies.filter(!_.isInstanceOf[ShuffleDependency[_, _, _]]).exists(_.rdd.isBarrier())
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+   * update the gradient in each iteration.
+    *
+    * @param input RDD of (label, array of features) pairs.
+    * @param numIterations Number of iterations of gradient descent to run.
+    * @return a SVMModel which has the weights and offset from training.
+    *
+    * @note Labels used in SVM should be {0, 1}
+    */
+   @Since("0.8.0")
+   def train(input: RDD[LabeledPoint], numIterations: Int): SVMModel = {
+     train(input, numIterations, 1.0, 0.01, 1.0)
+   }
+ }
+<SEP>
+class PairRDDFunctions[K, V](self: RDD[(K, V)])
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    train(input, numIterations, 1.0, 0.01, 1.0)
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+class JavaPairRDD[K, V](val rdd: RDD[(K, V)])
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+private[spark] abstract class AbstractJavaRDDLike[T, This <: JavaRDDLike[T, This]]
+<SEP>
+    Array.tabulate[Partition](part.numPartitions)(i => new ShuffledRDDPartition(i))
+<SEP>
+      mapSideCombine: Boolean = true,
+<SEP>
+    val name: String,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+      depth: Int = 2): U = withScope {
+<SEP>
+  @transient var name: String = _
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+    @transient var rdd2: RDD[_ <: Product2[K, W]],
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+          combOp = (c1, c2) => {
+<SEP>
+trait JavaRDDLike[T, This <: JavaRDDLike[T, This]] extends Serializable {
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+  protected var addIntercept: Boolean = false
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    @Since("1.0.0") val values: Array[Double]) extends Vector {
+<SEP>
+<SEP>
+    val serializer = userSpecifiedSerializer.getOrElse {
+<SEP>
+    threshold = None
+     this
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+    Array.tabulate[Partition](part.numPartitions)(i => new ShuffledRDDPartition(i))
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+    this.userSpecifiedSerializer = Option(serializer)
+     this
+<SEP>
+    val hsplit = split.asInstanceOf[HadoopPartition].inputSplit.value
+     val locs = hsplit match {
+       case lsplit: InputSplitWithLocationInfo =>
+         HadoopRDD.convertSplitLocationInfo(lsplit.getLocationInfo)
+       case _ => None
+     }
+     locs.getOrElse(hsplit.getLocations.filter(_ != "localhost"))
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+<SEP>
+      mergeCombiners: (C, C) => C)(implicit ct: ClassTag[C]): RDD[(K, C)] = self.withScope {
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String,
+<SEP>
+class OrderedRDDFunctions[K : Ordering : ClassTag,
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    val array = new Array[Partition](part.numPartitions)
+     for (i <- 0 until array.length) {
+       // Each CoGroupPartition will depend on rdd1 and rdd2
+       array(i) = new CoGroupPartition(i, Seq(rdd1, rdd2).zipWithIndex.map { case (rdd, j) =>
+         dependencies(j) match {
+           case s: ShuffleDependency[_, _, _] =>
+             None
+           case _ =>
+             Some(new NarrowCoGroupSplitDep(rdd, i, rdd.partitions(i)))
+         }
+       }.toArray)
+     }
+     array
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+class SVMWithSGD private (
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+      array(i) = new CoGroupPartition(i, Seq(rdd1, rdd2).zipWithIndex.map { case (rdd, j) =>
+<SEP>
+    val resultSize: Long,
+<SEP>
+  private[spark] override def isBarrier(): Boolean = false
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+    new JavaRDD(rdd.map(f)(fakeClassTag))(fakeClassTag)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+  def fakeClassTag[T]: ClassTag[T] = ClassTag.AnyRef.asInstanceOf[ClassTag[T]]
+<SEP>
+    val stageId: Int,
+<SEP>
+    val serializer = userSpecifiedSerializer.getOrElse {
+       val serializerManager = SparkEnv.get.serializerManager
+       if (mapSideCombine) {
+         serializerManager.getSerializer(implicitly[ClassTag[K]], implicitly[ClassTag[C]])
+       } else {
+         serializerManager.getSerializer(implicitly[ClassTag[K]], implicitly[ClassTag[V]])
+       }
+     }
+     List(new ShuffleDependency(prev, part, serializer, keyOrdering, aggregator, mapSideCombine))
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    override val index: Int, val narrowDeps: Array[Option[NarrowCoGroupSplitDep]])
+<SEP>
+class BinaryClassificationMetrics @Since("1.3.0") (
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+    @Since("1.3.0") val scoreAndLabels: RDD[(Double, Double)],
+<SEP>
+  val inputSplit = new SerializableWritable[InputSplit](s)
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+trait PMMLExportable {
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+sealed trait Vector extends Serializable {
+<SEP>
+    .setNumIterations(numIterations)
+<SEP>
+    @transient var rdd1: RDD[_ <: Product2[K, V]],
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  private[mllib] var useFeatureScaling = false
+<SEP>
+  def train(
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+    val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    this.aggregator = Option(aggregator)
+     this
+<SEP>
+      array(i) = new CoGroupPartition(i, Seq(rdd1, rdd2).zipWithIndex.map { case (rdd, j) =>
+<SEP>
+  private[spark] override def asBreeze: BV[Double] = new BDV[Double](values)
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+  def sortByKey(ascending: Boolean = true, numPartitions: Int = self.partitions.length)
+<SEP>
+  def fold(zeroValue: T)(op: (T, T) => T): T = withScope {
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    @transient var prev: RDD[_ <: Product2[K, V]],
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+object GradientDescent extends Logging {
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+      mergeCombiners: (C, C) => C): RDD[(K, C)] = self.withScope {
+<SEP>
+  def values: RDD[V] = self.map(_._2)
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+  private[spark] implicit def toScalaFunction[T, R](fun: JFunction[T, R]): T => R = x => fun.call(x)
+<SEP>
+    Seq(rddDependency[K, V](rdd1), rddDependency[K, W](rdd2))
+<SEP>
+  private[spark] def keyClass: Class[_] = kt.runtimeClass
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+    new SVMWithSGD(stepSize, numIterations, regParam, miniBatchFraction).run(input)
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    var jobResult = Utils.clone(zeroValue, sc.env.closureSerializer.newInstance())
+     val cleanOp = sc.clean(op)
+     val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+     val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+     sc.runJob(this, foldPartition, mergeResult)
+     jobResult
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+            (c1._1 += c2._1, c1._2 + c2._2, c1._3 + c2._3)
+<SEP>
+trait ClassificationModel extends Serializable {
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  private var mapSideCombine: Boolean = false
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    if (numFeatures < 0) {
+       numFeatures = input.map(_.features.size).first()
+     }
+ 
+     if (input.getStorageLevel == StorageLevel.NONE) {
+       logWarning("The input data is not directly cached, which may hurt performance if its"
+         + " parent RDDs are also uncached.")
+     }
+ 
+     // Check the data properties before running the optimizer
+     if (validateData && !validators.forall(func => func(input))) {
+       throw new SparkException("Input validation failed.")
+     }
+ 
+     /**
+      * Scaling columns to unit variance as a heuristic to reduce the condition number:
+      *
+      * During the optimization process, the convergence (rate) depends on the condition number of
+      * the training dataset. Scaling the variables often reduces this condition number
+      * heuristically, thus improving the convergence rate. Without reducing the condition number,
+      * some training datasets mixing the columns with different scales may not be able to converge.
+      *
+      * GLMNET and LIBSVM packages perform the scaling to reduce the condition number, and return
+      * the weights in the original scale.
+      * See page 9 in http://cran.r-project.org/web/packages/glmnet/glmnet.pdf
+      *
+      * Here, if useFeatureScaling is enabled, we will standardize the training features by dividing
+      * the variance of each column (without subtracting the mean), and train the model in the
+      * scaled space. Then we transform the coefficients from the scaled space to the original scale
+      * as GLMNET and LIBSVM do.
+      *
+      * Currently, it's only enabled in LogisticRegressionWithLBFGS
+      */
+     val scaler = if (useFeatureScaling) {
+       new StandardScaler(withStd = true, withMean = false).fit(input.map(_.features))
+     } else {
+       null
+     }
+ 
+     // Prepend an extra variable consisting of all 1.0's for the intercept.
+     // TODO: Apply feature scaling to the weight vector instead of input data.
+     val data =
+       if (addIntercept) {
+         if (useFeatureScaling) {
+           input.map(lp => (lp.label, appendBias(scaler.transform(lp.features)))).cache()
+         } else {
+           input.map(lp => (lp.label, appendBias(lp.features))).cache()
+         }
+       } else {
+         if (useFeatureScaling) {
+           input.map(lp => (lp.label, scaler.transform(lp.features))).cache()
+         } else {
+           input.map(lp => (lp.label, lp.features))
+         }
+       }
+ 
+     /**
+      * TODO: For better convergence, in logistic regression, the intercepts should be computed
+      * from the prior probability distribution of the outcomes; for linear regression,
+      * the intercept should be set as the average of response.
+      */
+     val initialWeightsWithIntercept = if (addIntercept && numOfLinearPredictor == 1) {
+       appendBias(initialWeights)
+     } else {
+       /** If `numOfLinearPredictor > 1`, initialWeights already contains intercepts. */
+       initialWeights
+     }
+ 
+     val weightsWithIntercept = optimizer.optimize(data, initialWeightsWithIntercept)
+ 
+     val intercept = if (addIntercept && numOfLinearPredictor == 1) {
+       weightsWithIntercept(weightsWithIntercept.size - 1)
+     } else {
+       0.0
+     }
+ 
+     var weights = if (addIntercept && numOfLinearPredictor == 1) {
+       Vectors.dense(weightsWithIntercept.toArray.slice(0, weightsWithIntercept.size - 1))
+     } else {
+       weightsWithIntercept
+     }
+ 
+     /**
+      * The weights and intercept are trained in the scaled space; we're converting them back to
+      * the original scale.
+      *
+      * Math shows that if we only perform standardization without subtracting means, the intercept
+      * will not be changed. w_i = w_i' / v_i where w_i' is the coefficient in the scaled space, w_i
+      * is the coefficient in the original space, and v_i is the variance of the column i.
+      */
+     if (useFeatureScaling) {
+       if (numOfLinearPredictor == 1) {
+         weights = scaler.transform(weights)
+       } else {
+         /**
+          * For `numOfLinearPredictor > 1`, we have to transform the weights back to the original
+          * scale for each set of linear predictor. Note that the intercepts have to be explicitly
+          * excluded when `addIntercept == true` since the intercepts are part of weights now.
+          */
+         var i = 0
+         val n = weights.size / numOfLinearPredictor
+         val weightsArray = weights.toArray
+         while (i < numOfLinearPredictor) {
+           val start = i * n
+           val end = (i + 1) * n - { if (addIntercept) 1 else 0 }
+ 
+           val partialWeightsArray = scaler.transform(
+             Vectors.dense(weightsArray.slice(start, end))).toArray
+ 
+           System.arraycopy(partialWeightsArray, 0, weightsArray, start, partialWeightsArray.length)
+           i += 1
+         }
+         weights = Vectors.dense(weightsArray)
+       }
+     }
+ 
+     // Warn at the end of the run as well, for increased visibility.
+     if (input.getStorageLevel == StorageLevel.NONE) {
+       logWarning("The input data was not directly cached, which may hurt performance if its"
+         + " parent RDDs are also uncached.")
+     }
+ 
+     // Unpersist cached data
+     if (data.getStorageLevel != StorageLevel.NONE) {
+       data.unpersist(false)
+     }
+ 
+     createModel(weights, intercept)
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    val thisIterStepSize = stepSize / math.sqrt(iter)
+     val brzWeights: BV[Double] = weightsOld.asBreeze.toDenseVector
+     brzWeights :*= (1.0 - thisIterStepSize * regParam)
+     brzAxpy(-thisIterStepSize, gradient.asBreeze, brzWeights)
+     val norm = brzNorm(brzWeights, 2.0)
+ 
+     (Vectors.fromBreeze(brzWeights), 0.5 * regParam * norm * norm)
+<SEP>
+    new OrderedRDDFunctions[K, V, (K, V)](rdd)
+<SEP>
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    this.mapSideCombine = mapSideCombine
+     this
+<SEP>
+    val jobId: Int,
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    breezeVector match {
+<SEP>
+    combineByKeyWithClassTag(createCombiner, mergeValue, mergeCombiners, defaultPartitioner(self))
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+      serializer: Serializer = null)(implicit ct: ClassTag[C]): RDD[(K, C)] = self.withScope {
+<SEP>
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     SparkEnv.get.shuffleManager.getReader(dep.shuffleHandle, split.index, split.index + 1, context)
+       .read()
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+    run(input, generateInitialWeights(input))
+<SEP>
+  implicit def toRDD[T](rdd: JavaRDD[T]): RDD[T] = rdd.rdd
+<SEP>

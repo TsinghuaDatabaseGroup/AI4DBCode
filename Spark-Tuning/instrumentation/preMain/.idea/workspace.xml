@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d9cb213e-560b-4907-a46f-1afe88010151" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1lBia0mSP4oPmgR1lvlw0nQkWM5" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="D:/IdeaProjects/projects/empty" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="test.demo.netty" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MaxRec">
+    <configuration name="LRU" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.demo.algorithm.LRU" />
+      <module name="preMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.demo.algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaxRec" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.demo.algorithm.MaxRec" />
+      <module name="preMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.demo.algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.demo.netty.NettyClient" />
+      <module name="preMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.demo.netty.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.demo.netty.NettyServer" />
+      <module name="preMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.demo.netty.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.decompile.Test" />
+      <module name="preMain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.decompile.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.NettyServer" />
+      <item itemvalue="Application.NettyClient" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.LRU" />
+      <item itemvalue="Application.MaxRec" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MaxRec" />
+        <item itemvalue="Application.LRU" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.NettyClient" />
+        <item itemvalue="Application.NettyServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9cb213e-560b-4907-a46f-1afe88010151" name="Default Changelist" comment="" />
+      <created>1607076944898</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607076944898</updated>
+      <workItem from="1607076947960" duration="671000" />
+      <workItem from="1607078240062" duration="27016000" />
+      <workItem from="1607746025903" duration="114058000" />
+      <workItem from="1609052365623" duration="2054000" />
+      <workItem from="1609145033592" duration="647000" />
+      <workItem from="1609501721897" duration="15530000" />
+      <workItem from="1610977500315" duration="4265000" />
+      <workItem from="1611934706555" duration="5624000" />
+      <workItem from="1624269774044" duration="303000" />
+      <workItem from="1624271900207" duration="32076000" />
+      <workItem from="1625215608758" duration="497000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/benf/cfr/0.150/cfr-0.150.jar!/org/benf/cfr/reader/Main.class</url>
+          <line>36</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/benf/cfr/0.150/cfr-0.150.jar!/org/benf/cfr/reader/entities/Method.class</url>
+          <line>534</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/benf/cfr/0.150/cfr-0.150-sources.jar!/org/benf/cfr/reader/Driver.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/benf/cfr/0.150/cfr-0.150-sources.jar!/org/benf/cfr/reader/entities/Method.java</url>
+          <line>590</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

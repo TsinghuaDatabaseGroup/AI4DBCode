@@ -1,0 +1,22 @@
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>

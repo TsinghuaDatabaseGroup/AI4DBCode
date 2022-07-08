@@ -1,0 +1,309 @@
+    val bytesWritten: Long,
+<SEP>
+  var parents: Seq[Partition] = parentsIndices.map(rdd.partitions(_))
+<SEP>
+  override def size: Int = keySet.size
+<SEP>
+    val resultSize: Long,
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  override val index: Int = idx
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+      graph.aggregateMessages(_.sendToSrc(1), _ + _, TripletFields.None)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    parents = parentsIndices.map(rdd.partitions(_))
+<SEP>
+      graph.aggregateMessages(_.sendToDst(1), _ + _, TripletFields.None)
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+     oos.defaultWriteObject()
+<SEP>
+    val aggregates = new Array[A](vertexAttrs.length)
+     val bitset = new BitSet(vertexAttrs.length)
+ 
+     val ctx = new AggregatingEdgeContext[VD, ED, A](mergeMsg, aggregates, bitset)
+     var i = 0
+     while (i < size) {
+       val localSrcId = localSrcIds(i)
+       val srcId = local2global(localSrcId)
+       val localDstId = localDstIds(i)
+       val dstId = local2global(localDstId)
+       val edgeIsActive =
+         if (activeness == EdgeActiveness.Neither) true
+         else if (activeness == EdgeActiveness.SrcOnly) isActive(srcId)
+         else if (activeness == EdgeActiveness.DstOnly) isActive(dstId)
+         else if (activeness == EdgeActiveness.Both) isActive(srcId) && isActive(dstId)
+         else if (activeness == EdgeActiveness.Either) isActive(srcId) || isActive(dstId)
+         else throw new Exception("unreachable")
+       if (edgeIsActive) {
+         val srcAttr = if (tripletFields.useSrc) vertexAttrs(localSrcId) else null.asInstanceOf[VD]
+         val dstAttr = if (tripletFields.useDst) vertexAttrs(localDstId) else null.asInstanceOf[VD]
+         ctx.set(srcId, dstId, localSrcId, localDstId, srcAttr, dstAttr, data(i))
+         sendMsg(ctx)
+       }
+       i += 1
+     }
+ 
+     bitset.iterator.map { localId => (local2global(localId), aggregates(localId)) }
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+        val activeFraction = edgePartition.numActives.getOrElse(0) / edgePartition.indexSize.toFloat
+<SEP>
+  def indexSize: Int = index.size
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    val keySet: OpenHashSet[K], var _values: Array[V])
+<SEP>
+    send(_localSrcId, msg)
+<SEP>
+    @transient private val rdds: Seq[RDD[_]],
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+    parents = parentsIndices.map(rdd.partitions(_))
+     oos.defaultWriteObject()
+<SEP>
+      graph.aggregateMessages(_.sendToDst(1), _ + _, TripletFields.None)
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    send(_localDstId, msg)
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val preAgg = view.edges.partitionsRDD.mapPartitions(_.flatMap {
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    @transient val preferredLocations: Seq[String])
+<SEP>
+    val hostPort: String,
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    parentsIndices: Array[Int],
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    val preAgg = view.edges.partitionsRDD.mapPartitions(_.flatMap {
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    @transient rdd: RDD[_],
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  @transient var name: String = _
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+      graph.aggregateMessages(_.sendToSrc(1), _ + _, TripletFields.None)
+<SEP>
+        val activeFraction = edgePartition.numActives.getOrElse(0) / edgePartition.indexSize.toFloat
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+  val size: Int = localSrcIds.length
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      (context: TaskContext, index: Int, iter: Iterator[T]) => cleanedF(iter),
+<SEP>
+  def numActives: Option[Int] = activeSet.map(_.size)
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    _srcId = srcId
+     _dstId = dstId
+     _localSrcId = localSrcId
+     _localDstId = localDstId
+     _srcAttr = srcAttr
+     _dstAttr = dstAttr
+     _attr = attr
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+      graph.aggregateMessages(_.sendToDst(1), _ + _, TripletFields.None)
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+    bitset.iterator.map { localId => (local2global(localId), aggregates(localId)) }
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+      graph.aggregateMessages(_.sendToSrc(1), _ + _, TripletFields.None)
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    val id: Int,
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>

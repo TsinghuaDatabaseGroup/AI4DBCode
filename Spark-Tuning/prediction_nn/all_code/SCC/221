@@ -1,0 +1,138 @@
+    val bytesWritten: Long,
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+    var rdd2: RDD[B],
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      (ePartIter, shippedVertsIter) => ePartIter.map {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  override val index: Int = idx
+<SEP>
+    val executors: Seq[String])
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    val diskUsed: Long,
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    (0 until vids.length).iterator.map { i => (vids(i), attrs(i)) }
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val partitions = s.asInstanceOf[ZippedPartitionsPartition].partitions
+     f(rdd1.iterator(partitions(0), context), rdd2.iterator(partitions(1), context))
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    @transient private val rdds: Seq[RDD[_]],
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    @transient val preferredLocations: Seq[String])
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    val hostPort: String,
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+  def partitions: Seq[Partition] = partitionValues
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+class VertexAttributeBlock[VD: ClassTag](val vids: Array[VertexId], val attrs: Array[VD])
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String,
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+          (pid, edgePartition.updateVertices(shippedVertsIter.flatMap(_._2.iterator)))
+<SEP>
+      (ePartIter, shippedVertsIter) => ePartIter.map {
+<SEP>
+    val id: Int,
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>

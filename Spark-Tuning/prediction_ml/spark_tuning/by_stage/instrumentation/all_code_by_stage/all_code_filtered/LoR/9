@@ -1,0 +1,40 @@
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+<SEP>
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>

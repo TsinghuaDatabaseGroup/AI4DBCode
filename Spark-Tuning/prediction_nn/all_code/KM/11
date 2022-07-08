@@ -1,0 +1,460 @@
+    val bytesWritten: Long,
+<SEP>
+    centers.foreach { center =>
+<SEP>
+        points.foreach { point =>
+<SEP>
+    val resultSize: Long,
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    var rdd1: RDD[A],
+<SEP>
+          val (bestCenter, cost) = distanceMeasureInstance.findClosest(thisCenters, point)
+<SEP>
+  def unapply(dv: DenseVector): Option[Array[Double]] = Some(dv.values)
+<SEP>
+      precision: Double = 1e-6): Double = {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  override val index: Int = idx
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    var f: (Iterator[A], Iterator[B]) => Iterator[V],
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+     oos.defaultWriteObject()
+<SEP>
+    val stageId: Int,
+<SEP>
+        val counts = Array.fill(thisCenters.length)(0L)
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+private[clustering] class VectorWithNorm(val vector: Vector, val norm: Double)
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val partitions = s.asInstanceOf[ZippedPartitionsPartition].partitions
+     f(rdd1.iterator(partitions(0), context), rdd2.iterator(partitions(1), context))
+<SEP>
+  override def size: Int = values.length
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    @transient private val rdds: Seq[RDD[_]],
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+sealed trait Vector extends Serializable {
+<SEP>
+        counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j)))).iterator
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    require(v1.size == v2.size, s"Vector dimensions do not match: Dim(v1)=${v1.size} and Dim(v2)" +
+       s"=${v2.size}.")
+     var squaredDistance = 0.0
+     (v1, v2) match {
+       case (v1: SparseVector, v2: SparseVector) =>
+         val v1Values = v1.values
+         val v1Indices = v1.indices
+         val v2Values = v2.values
+         val v2Indices = v2.indices
+         val nnzv1 = v1Indices.length
+         val nnzv2 = v2Indices.length
+ 
+         var kv1 = 0
+         var kv2 = 0
+         while (kv1 < nnzv1 || kv2 < nnzv2) {
+           var score = 0.0
+ 
+           if (kv2 >= nnzv2 || (kv1 < nnzv1 && v1Indices(kv1) < v2Indices(kv2))) {
+             score = v1Values(kv1)
+             kv1 += 1
+           } else if (kv1 >= nnzv1 || (kv2 < nnzv2 && v2Indices(kv2) < v1Indices(kv1))) {
+             score = v2Values(kv2)
+             kv2 += 1
+           } else {
+             score = v1Values(kv1) - v2Values(kv2)
+             kv1 += 1
+             kv2 += 1
+           }
+           squaredDistance += score * score
+         }
+ 
+       case (v1: SparseVector, v2: DenseVector) =>
+         squaredDistance = sqdist(v1, v2)
+ 
+       case (v1: DenseVector, v2: SparseVector) =>
+         squaredDistance = sqdist(v2, v1)
+ 
+       case (DenseVector(vv1), DenseVector(vv2)) =>
+         var kv = 0
+         val sz = vv1.length
+         while (kv < sz) {
+           val score = vv1(kv) - vv2(kv)
+           squaredDistance += score * score
+           kv += 1
+         }
+       case _ =>
+         throw new IllegalArgumentException("Do not support vector type " + v1.getClass +
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+        counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j)))).iterator
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    val hostPort: String,
+<SEP>
+<SEP>
+    var bestDistance = Double.PositiveInfinity
+     var bestIndex = 0
+     var i = 0
+     centers.foreach { center =>
+       // Since `\|a - b\| \geq |\|a\| - \|b\||`, we can use this lower bound to avoid unnecessary
+       // distance computation.
+       var lowerBoundOfSqDist = center.norm - point.norm
+       lowerBoundOfSqDist = lowerBoundOfSqDist * lowerBoundOfSqDist
+       if (lowerBoundOfSqDist < bestDistance) {
+         val distance: Double = EuclideanDistanceMeasure.fastSquaredDistance(center, point)
+         if (distance < bestDistance) {
+           bestDistance = distance
+           bestIndex = i
+         }
+       }
+       i += 1
+     }
+     (bestIndex, bestDistance)
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+<SEP>
+  def partitions: Seq[Partition] = partitionValues
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+    zipPartitions(other, preservesPartitioning = false) { (thisIter, otherIter) =>
+<SEP>
+    new DenseVector(new Array[Double](size))
+<SEP>
+        val thisCenters = bcCenters.value
+         val dims = thisCenters.head.vector.size
+ 
+         val sums = Array.fill(thisCenters.length)(Vectors.zeros(dims))
+         val counts = Array.fill(thisCenters.length)(0L)
+ 
+         points.foreach { point =>
+           val (bestCenter, cost) = distanceMeasureInstance.findClosest(thisCenters, point)
+           costAccum.add(cost)
+           distanceMeasureInstance.updateClusterSum(point, sums(bestCenter))
+           counts(bestCenter) += 1
+         }
+ 
+         counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j)))).iterator
+<SEP>
+<SEP>
+private[clustering] class VectorWithNorm(val vector: Vector, val norm: Double)
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+      var lowerBoundOfSqDist = center.norm - point.norm
+       lowerBoundOfSqDist = lowerBoundOfSqDist * lowerBoundOfSqDist
+       if (lowerBoundOfSqDist < bestDistance) {
+         val distance: Double = EuclideanDistanceMeasure.fastSquaredDistance(center, point)
+         if (distance < bestDistance) {
+           bestDistance = distance
+           bestIndex = i
+         }
+       }
+       i += 1
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+        val counts = Array.fill(thisCenters.length)(0L)
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  @transient var name: String = _
+<SEP>
+  override val index: Int = idx
+<SEP>
+    axpy(1.0, point.vector, sum)
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    var rdd2: RDD[B],
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    require(x.size == y.size,
+       "BLAS.dot(x: Vector, y:Vector) was given Vectors with non-matching sizes:" +
+       " x.size = " + x.size + ", y.size = " + y.size)
+     (x, y) match {
+       case (dx: DenseVector, dy: DenseVector) =>
+         dot(dx, dy)
+       case (sx: SparseVector, dy: DenseVector) =>
+         dot(sx, dy)
+       case (dx: DenseVector, sy: SparseVector) =>
+         dot(sy, dx)
+       case (sx: SparseVector, sy: SparseVector) =>
+         dot(sx, sy)
+       case _ =>
+         throw new IllegalArgumentException(s"dot doesn't support (${x.getClass}, ${y.getClass}).")
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+      new Iterator[(T, U)] {
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+  private[mllib] lazy val EPSILON = {
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      (context: TaskContext, index: Int, iter: Iterator[T]) => cleanedF(iter),
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+    @Since("1.0.0") val values: Array[Double]) extends Vector {
+<SEP>
+    val tracker = SparkEnv.get.mapOutputTracker.asInstanceOf[MapOutputTrackerMaster]
+     val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     tracker.getPreferredLocationsForShuffle(dep, partition.index)
+<SEP>
+    MLUtils.fastSquaredDistance(v1.vector, v1.norm, v2.vector, v2.norm)
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val zippedData = data.zip(norms).map { case (v, norm) =>
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+        counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j)))).iterator
+<SEP>
+      val collected = data.mapPartitions { points =>
+<SEP>
+    if (_f2jBLAS == null) {
+       _f2jBLAS = new F2jBLAS
+     }
+     _f2jBLAS
+<SEP>
+    require(x.size == y.size)
+     y match {
+       case dy: DenseVector =>
+         x match {
+           case sx: SparseVector =>
+             axpy(a, sx, dy)
+           case dx: DenseVector =>
+             axpy(a, dx, dy)
+           case _ =>
+             throw new UnsupportedOperationException(
+               s"axpy doesn't support x type ${x.getClass}.")
+         }
+       case _ =>
+         throw new IllegalArgumentException(
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+      new Iterator[(T, U)] {
+<SEP>
+<SEP>
+        def hasNext: Boolean = (thisIter.hasNext, otherIter.hasNext) match {
+           case (true, true) => true
+           case (false, false) => false
+           case _ => throw new SparkException("Can only zip RDDs with " +
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val n = v1.size
+     require(v2.size == n)
+     require(norm1 >= 0.0 && norm2 >= 0.0)
+     val sumSquaredNorm = norm1 * norm1 + norm2 * norm2
+     val normDiff = norm1 - norm2
+     var sqDist = 0.0
+     /*
+      * The relative error is
+      * <pre>
+      * EPSILON * ( \|a\|_2^2 + \|b\\_2^2 + 2 |a^T b|) / ( \|a - b\|_2^2 ),
+      * </pre>
+      * which is bounded by
+      * <pre>
+      * 2.0 * EPSILON * ( \|a\|_2^2 + \|b\|_2^2 ) / ( (\|a\|_2 - \|b\|_2)^2 ).
+      * </pre>
+      * The bound doesn't need the inner product, so we can use it as a sufficient condition to
+      * check quickly whether the inner product approach is accurate.
+      */
+     val precisionBound1 = 2.0 * EPSILON * sumSquaredNorm / (normDiff * normDiff + EPSILON)
+     if (precisionBound1 < precision) {
+       sqDist = sumSquaredNorm - 2.0 * dot(v1, v2)
+     } else if (v1.isInstanceOf[SparseVector] || v2.isInstanceOf[SparseVector]) {
+       val dotValue = dot(v1, v2)
+       sqDist = math.max(sumSquaredNorm - 2.0 * dotValue, 0.0)
+       val precisionBound2 = EPSILON * (sumSquaredNorm + 2.0 * math.abs(dotValue)) /
+         (sqDist + EPSILON)
+       if (precisionBound2 > precision) {
+         sqDist = Vectors.sqdist(v1, v2)
+       }
+     } else {
+       sqDist = Vectors.sqdist(v1, v2)
+     }
+     sqDist
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+        val sums = Array.fill(thisCenters.length)(Vectors.zeros(dims))
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+<SEP>
+<SEP>
+    combineByKeyWithClassTag[V]((v: V) => v, func, func, partitioner)
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+      new Iterator[(T, U)] {
+<SEP>

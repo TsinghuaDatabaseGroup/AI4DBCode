@@ -1,0 +1,449 @@
+    val bytesWritten: Long,
+<SEP>
+      (context, pid, iter) => iter.flatMap { case (k, v) =>
+<SEP>
+      (context, pid, iter) => iter.flatMap { case (k, v) =>
+<SEP>
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+  override val partitioner = if (preservesPartitioning) firstParent[T].partitioner else None
+<SEP>
+    val resultSize: Long,
+<SEP>
+      if (rdd.partitioner == Some(part)) {
+<SEP>
+      (context, pid, iter) => iter.map { case (k, v) => (k, cleanF(v)) },
+<SEP>
+    for ((dep, depNum) <- dependencies.zipWithIndex) dep match {
+<SEP>
+  final def getNumPartitions: Int = partitions.length
+<SEP>
+    for ((dep, depNum) <- dependencies.zipWithIndex) dep match {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+      for (v <- pair._1.iterator; w <- pair._2.iterator) yield (v, w)
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    @transient var rdds: Seq[RDD[_ <: Product2[K, _]]],
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val createCombiner: (CoGroupValue => CoGroupCombiner) = value => {
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+      (context, pid, iter) => iter.map { case (k, v) => (k, cleanF(v)) },
+<SEP>
+    val attemptId: Int,
+<SEP>
+    override val index: Int, val narrowDeps: Array[Option[NarrowCoGroupSplitDep]])
+<SEP>
+        cleanF(v).map(x => (k, x))
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+  def count(): Long = sc.runJob(this, Utils.getIteratorSize _).sum
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    override val index: Int, val narrowDeps: Array[Option[NarrowCoGroupSplitDep]])
+<SEP>
+      .mapValues(_.map(_.toDouble))
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val split = s.asInstanceOf[CoGroupPartition]
+     val numRdds = dependencies.length
+ 
+     // A list of (rdd iterator, dependency number) pairs
+     val rddIterators = new ArrayBuffer[(Iterator[Product2[K, Any]], Int)]
+     for ((dep, depNum) <- dependencies.zipWithIndex) dep match {
+       case oneToOneDependency: OneToOneDependency[Product2[K, Any]] @unchecked =>
+         val dependencyPartition = split.narrowDeps(depNum).get.split
+         // Read them from the parent
+         val it = oneToOneDependency.rdd.iterator(dependencyPartition, context)
+         rddIterators += ((it, depNum))
+ 
+       case shuffleDependency: ShuffleDependency[_, _, _] =>
+         // Read map outputs of shuffle
+         val it = SparkEnv.get.shuffleManager
+           .getReader(shuffleDependency.shuffleHandle, split.index, split.index + 1, context)
+           .read()
+         rddIterators += ((it, depNum))
+     }
+ 
+     val map = createExternalMap(numRdds)
+     for ((it, depNum) <- rddIterators) {
+       map.insertAll(it.map(pair => (pair._1, new CoGroupValue(pair._2, depNum))))
+     }
+     context.taskMetrics().incMemoryBytesSpilled(map.memoryBytesSpilled)
+     context.taskMetrics().incDiskBytesSpilled(map.diskBytesSpilled)
+     context.taskMetrics().incPeakExecutionMemory(map.peakMemoryUsedBytes)
+     new InterruptibleIterator(context,
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    for ((it, depNum) <- rddIterators) {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val mergeValue = (buf: CompactBuffer[V], v: V) => buf += v
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+    dependencies.filter(!_.isInstanceOf[ShuffleDependency[_, _, _]]).exists(_.rdd.isBarrier())
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+<SEP>
+    val array = new Array[Partition](part.numPartitions)
+     for (i <- 0 until array.length) {
+       // Each CoGroupPartition will have a dependency per contributing RDD
+       array(i) = new CoGroupPartition(i, rdds.zipWithIndex.map { case (rdd, j) =>
+         // Assume each RDD contributed a single dependency, and get it
+         dependencies(j) match {
+           case s: ShuffleDependency[_, _, _] =>
+             None
+           case _ =>
+             Some(new NarrowCoGroupSplitDep(rdd, i, rdd.partitions(i)))
+         }
+       }.toArray)
+     }
+     array
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    rdds.map { rdd: RDD[_] =>
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+    dependencies.filter(!_.isInstanceOf[ShuffleDependency[_, _, _]]).exists(_.rdd.isBarrier())
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    @transient splitIndex: Int,
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+      val newCombiner = Array.fill(numRdds)(new CoGroup)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+<SEP>
+  def groupByKey(partitioner: Partitioner): RDD[(K, Iterable[V])] = self.withScope {
+<SEP>
+      combiner(value._2) += value._1
+       combiner
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+      array(i) = new CoGroupPartition(i, rdds.zipWithIndex.map { case (rdd, j) =>
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+  def count(): Long = sc.runJob(this, Utils.getIteratorSize _).sum
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+    val createCombiner = (v: V) => CompactBuffer(v)
+<SEP>
+    rdds.map { rdd: RDD[_] =>
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    val name: String,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    this.cogroup(other, partitioner).flatMapValues( pair =>
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val executors: Seq[String])
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    val diskUsed: Long,
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+      for (v <- pair._1.iterator; w <- pair._2.iterator) yield (v, w)
+<SEP>
+    var split: Partition
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      val newCombiner = Array.fill(numRdds)(new CoGroup)
+       newCombiner(value._2) += value._1
+       newCombiner
+<SEP>
+    @transient rdd: RDD[_],
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      array(i) = new CoGroupPartition(i, rdds.zipWithIndex.map { case (rdd, j) =>
+<SEP>
+      (context: TaskContext, index: Int, iter: Iterator[T]) => cleanedF(iter),
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryUsed: Long,
+<SEP>
+    cg.mapValues { case Array(vs, w1s) =>
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    for (i <- 0 until array.length) {
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    split = rdd.partitions(splitIndex)
+     oos.defaultWriteObject()
+<SEP>
+    for ((it, depNum) <- rddIterators) {
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+      for (v <- pair._1.iterator; w <- pair._2.iterator) yield (v, w)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+      map.insertAll(it.map(pair => (pair._1, new CoGroupValue(pair._2, depNum))))
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+      .mapValues(_.map(_.toDouble))
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    var split: Partition
+<SEP>
+<SEP>
+      .mapValues(_.map(_.toDouble))
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+      (combiner, value) => {
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+    SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     SparkEnv.get.shuffleManager.getReader(dep.shuffleHandle, split.index, split.index + 1, context)
+       .read()
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+    val k = bx.length
+     val info = new intW(0)
+     lapack.dppsv("U", k, 1, A, bx, k, info)
+     checkReturnValue(info, "dppsv")
+     bx
+<SEP>

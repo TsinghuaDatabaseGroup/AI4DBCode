@@ -1,0 +1,444 @@
+    val bytesWritten: Long,
+<SEP>
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+    val resultSize: Long,
+<SEP>
+    partitions.length == 0 || take(1).length == 0
+<SEP>
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+  protected val jobConfCacheKey: String = "rdd_%d_job_conf".format(id)
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+            HadoopRDD.CONFIGURATION_INSTANTIATION_LOCK.synchronized {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+        val res = sc.runJob(this, (it: Iterator[T]) => it.take(left).toArray, p)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+  def take(num: Int): Array[T] = withScope {
+<SEP>
+    val attemptId: Int,
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+        res.foreach(buf ++= _.take(num - buf.size))
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+        getBytesReadCallback.foreach { getBytesRead =>
+<SEP>
+  def take(num: Int): Array[T] = withScope {
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+        if (reader != null) {
+<SEP>
+        getBytesReadCallback.foreach { getBytesRead =>
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+  val inputSplit = new SerializableWritable[InputSplit](s)
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+  private[spark] implicit def toScalaFunction[T, R](fun: JFunction[T, R]): T => R = x => fun.call(x)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+        updateBytesRead()
+         closeIfNeeded()
+<SEP>
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+<SEP>
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    partitions.length == 0 || take(1).length == 0
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val jobID = new JobID(jobTrackerId, jobId)
+     val taId = new TaskAttemptID(new TaskID(jobID, TaskType.MAP, splitId), attemptId)
+ 
+     conf.set("mapreduce.task.id", taId.getTaskID.toString)
+     conf.set("mapreduce.task.attempt.id", taId.toString)
+     conf.setBoolean("mapreduce.task.ismap", true)
+     conf.setInt("mapreduce.task.partition", splitId)
+     conf.set("mapreduce.job.id", jobID.toString)
+<SEP>
+<SEP>
+              initLocalJobConfFuncOpt.foreach(f => f(newJobConf))
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    val name: String,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+<SEP>
+private[spark] object HadoopRDD extends Logging {
+<SEP>
+<SEP>
+          inputMetrics.setBytesRead(existingBytesRead + getBytesRead())
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+    val iter = new NextIterator[(K, V)] {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+      private val existingBytesRead = inputMetrics.bytesRead
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val executors: Seq[String])
+<SEP>
+      logInfo("Input split: " + split.inputSplit)
+<SEP>
+      private val inputMetrics = context.taskMetrics().inputMetrics
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+<SEP>
+    val diskUsed: Long,
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  private[spark] def conf = sc.conf
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+  val CONFIGURATION_INSTANTIATION_LOCK = new Object()
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val conf: Configuration = broadcastedConf.value.value
+     if (shouldCloneJobConf) {
+       // Hadoop Configuration objects are not thread-safe, which may lead to various problems if
+       // one job modifies a configuration while another reads it (SPARK-2546).  This problem occurs
+       // somewhat rarely because most jobs treat the configuration as though it's immutable.  One
+       // solution, implemented here, is to clone the Configuration object.  Unfortunately, this
+       // clone can be very expensive.  To avoid unexpected performance regressions for workloads and
+       // Hadoop versions that do not suffer from these thread-safety issues, this cloning is
+       // disabled by default.
+       HadoopRDD.CONFIGURATION_INSTANTIATION_LOCK.synchronized {
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryUsed: Long,
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  def isEmpty(): Boolean = withScope {
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+    SparkEnv.get.hadoopJobMetadata.put(key, value)
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+  def getCachedMetadata(key: String): Any = SparkEnv.get.hadoopJobMetadata.get(key)
+<SEP>
+    val newInputFormat = ReflectionUtils.newInstance(inputFormatClass.asInstanceOf[Class[_]], conf)
+       .asInstanceOf[InputFormat[K, V]]
+     newInputFormat match {
+       case c: Configurable => c.setConf(conf)
+       case _ =>
+     }
+     newInputFormat
+<SEP>
+      context.addTaskCompletionListener[Unit] { context =>
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  private val createTime = new Date()
+<SEP>
+<SEP>
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+      private val split = theSplit.asInstanceOf[HadoopPartition]
+<SEP>
+    require(filePath != null, "filePath cannot be null")
+     require(startOffset >= 0, s"startOffset ($startOffset) cannot be negative")
+     require(length >= -1, s"length ($length) cannot be smaller than -1")
+     inputBlock.get().set(new FileBlock(UTF8String.fromString(filePath), startOffset, length))
+<SEP>
+class HadoopRDD[K, V](
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+<SEP>
+    val id: Int,
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>

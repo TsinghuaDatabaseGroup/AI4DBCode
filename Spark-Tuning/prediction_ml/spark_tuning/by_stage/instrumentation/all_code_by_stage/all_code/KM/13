@@ -1,0 +1,580 @@
+    val bytesWritten: Long,
+<SEP>
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+    centers.foreach { center =>
+<SEP>
+    val resultSize: Long,
+<SEP>
+  def unapply(dv: DenseVector): Option[Array[Double]] = Some(dv.values)
+<SEP>
+      precision: Double = 1e-6): Double = {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val nullWritableClassTag = implicitly[ClassTag[NullWritable]]
+     val textClassTag = implicitly[ClassTag[Text]]
+     val r = this.mapPartitions { iter =>
+       val text = new Text()
+       iter.map { x =>
+         text.set(x.toString)
+         (NullWritable.get(), text)
+       }
+     }
+     RDD.rddToPairRDDFunctions(r)(nullWritableClassTag, textClassTag, null)
+       .saveAsHadoopFile[TextOutputFormat[NullWritable, Text]](path)
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+  def saveAsHadoopDataset(conf: JobConf): Unit = self.withScope {
+<SEP>
+    new DoubleRDDFunctions(rdd)
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+      path: String)(implicit fm: ClassTag[F]): Unit = self.withScope {
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    val config = new HadoopMapRedWriteConfigUtil[K, V](new SerializableJobConf(conf))
+     SparkHadoopWriter.write(
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+    saveAsHadoopFile(path, keyClass, valueClass, fm.runtimeClass.asInstanceOf[Class[F]])
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+private[clustering] class VectorWithNorm(val vector: Vector, val norm: Double)
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+  override def size: Int = values.length
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+class DoubleRDDFunctions(self: RDD[Double]) extends Logging with Serializable {
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+<SEP>
+    val r = this.mapPartitions { iter =>
+<SEP>
+  private val distanceMeasureInstance: DistanceMeasure =
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    require(v1.size == v2.size, s"Vector dimensions do not match: Dim(v1)=${v1.size} and Dim(v2)" +
+       s"=${v2.size}.")
+     var squaredDistance = 0.0
+     (v1, v2) match {
+       case (v1: SparseVector, v2: SparseVector) =>
+         val v1Values = v1.values
+         val v1Indices = v1.indices
+         val v2Values = v2.values
+         val v2Indices = v2.indices
+         val nnzv1 = v1Indices.length
+         val nnzv2 = v2Indices.length
+ 
+         var kv1 = 0
+         var kv2 = 0
+         while (kv1 < nnzv1 || kv2 < nnzv2) {
+           var score = 0.0
+ 
+           if (kv2 >= nnzv2 || (kv1 < nnzv1 && v1Indices(kv1) < v2Indices(kv2))) {
+             score = v1Values(kv1)
+             kv1 += 1
+           } else if (kv1 >= nnzv1 || (kv2 < nnzv2 && v2Indices(kv2) < v1Indices(kv1))) {
+             score = v2Values(kv2)
+             kv2 += 1
+           } else {
+             score = v1Values(kv1) - v2Values(kv2)
+             kv1 += 1
+             kv2 += 1
+           }
+           squaredDistance += score * score
+         }
+ 
+       case (v1: SparseVector, v2: DenseVector) =>
+         squaredDistance = sqdist(v1, v2)
+ 
+       case (v1: DenseVector, v2: SparseVector) =>
+         squaredDistance = sqdist(v2, v1)
+ 
+       case (DenseVector(vv1), DenseVector(vv2)) =>
+         var kv = 0
+         val sz = vv1.length
+         while (kv < sz) {
+           val score = vv1(kv) - vv2(kv)
+           squaredDistance += score * score
+           kv += 1
+         }
+       case _ =>
+         throw new IllegalArgumentException("Do not support vector type " + v1.getClass +
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+<SEP>
+    var bestDistance = Double.PositiveInfinity
+     var bestIndex = 0
+     var i = 0
+     centers.foreach { center =>
+       // Since `\|a - b\| \geq |\|a\| - \|b\||`, we can use this lower bound to avoid unnecessary
+       // distance computation.
+       var lowerBoundOfSqDist = center.norm - point.norm
+       lowerBoundOfSqDist = lowerBoundOfSqDist * lowerBoundOfSqDist
+       if (lowerBoundOfSqDist < bestDistance) {
+         val distance: Double = EuclideanDistanceMeasure.fastSquaredDistance(center, point)
+         if (distance < bestDistance) {
+           bestDistance = distance
+           bestIndex = i
+         }
+       }
+       i += 1
+     }
+     (bestIndex, bestDistance)
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+<SEP>
+private[clustering] class VectorWithNorm(val vector: Vector, val norm: Double)
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+      codec: Option[Class[_ <: CompressionCodec]] = None): Unit = self.withScope {
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+      var lowerBoundOfSqDist = center.norm - point.norm
+       lowerBoundOfSqDist = lowerBoundOfSqDist * lowerBoundOfSqDist
+       if (lowerBoundOfSqDist < bestDistance) {
+         val distance: Double = EuclideanDistanceMeasure.fastSquaredDistance(center, point)
+         if (distance < bestDistance) {
+           bestDistance = distance
+           bestIndex = i
+         }
+       }
+       i += 1
+<SEP>
+      iter.map { x =>
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val jobID = new JobID(jobTrackerId, jobId)
+     val taId = new TaskAttemptID(new TaskID(jobID, TaskType.MAP, splitId), attemptId)
+ 
+     conf.set("mapreduce.task.id", taId.getTaskID.toString)
+     conf.set("mapreduce.task.attempt.id", taId.toString)
+     conf.setBoolean("mapreduce.task.ismap", true)
+     conf.setInt("mapreduce.task.partition", splitId)
+     conf.set("mapreduce.job.id", jobID.toString)
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+  def saveAsTextFile(path: String): Unit = withScope {
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+    require(p >= 1.0, "To compute the p-norm of the vector, we require that you specify a p>=1. " +
+       s"You specified p=$p.")
+     val values = vector match {
+       case DenseVector(vs) => vs
+       case SparseVector(n, ids, vs) => vs
+       case v => throw new IllegalArgumentException("Do not support vector type " + v.getClass)
+<SEP>
+    saveAsHadoopFile(path, keyClass, valueClass, fm.runtimeClass.asInstanceOf[Class[F]])
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    require(x.size == y.size,
+       "BLAS.dot(x: Vector, y:Vector) was given Vectors with non-matching sizes:" +
+       " x.size = " + x.size + ", y.size = " + y.size)
+     (x, y) match {
+       case (dx: DenseVector, dy: DenseVector) =>
+         dot(dx, dy)
+       case (sx: SparseVector, dy: DenseVector) =>
+         dot(sx, dy)
+       case (dx: DenseVector, sy: SparseVector) =>
+         dot(sy, dx)
+       case (sx: SparseVector, sy: SparseVector) =>
+         dot(sx, sy)
+       case _ =>
+         throw new IllegalArgumentException(s"dot doesn't support (${x.getClass}, ${y.getClass}).")
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+  private[mllib] lazy val EPSILON = {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+    val hadoopConf = conf
+     hadoopConf.setOutputKeyClass(keyClass)
+     hadoopConf.setOutputValueClass(valueClass)
+     conf.setOutputFormat(outputFormatClass)
+     for (c <- codec) {
+       hadoopConf.setCompressMapOutput(true)
+       hadoopConf.set("mapreduce.output.fileoutputformat.compress", "true")
+       hadoopConf.setMapOutputCompressorClass(c)
+       hadoopConf.set("mapreduce.output.fileoutputformat.compress.codec", c.getCanonicalName)
+       hadoopConf.set("mapreduce.output.fileoutputformat.compress.type",
+         CompressionType.BLOCK.toString)
+     }
+ 
+     // Use configured output committer if already set
+     if (conf.getOutputCommitter == null) {
+       hadoopConf.setOutputCommitter(classOf[FileOutputCommitter])
+     }
+ 
+     // When speculation is on and output committer class name contains "Direct", we should warn
+     // users that they may loss data if they are using a direct output committer.
+     val speculationEnabled = self.conf.getBoolean("spark.speculation", false)
+     val outputCommitterClass = hadoopConf.get("mapred.output.committer.class", "")
+     if (speculationEnabled && outputCommitterClass.contains("Direct")) {
+       val warningMessage =
+         s"$outputCommitterClass may be an output committer that writes data directly to " +
+           "the final location. Because speculation is enabled, this output committer may " +
+           "cause data loss (see the case in SPARK-10063). If possible, please use an output " +
+           "committer that does not have this behavior (e.g. FileOutputCommitter)."
+       logWarning(warningMessage)
+     }
+ 
+     FileOutputFormat.setOutputPath(hadoopConf,
+       SparkHadoopWriterUtils.createPathFromString(path, hadoopConf))
+     saveAsHadoopDataset(hadoopConf)
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      (context: TaskContext, index: Int, iter: Iterator[T]) => cleanedF(iter),
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    @Since("1.0.0") val values: Array[Double]) extends Vector {
+<SEP>
+    MLUtils.fastSquaredDistance(v1.vector, v1.norm, v2.vector, v2.norm)
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+  private val clusterCentersWithNorm =
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    distanceMeasureInstance.findClosest(clusterCentersWithNorm, new VectorWithNorm(point))._1
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    if (_f2jBLAS == null) {
+       _f2jBLAS = new F2jBLAS
+     }
+     _f2jBLAS
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+      val text = new Text()
+       iter.map { x =>
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+    val n = v1.size
+     require(v2.size == n)
+     require(norm1 >= 0.0 && norm2 >= 0.0)
+     val sumSquaredNorm = norm1 * norm1 + norm2 * norm2
+     val normDiff = norm1 - norm2
+     var sqDist = 0.0
+     /*
+      * The relative error is
+      * <pre>
+      * EPSILON * ( \|a\|_2^2 + \|b\\_2^2 + 2 |a^T b|) / ( \|a - b\|_2^2 ),
+      * </pre>
+      * which is bounded by
+      * <pre>
+      * 2.0 * EPSILON * ( \|a\|_2^2 + \|b\|_2^2 ) / ( (\|a\|_2 - \|b\|_2)^2 ).
+      * </pre>
+      * The bound doesn't need the inner product, so we can use it as a sufficient condition to
+      * check quickly whether the inner product approach is accurate.
+      */
+     val precisionBound1 = 2.0 * EPSILON * sumSquaredNorm / (normDiff * normDiff + EPSILON)
+     if (precisionBound1 < precision) {
+       sqDist = sumSquaredNorm - 2.0 * dot(v1, v2)
+     } else if (v1.isInstanceOf[SparseVector] || v2.isInstanceOf[SparseVector]) {
+       val dotValue = dot(v1, v2)
+       sqDist = math.max(sumSquaredNorm - 2.0 * dotValue, 0.0)
+       val precisionBound2 = EPSILON * (sumSquaredNorm + 2.0 * math.abs(dotValue)) /
+         (sqDist + EPSILON)
+       if (precisionBound2 > precision) {
+         sqDist = Vectors.sqdist(v1, v2)
+       }
+     } else {
+       sqDist = Vectors.sqdist(v1, v2)
+     }
+     sqDist
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+      codec: Option[Class[_ <: CompressionCodec]] = None): Unit = self.withScope {
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+  override def toString: String = values.mkString("[", ",", "]")
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+  def saveAsHadoopDataset(conf: JobConf): Unit = self.withScope {
+<SEP>
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+  def saveAsTextFile(path: String): Unit = withScope {
+<SEP>

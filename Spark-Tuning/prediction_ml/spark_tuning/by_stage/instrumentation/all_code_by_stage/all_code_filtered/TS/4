@@ -1,0 +1,24 @@
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val bytesRead: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>

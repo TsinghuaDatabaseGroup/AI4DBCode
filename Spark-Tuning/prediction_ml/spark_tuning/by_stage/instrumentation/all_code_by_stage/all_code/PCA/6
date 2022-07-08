@@ -1,0 +1,491 @@
+    val bytesWritten: Long,
+<SEP>
+    RDDOperationScope.withScope(sc, "checkpoint", allowNesting = false, ignoreParent = true) {
+<SEP>
+    @Since("1.3.0") override val isTransposed: Boolean) extends Matrix {
+<SEP>
+    val n = numCols().toInt
+     checkNumColumns(n)
+     // Computes n*(n+1)/2, avoiding overflow in the multiplication.
+     // This succeeds when n <= 65535, which is checked above
+     val nt = if (n % 2 == 0) ((n / 2) * (n + 1)) else (n * ((n + 1) / 2))
+ 
+     // Compute the upper triangular part of the gram matrix.
+     val GU = rows.treeAggregate(null.asInstanceOf[BDV[Double]])(
+       seqOp = (maybeU, v) => {
+         val U =
+           if (maybeU == null) {
+             new BDV[Double](nt)
+           } else {
+             maybeU
+           }
+         BLAS.spr(1.0, v, U.data)
+         U
+       }, combOp = (U1, U2) =>
+         if (U1 == null) {
+           U2
+         } else if (U2 == null) {
+           U1
+         } else {
+           U1 += U2
+         }
+     )
+ 
+     RowMatrix.triuToFull(n, GU.data)
+<SEP>
+    val resultSize: Long,
+<SEP>
+    val numFeatures = sources.first().size
+     require(k <= numFeatures,
+       s"source vector size $numFeatures must be no less than k=$k")
+ 
+     require(PCAUtil.memoryCost(k, numFeatures) < Int.MaxValue,
+       "The param k and numFeatures is too large for SVD computation. " +
+       "Try reducing the parameter k for PCA, or reduce the input feature " +
+       "vector dimension to make this tractable.")
+ 
+     val mat = new RowMatrix(sources)
+     val (pc, explainedVariance) = mat.computePrincipalComponentsAndExplainedVariance(k)
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    breeze match {
+       case dm: BDM[Double] =>
+         new DenseMatrix(dm.rows, dm.cols, dm.data, dm.isTranspose)
+       case sm: BSM[Double] =>
+         // There is no isTranspose flag for sparse matrices in Breeze
+         val nsm = if (sm.rowIndices.length > sm.activeSize) {
+           // This sparse matrix has trailing zeros.
+           // Remove them by compacting the matrix.
+           val csm = sm.copy
+           csm.compact()
+           csm
+         } else {
+           sm
+         }
+         new SparseMatrix(nsm.rows, nsm.cols, nsm.colPtrs, nsm.rowIndices, nsm.data)
+       case _ =>
+         throw new UnsupportedOperationException(
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+    val explainedVariance = s.data.map(_ / eigenSum)
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+trait VectorTransformer extends Serializable {
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+    @Since("1.0.0") val values: Array[Double],
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+sealed trait Vector extends Serializable {
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+      }, combOp = (U1, U2) =>
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+    val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+  override def apply(i: Int): Double = values(i)
+<SEP>
+    val n = numCols().toInt
+     require(k > 0 && k <= n, s"k = $k out of range (0, n = $n]")
+ 
+     val Cov = computeCovariance().asBreeze.asInstanceOf[BDM[Double]]
+ 
+     val brzSvd.SVD(u: BDM[Double], s: BDV[Double], _) = brzSvd(Cov)
+<SEP>
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val explainedVariance = s.data.map(_ / eigenSum)
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+class PCA @Since("1.4.0") (@Since("1.4.0") val k: Int) {
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+  def fold(zeroValue: T)(op: (T, T) => T): T = withScope {
+<SEP>
+    parent.map(_.getAllScopes).getOrElse(Seq.empty) ++ Seq(this)
+<SEP>
+    val n = numCols().toInt
+     checkNumColumns(n)
+ 
+     val summary = computeColumnSummaryStatistics()
+     val m = summary.count
+     require(m > 1, s"RowMatrix.computeCovariance called on matrix with only $m rows." +
+       "  Cannot compute the covariance of a RowMatrix with <= 1 row.")
+     val mean = summary.mean
+ 
+     // We use the formula Cov(X, Y) = E[X * Y] - E[X] E[Y], which is not accurate if E[X * Y] is
+     // large but Cov(X, Y) is small, but it is good for sparse computation.
+     // TODO: find a fast and stable way for sparse data.
+ 
+     val G = computeGramianMatrix().asBreeze
+ 
+     var i = 0
+     var j = 0
+     val m1 = m - 1.0
+     var alpha = 0.0
+     while (i < n) {
+       alpha = m / m1 * mean(i)
+       j = i
+       while (j < n) {
+         val Gij = G(i, j) / m1 - alpha * mean(j)
+         G(i, j) = Gij
+         G(j, i) = Gij
+         j += 1
+       }
+       i += 1
+     }
+ 
+     Matrices.fromBreeze(G)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+<SEP>
+    val G = new BDM[Double](n, n)
+ 
+     var row = 0
+     var col = 0
+     var idx = 0
+     var value = 0.0
+     while (col < n) {
+       row = 0
+       while (row < col) {
+         value = U(idx)
+         G(row, col) = value
+         G(col, row) = value
+         idx += 1
+         row += 1
+       }
+       G(col, col) = U(idx)
+       idx += 1
+       col +=1
+     }
+ 
+     Matrices.dense(n, n, G.data)
+<SEP>
+    val name: String,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+      depth: Int = 2): U = withScope {
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+  val isTransposed: Boolean = false
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+  def values: RDD[V] = self.map(_._2)
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    @Since("1.0.0") val numRows: Int,
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    if (!isTransposed) {
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    @Since("1.0.0") val values: Array[Double]) extends Vector {
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    var jobResult = Utils.clone(zeroValue, sc.env.closureSerializer.newInstance())
+     val cleanOp = sc.clean(op)
+     val foldPartition = (iter: Iterator[T]) => iter.fold(zeroValue)(cleanOp)
+     val mergeResult = (index: Int, taskResult: T) => jobResult = op(jobResult, taskResult)
+     sc.runJob(this, foldPartition, mergeResult)
+     jobResult
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+class DenseMatrix @Since("1.3.0") (
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    @Since("1.0.0") val numCols: Int,
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+        if (U1 == null) {
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+          dependencies.foreach(_.rdd.doCheckpoint())
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    new DenseMatrix(numRows, numCols, values)
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+      if (!doCheckpointCalled) {
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+<SEP>
+  @transient private var doCheckpointCalled = false
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+<SEP>
+  def dense(values: Array[Double]): Vector = new DenseVector(values)
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     SparkEnv.get.shuffleManager.getReader(dep.shuffleHandle, split.index, split.index + 1, context)
+       .read()
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>

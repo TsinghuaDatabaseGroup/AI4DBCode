@@ -1,0 +1,317 @@
+    val bytesWritten: Long,
+<SEP>
+    @Since("1.0.0") features: Vector) {
+<SEP>
+    val resultSize: Long,
+<SEP>
+  def keys: RDD[K] = self.map(_._1)
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+      numFeatures = weights.size, numClasses = 2, weights, intercept, threshold)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    val attemptId: Int,
+<SEP>
+    val stageId: Int,
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+case class LabeledPoint @Since("1.0.0") (
+<SEP>
+    override val index: Int, val narrowDeps: Array[Option[NarrowCoGroupSplitDep]])
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+  override def size: Int = values.length
+<SEP>
+    val margin = weightMatrix.asBreeze.dot(dataMatrix.asBreeze) + intercept
+     threshold match {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+    var numPositives: Long = 0L,
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+    integrate(1, t => map.remove(t._1))
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+  private[spark] implicit def toScalaFunction[T, R](fun: JFunction[T, R]): T => R = x => fun.call(x)
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+<SEP>
+  override def toArray: Array[Double] = values
+<SEP>
+case class LabeledPoint @Since("1.0.0") (
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+  private[spark] override def asBreeze: BV[Double] = new BDV[Double](values)
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    var numNegatives: Long = 0L) extends Serializable {
+<SEP>
+    var numPositives: Long = 0L,
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+  override def equals(other: Any): Boolean = super.equals(other)
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+    predictPoint(testData, weights, intercept)
+<SEP>
+    map.asScala.iterator.map(t => t._2.iterator.map((t._1, _))).flatten
+<SEP>
+  override val index: Int = idx
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    @Since("0.8.0") val intercept: Double)
+<SEP>
+    @Since("0.8.0") label: Double,
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    var result: Int = 31 + size
+     var i = 0
+     val end = values.length
+     var nnz = 0
+     while (i < end && nnz < Vectors.MAX_HASH_NNZ) {
+       val v = values(i)
+       if (v != 0.0) {
+         result = 31 * result + i
+         val bits = java.lang.Double.doubleToLongBits(values(i))
+         result = 31 * result + (bits ^ (bits >>> 32)).toInt
+         nnz += 1
+       }
+       i += 1
+     }
+     result
+<SEP>
+    @Since("0.8.0") override val intercept: Double)
+<SEP>
+    @Since("1.0.0") val weights: Vector,
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+  private[linalg] val MAX_HASH_NNZ = 128
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val partition = p.asInstanceOf[CoGroupPartition]
+     val map = new JHashMap[K, ArrayBuffer[V]]
+     def getSeq(k: K): ArrayBuffer[V] = {
+       val seq = map.get(k)
+       if (seq != null) {
+         seq
+       } else {
+         val seq = new ArrayBuffer[V]()
+         map.put(k, seq)
+         seq
+       }
+     }
+     def integrate(depNum: Int, op: Product2[K, V] => Unit): Unit = {
+       dependencies(depNum) match {
+         case oneToOneDependency: OneToOneDependency[_] =>
+           val dependencyPartition = partition.narrowDeps(depNum).get.split
+           oneToOneDependency.rdd.iterator(dependencyPartition, context)
+             .asInstanceOf[Iterator[Product2[K, V]]].foreach(op)
+ 
+         case shuffleDependency: ShuffleDependency[_, _, _] =>
+           val iter = SparkEnv.get.shuffleManager
+             .getReader(
+               shuffleDependency.shuffleHandle, partition.index, partition.index + 1, context)
+             .read()
+           iter.foreach(op)
+       }
+     }
+ 
+     // the first dep is rdd1; add all values to the map
+     integrate(0, t => getSeq(t._1) += t._2)
+     // the second dep is rdd2; remove all of its keys
+     integrate(1, t => map.remove(t._1))
+     map.asScala.iterator.map(t => t._2.iterator.map((t._1, _))).flatten
+<SEP>
+    new MapPartitionsRDD[U, T](this, (context, pid, iter) => iter.map(cleanF))
+<SEP>
+    @Since("1.0.0") val values: Array[Double]) extends Vector {
+<SEP>
+    val tracker = SparkEnv.get.mapOutputTracker.asInstanceOf[MapOutputTrackerMaster]
+     val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     tracker.getPreferredLocationsForShuffle(dep, partition.index)
+<SEP>
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+      createCombiner = (label: Double) => new BinaryLabelCounter(0L, 0L) += label,
+<SEP>
+    @Since("1.0.0") override val weights: Vector,
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+case class LabeledPoint @Since("1.0.0") (
+<SEP>
+    if (label > 0.5) numPositives += 1L else numNegatives += 1L
+     this
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    map.asScala.iterator.map(t => t._2.iterator.map((t._1, _))).flatten
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+    integrate(0, t => getSeq(t._1) += t._2)
+<SEP>
+<SEP>
+    other match {
+<SEP>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    var numNegatives: Long = 0L) extends Serializable {
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    val id: Int,
+<SEP>
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>

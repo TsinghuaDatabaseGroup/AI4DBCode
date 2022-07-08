@@ -1,0 +1,309 @@
+  final def getNumPartitions: Int = partitions.length
+<SEP>
+  def sortByKey(ascending: Boolean = true, numPartitions: Int = self.partitions.length)
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+  private[spark] override def isBarrier(): Boolean = false
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+    id: String,
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+  @transient val partitioner: Option[Partitioner] = None
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+    new PairRDDFunctions(rdd)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+    val serializer = userSpecifiedSerializer.getOrElse {
+       val serializerManager = SparkEnv.get.serializerManager
+       if (mapSideCombine) {
+         serializerManager.getSerializer(implicitly[ClassTag[K]], implicitly[ClassTag[C]])
+       } else {
+         serializerManager.getSerializer(implicitly[ClassTag[K]], implicitly[ClassTag[V]])
+       }
+     }
+     List(new ShuffleDependency(prev, part, serializer, keyOrdering, aggregator, mapSideCombine))
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+        result(i) =
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+    val split = hsplit.asInstanceOf[NewHadoopPartition].serializableHadoopSplit.value
+     val locs = HadoopRDD.convertSplitLocationInfo(split.getLocationInfo)
+     locs.getOrElse(split.getLocations.filter(_ != "localhost"))
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+case class ApplicationInfo private[spark](
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+  val serializableHadoopSplit = new SerializableWritable(rawSplit)
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val hostPort: String,
+<SEP>
+class PairRDDFunctions[K, V](self: RDD[(K, V)])
+<SEP>
+private[spark] object RDDOperationScope extends Logging {
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+  def partitionBy(partitioner: Partitioner): RDD[(K, V)] = self.withScope {
+<SEP>
+    val sparkProperties: Seq[(String, String)],
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+  def sortByKey(ascending: Boolean = true, numPartitions: Int = self.partitions.length)
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+    @transient var prev: RDD[_ <: Product2[K, V]],
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val index: Int,
+<SEP>
+    contextHandler.setAttribute(attribute, uiRoot)
+<SEP>
+    Array.tabulate[Partition](part.numPartitions)(i => new ShuffledRDDPartition(i))
+<SEP>
+    val name: String,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+private[spark] object HadoopRDD extends Logging {
+<SEP>
+    val jerseyContext = new ServletContextHandler(ServletContextHandler.NO_SESSIONS)
+     jerseyContext.setContextPath("/api")
+     val holder: ServletHolder = new ServletHolder(classOf[ServletContainer])
+     holder.setInitParameter(ServerProperties.PROVIDER_PACKAGES, "org.apache.spark.status.api.v1")
+     UIRootFromServletContext.setUiRoot(jerseyContext, uiRoot)
+     jerseyContext.addServlet(holder, "/*")
+     jerseyContext
+<SEP>
+  @transient var name: String = _
+<SEP>
+    val inputFormat = inputFormatClass.newInstance
+     inputFormat match {
+       case configurable: Configurable =>
+         configurable.setConf(_conf)
+       case _ =>
+     }
+     try {
+<SEP>
+  override val index: Int = idx
+<SEP>
+  def partitionBy(partitioner: Partitioner): RDD[(K, V)] = self.withScope {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+    @transient private val _conf: Configuration)
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+  private[spark] def keyClass: Class[_] = kt.runtimeClass
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+<SEP>
+    val serializer = userSpecifiedSerializer.getOrElse {
+<SEP>
+  private var mapSideCombine: Boolean = false
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+  private val jobTrackerId: String = {
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    Array.tabulate[Partition](part.numPartitions)(i => new ShuffledRDDPartition(i))
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  @transient var name: String = _
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+  @transient protected val jobId = new JobID(jobTrackerId, id)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+    new OrderedRDDFunctions[K, V, (K, V)](rdd)
+<SEP>
+    name = _name
+     this
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String,
+<SEP>
+    val jobId: Int,
+<SEP>
+case class ApplicationAttemptInfo private[spark](
+<SEP>
+class OrderedRDDFunctions[K : Ordering : ClassTag,
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>

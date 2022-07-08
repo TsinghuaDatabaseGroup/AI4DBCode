@@ -1,0 +1,455 @@
+    val bytesWritten: Long,
+<SEP>
+    val pos = keySet.addWithoutResize(k)
+     val ind = pos & OpenHashSet.POSITION_MASK
+     if ((pos & OpenHashSet.NONEXISTENCE_MASK) != 0) { // if first add
+       _values(ind) = v
+     } else {
+       _values(ind) = mergeF(_values(ind), v)
+     }
+     keySet.rehashIfNeeded(k, grow, move)
+     _oldValues = null
+<SEP>
+    @transient val partitionsRDD: RDD[ShippableVertexPartition[VD]],
+<SEP>
+    val resultSize: Long,
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    var rdd1: RDD[A],
+<SEP>
+      map.changeValue(vid, defaultVal, identity)
+<SEP>
+      iter => Iterator(RoutingTablePartition.fromMsgs(numEdgePartitions, iter)),
+<SEP>
+  protected var grow = (newCapacity: Int) => {
+<SEP>
+      (vertexIter, routingTableIter) =>
+<SEP>
+    partitionsRDD.mapPartitions(_.flatMap(_.shipVertexAttributes(shipSrc, shipDst)))
+<SEP>
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+private[graphx]
+<SEP>
+  override val index: Int = idx
+<SEP>
+    new RoutingTablePartition(pid2vid.zipWithIndex.map {
+<SEP>
+    val localBlocksFetched: Long,
+<SEP>
+    this.mapVertexPartitions(_.map((vid, attr) => f(attr)))
+<SEP>
+  private def positionFromMessage(msg: RoutingTableMessage): Byte = (msg._2 >> 30).toByte
+<SEP>
+    val keySet: OpenHashSet[K], var _values: Array[V])
+<SEP>
+      map.setMerge(pair._1, pair._2, mergeFunc)
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    iter.foreach { pair =>
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    var f: (Iterator[A], Iterator[B]) => Iterator[V],
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+    partitionsRDD.mapPartitions(_.flatMap(_.shipVertexAttributes(shipSrc, shipDst)))
+<SEP>
+    val writeTime: Long,
+<SEP>
+    val peakExecutionMemory: Long,
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+      routingTable.foreachWithinEdgePartition(pid, shipSrc, shipDst) { vid =>
+<SEP>
+    val attemptId: Int,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+     oos.defaultWriteObject()
+<SEP>
+    val newPartitionsRDD = partitionsRDD.mapPartitions(_.map(f), preservesPartitioning = true)
+<SEP>
+    val pid2vid = Array.fill(numEdgePartitions)(new PrimitiveVector[VertexId])
+     val srcFlags = Array.fill(numEdgePartitions)(new PrimitiveVector[Boolean])
+     val dstFlags = Array.fill(numEdgePartitions)(new PrimitiveVector[Boolean])
+     for (msg <- iter) {
+       val vid = vidFromMessage(msg)
+       val pid = pidFromMessage(msg)
+       val position = positionFromMessage(msg)
+       pid2vid(pid) += vid
+       srcFlags(pid) += (position & 0x1) != 0
+       dstFlags(pid) += (position & 0x2) != 0
+     }
+ 
+     new RoutingTablePartition(pid2vid.zipWithIndex.map {
+<SEP>
+    val stageId: Int,
+<SEP>
+  (implicit override protected val vdTag: ClassTag[VD])
+<SEP>
+    val remoteBytesReadToDisk: Long,
+<SEP>
+      val vid = vidFromMessage(msg)
+       val pid = pidFromMessage(msg)
+       val position = positionFromMessage(msg)
+       pid2vid(pid) += vid
+       srcFlags(pid) += (position & 0x1) != 0
+       dstFlags(pid) += (position & 0x2) != 0
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+  override def getStorageLevel: StorageLevel = partitionsRDD.getStorageLevel
+<SEP>
+private[graphx] class ShippableVertexPartitionOps[VD: ClassTag](self: ShippableVertexPartition[VD])
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val partitions = s.asInstanceOf[ZippedPartitionsPartition].partitions
+     f(rdd1.iterator(partitions(0), context), rdd2.iterator(partitions(1), context))
+<SEP>
+private[graphx] abstract class VertexPartitionBaseOps
+<SEP>
+  val capacity: Int = index.capacity
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    @transient private val rdds: Seq[RDD[_]],
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+    Iterator.tabulate(routingTable.numEdgePartitions) { pid =>
+<SEP>
+    val index: VertexIdToIndexMap,
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+
+<SEP>
+  protected var move = (oldPos: Int, newPos: Int) => {
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+    mask.iterator.map(ind => (index.getValue(ind), values(ind)))
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    Iterator.tabulate(routingTable.numEdgePartitions) { pid =>
+<SEP>
+    val bytesRead: Long,
+<SEP>
+    partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    @transient val preferredLocations: Seq[String])
+<SEP>
+    val hostPort: String,
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    @transient override val partitionsRDD: RDD[(PartitionID, EdgePartition[ED, VD])],
+<SEP>
+    val blockId = RDDBlockId(id, partition.index)
+     var readCachedBlock = true
+     // This method is called on executors, so we need call SparkEnv.get instead of sc.env.
+     SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    routingTable.iterator.foreach { vid =>
+<SEP>
+          if (routingTableIter.hasNext) routingTableIter.next() else RoutingTablePartition.empty
+         Iterator(ShippableVertexPartition(vertexIter, routingTable, defaultVal, mergeFunc))
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+  def partitions: Seq[Partition] = partitionValues
+<SEP>
+    s.asInstanceOf[ZippedPartitionsPartition].preferredLocations
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+    Iterator.tabulate(routingTable.numEdgePartitions) { pid =>
+<SEP>
+    ("Number of Cached Partitions" -> rddInfo.numCachedPartitions) ~
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val bitset = new BitSet(flags.size)
+     var i = 0
+     while (i < flags.size) {
+       if (flags(i)) {
+         bitset.set(i)
+       }
+       i += 1
+     }
+     bitset
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+  val numEdgePartitions: Int = routingTable.length
+<SEP>
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+    val name: String,
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    firstParent[ShippableVertexPartition[VD]].iterator(part, context).next().iterator
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+  override val index: Int = idx
+<SEP>
+    val routingTable: RoutingTablePartition)
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+    var rdd2: RDD[B],
+<SEP>
+  override def cache(): this.type = {
+<SEP>
+  def iterator: Iterator[VertexId] = routingTable.iterator.flatMap(_._1.iterator)
+<SEP>
+    val executors: Seq[String])
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    val (vidsCandidate, srcVids, dstVids) = routingTable(pid)
+<SEP>
+  def iterator: Iterator[VertexId] = routingTable.iterator.flatMap(_._1.iterator)
+<SEP>
+    val diskUsed: Long,
+<SEP>
+  private def pidFromMessage(msg: RoutingTableMessage): PartitionID = msg._2 & 0x3FFFFFFF
+<SEP>
+    ("Memory Size" -> rddInfo.memSize) ~
+<SEP>
+  private def writeObject(oos: ObjectOutputStream): Unit = Utils.tryOrIOException {
+<SEP>
+    val executorDeserializeCpuTime: Long,
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    // Merge the given vertices using mergeFunc
+     iter.foreach { pair =>
+       map.setMerge(pair._1, pair._2, mergeFunc)
+     }
+     // Fill in missing vertices mentioned in the routing table
+     routingTable.iterator.foreach { vid =>
+       map.changeValue(vid, defaultVal, identity)
+<SEP>
+    mask.iterator.map(ind => (index.getValue(ind), values(ind)))
+<SEP>
+    val fetchWaitTime: Long,
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      (context: TaskContext, index: Int, iter: Iterator[T]) => cleanedF(iter),
+<SEP>
+  override def getStorageLevel: StorageLevel = partitionsRDD.getStorageLevel
+<SEP>
+    for (msg <- iter) {
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryUsed: Long,
+<SEP>
+    val remoteBlocksFetched: Long,
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+    ("RDD ID" -> rddInfo.id) ~
+<SEP>
+    val keySet: OpenHashSet[K], var _values: Array[V])
+<SEP>
+  def partitionSize(pid: PartitionID): Int = routingTable(pid)._1.length
+<SEP>
+    this.mapVertexPartitions(_.map((vid, attr) => f(attr)))
+<SEP>
+    val resultSerializationTime: Long,
+<SEP>
+      map.changeValue(vid, defaultVal, identity)
+<SEP>
+   * `ShippableVertexPartition`.
+<SEP>
+  private def vidFromMessage(msg: RoutingTableMessage): VertexId = msg._1
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+    val keySet: OpenHashSet[K], var _values: Array[V])
+<SEP>
+    val map = new GraphXPrimitiveKeyOpenHashMap[VertexId, VD]
+     // Merge the given vertices using mergeFunc
+     iter.foreach { pair =>
+       map.setMerge(pair._1, pair._2, mergeFunc)
+     }
+     // Fill in missing vertices mentioned in the routing table
+     routingTable.iterator.foreach { vid =>
+       map.changeValue(vid, defaultVal, identity)
+     }
+ 
+     new ShippableVertexPartition(map.keySet, map._values, map.keySet.getBitSet, routingTable)
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+    val newVertices = g.vertices.mapValues(v => (v._1.toArray, v._2.toArray, v._3, v._4))
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+  def apply(vid: VertexId): VD = values(index.getPos(vid))
+<SEP>
+    ("Disk Size" -> rddInfo.diskSize)
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    ("Scope" -> rddInfo.scope.map(_.toJson)) ~
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+    f(context, split.index, firstParent[T].iterator(split, context))
+<SEP>
+    val executorDeserializeTime: Long,
+<SEP>
+  var partitionValues = rdds.map(rdd => rdd.partitions(idx))
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+        if (isDefined(vid)) {
+           vids += vid
+           attrs += this(vid)
+         }
+         i += 1
+<SEP>
+    val mask: BitSet,
+<SEP>
+  private var _oldValues: Array[V] = null
+<SEP>
+      val initialSize = if (shipSrc && shipDst) routingTable.partitionSize(pid) else 64
+       val vids = new PrimitiveVector[VertexId](initialSize)
+       val attrs = new PrimitiveVector[VD](initialSize)
+       var i = 0
+       routingTable.foreachWithinEdgePartition(pid, shipSrc, shipDst) { vid =>
+         if (isDefined(vid)) {
+           vids += vid
+           attrs += this(vid)
+         }
+         i += 1
+       }
+       (pid, new VertexAttributeBlock(vids.trim().array, attrs.trim().array))
+<SEP>
+   * operations on a `ShippableVertexPartition` via an evidence parameter, as in
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+              existingMetrics.incRecordsRead(1)
+               delegate.next()
+<SEP>
+    val jobId: Int,
+<SEP>
+    val id: String,
+<SEP>
+    SparkEnv.get.blockManager.getOrElseUpdate(blockId, storageLevel, elementClassTag, () => {
+<SEP>
+    val jvmGcTime: Long,
+<SEP>
+    : ShippableVertexPartitionOps[VD] = new ShippableVertexPartitionOps(partition)
+<SEP>
+    val pid2vid = Array.fill(numEdgePartitions)(new PrimitiveVector[VertexId])
+<SEP>
+    val dstFlags = Array.fill(numEdgePartitions)(new PrimitiveVector[Boolean])
+<SEP>
+    val newValues = new Array[VD2](self.capacity)
+     var i = self.mask.nextSetBit(0)
+     while (i >= 0) {
+       newValues(i) = f(self.index.getValue(i), self.values(i))
+       i = self.mask.nextSetBit(i + 1)
+     }
+     this.withValues(newValues)
+<SEP>
+    val id: Int,
+<SEP>
+    val srcFlags = Array.fill(numEdgePartitions)(new PrimitiveVector[Boolean])
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     SparkEnv.get.shuffleManager.getReader(dep.shuffleHandle, split.index, split.index + 1, context)
+       .read()
+<SEP>
+    val values: Array[VD],
+<SEP>

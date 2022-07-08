@@ -1,0 +1,434 @@
+    groupHash.get(key).map(_.sortWith(compare).head)
+<SEP>
+  override def equals(other: Any): Boolean = super.equals(other)
+<SEP>
+    groupHash.get(key).map(_.sortWith(compare).head)
+<SEP>
+      val tmpPartsWithLocs = mutable.LinkedHashMap[Partition, Seq[String]]()
+       // first get the locations for each partition, only do this once since it can be expensive
+       prev.partitions.foreach(p => {
+           val locs = currPrefLocs(p, prev)
+           if (locs.nonEmpty) {
+             tmpPartsWithLocs.put(p, locs)
+           } else {
+             partsWithoutLocs += p
+           }
+         }
+       )
+       // convert it into an array of host to partition
+       for (x <- 0 to 2) {
+<SEP>
+  val rnd = new scala.util.Random(7919) // keep this class deterministic
+<SEP>
+      groupArr.filter(pg => pg.numPartitions == 0).foreach { pg =>
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+private class DefaultPartitionCoalescer(val balanceSlack: Double = 0.10)
+<SEP>
+    if (noLocality) {  // no preferredLocations in parent RDD, no randomization needed
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+    id: String,
+<SEP>
+      groupArr.filter(pg => pg.numPartitions == 0).foreach { pg =>
+<SEP>
+    if (_sc == null) {
+       throw new SparkException(
+         "This RDD lacks a SparkContext. It could happen in the following cases: \n(1) RDD " +
+         "transformations and actions are NOT invoked by the driver, but inside of other " +
+         "transformations; for example, rdd1.map(x => rdd2.values.count() * x) is invalid " +
+         "because the values transformation and count action cannot be performed inside of the " +
+         "rdd1.map transformation. For more information, see SPARK-5063.\n(2) When a Spark " +
+         "Streaming job recovers from checkpoint, this exception will be hit if a reference to " +
+         "an RDD not defined by the streaming job is used in DStream operations. For more " +
+         "information, See SPARK-13758.")
+     }
+     _sc
+<SEP>
+    pc.coalesce(maxPartitions, prev).zipWithIndex.map {
+<SEP>
+  protected val jobConfCacheKey: String = "rdd_%d_job_conf".format(id)
+<SEP>
+      .find(_.getMethodName != ourMethodName)
+<SEP>
+  class PartitionLocations(prev: RDD[_]) {
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+            HadoopRDD.CONFIGURATION_INSTANTIATION_LOCK.synchronized {
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+<SEP>
+    isFromBarrier: Boolean = false,
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+  private[spark] val CHECKPOINT_ALL_MARKED_ANCESTORS =
+<SEP>
+  private[spark] def elementClassTag: ClassTag[T] = classTag[T]
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+  override def hashCode(): Int = 31 * (31 + rddId) + index
+<SEP>
+      for (p <- prev.partitions if (!initialHash.contains(p))) { // throw every partition into group
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+            partitions_.zipWithIndex.foreach { case (partition, index) =>
+<SEP>
+    prev.context.getPreferredLocs(prev, part.index).map(tl => tl.host)
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+  private[spark] def withScope[U](body: => U): U = RDDOperationScope.withScope[U](sc)(body)
+<SEP>
+      sc.cleaner.foreach(_.registerRDDForCleanup(this))
+<SEP>
+    val partitionLocs = new PartitionLocations(prev)
+     // setup the groups (bins)
+     setupGroups(math.min(prev.partitions.length, maxPartitions), partitionLocs)
+     // assign partitions (balls) to each group (bins)
+     throwBalls(maxPartitions, prev, balanceSlack, partitionLocs)
+     getPartitions
+<SEP>
+  val inputSplit = new SerializableWritable[InputSplit](s)
+<SEP>
+        tmpPartsWithLocs.foreach { parts =>
+<SEP>
+private class DefaultPartitionCoalescer(val balanceSlack: Double = 0.10)
+<SEP>
+    groupHash.get(key).map(_.sortWith(compare).head)
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+      narrowParentsNotVisited.foreach { parent =>
+<SEP>
+      : RDD[T] = withScope {
+<SEP>
+  var noLocality = true  // if true if no preferredLocations exists for parent RDD
+<SEP>
+    dependencies.filter(!_.isInstanceOf[ShuffleDependency[_, _, _]]).exists(_.rdd.isBarrier())
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+      val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+<SEP>
+    @transient preferredLocation: Option[String] = None) extends Partition {
+<SEP>
+    if (!initialHash.contains(part)) {
+<SEP>
+    val pc = partitionCoalescer.getOrElse(new DefaultPartitionCoalescer())
+ 
+     pc.coalesce(maxPartitions, prev).zipWithIndex.map {
+<SEP>
+case class ApplicationInfo private[spark](
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    preservesPartitioning: Boolean = false,
+<SEP>
+    groupHash.get(key).map(_.sortWith(compare).head)
+<SEP>
+    RDDOperationScope.jsonMapper.writeValueAsString(this)
+<SEP>
+    dependencies.filter(!_.isInstanceOf[ShuffleDependency[_, _, _]]).exists(_.rdd.isBarrier())
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+  val groupArr = ArrayBuffer[PartitionGroup]()
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+    val hostPort: String,
+<SEP>
+  val initialHash = mutable.Set[Partition]()
+<SEP>
+private[spark] object RDDOperationScope extends Logging {
+<SEP>
+    @transient var prev: RDD[T],
+<SEP>
+<SEP>
+  def getPartitions: Array[PartitionGroup] = groupArr.filter( pg => pg.numPartitions > 0).toArray
+<SEP>
+    val pref = currPrefLocs(p, prev).map(getLeastGroupHash(_)).sortWith(compare)
+<SEP>
+        tmpPartsWithLocs.foreach { parts =>
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+      prev.partitions.foreach(p => {
+<SEP>
+  def context: SparkContext = sc
+<SEP>
+    val sparkProperties: Seq[(String, String)],
+<SEP>
+  def compare(o1: PartitionGroup, o2: PartitionGroup): Boolean = o1.numPartitions < o2.numPartitions
+<SEP>
+      groupArr.filter(pg => pg.numPartitions == 0).foreach { pg =>
+<SEP>
+    dependencies.head.rdd.asInstanceOf[RDD[U]]
+<SEP>
+    val pc = partitionCoalescer.getOrElse(new DefaultPartitionCoalescer())
+<SEP>
+    val scopeKey = SparkContext.RDD_SCOPE_KEY
+     val noOverrideKey = SparkContext.RDD_SCOPE_NO_OVERRIDE_KEY
+     val oldScopeJson = sc.getLocalProperty(scopeKey)
+     val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+     val oldNoOverride = sc.getLocalProperty(noOverrideKey)
+     try {
+       if (ignoreParent) {
+         // Ignore all parent settings and scopes and start afresh with our own root scope
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name).toJson)
+       } else if (sc.getLocalProperty(noOverrideKey) == null) {
+         // Otherwise, set the scope only if the higher level caller allows us to do so
+         sc.setLocalProperty(scopeKey, new RDDOperationScope(name, oldScope).toJson)
+       }
+       // Optionally disallow the child body to override our scope
+       if (!allowNesting) {
+         sc.setLocalProperty(noOverrideKey, "true")
+       }
+       body
+     } finally {
+       // Remember to restore any state that was modified before exiting
+       sc.setLocalProperty(scopeKey, oldScopeJson)
+       sc.setLocalProperty(noOverrideKey, oldNoOverride)
+<SEP>
+    if (isLocallyCheckpointed) {
+<SEP>
+  private val stateLock = new Integer(0)
+<SEP>
+  override def getPartitions: Array[Partition] = firstParent[T].partitions
+<SEP>
+    contextHandler.setAttribute(attribute, uiRoot)
+<SEP>
+    val partsWithoutLocs = ArrayBuffer[Partition]()
+<SEP>
+              initLocalJobConfFuncOpt.foreach(f => f(newJobConf))
+<SEP>
+        while (partIter.hasNext && pg.numPartitions == 0) {
+<SEP>
+    val name: String,
+<SEP>
+private[spark] object HadoopRDD extends Logging {
+<SEP>
+    @transient rdd: RDD[_],
+<SEP>
+      val narrowParents = narrowDependencies.map(_.rdd)
+<SEP>
+    val jerseyContext = new ServletContextHandler(ServletContextHandler.NO_SESSIONS)
+     jerseyContext.setContextPath("/api")
+     val holder: ServletHolder = new ServletHolder(classOf[ServletContainer])
+     holder.setInitParameter(ServerProperties.PROVIDER_PACKAGES, "org.apache.spark.status.api.v1")
+     UIRootFromServletContext.setUiRoot(jerseyContext, uiRoot)
+     jerseyContext.addServlet(holder, "/*")
+     jerseyContext
+<SEP>
+  @transient var name: String = _
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    val jobConf = getJobConf()
+     // add the credentials here as this can be called before SparkContext initialized
+     SparkHadoopUtil.get.addCredentials(jobConf)
+     try {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+        array(i) = new HadoopPartition(id, i, inputSplits(i))
+<SEP>
+  def map[U: ClassTag](f: T => U): RDD[U] = withScope {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+    Option(sc.getLocalProperty(SparkContext.RDD_SCOPE_KEY)).map(RDDOperationScope.fromJson)
+<SEP>
+      : RDD[T] = withScope {
+<SEP>
+    checkpointData match {
+<SEP>
+  val CONFIGURATION_INSTANTIATION_LOCK = new Object()
+<SEP>
+    val partsWithLocs = ArrayBuffer[(String, Partition)]()
+<SEP>
+        pickBin(p, prev, balanceSlack, partitionLocs).partitions += p
+<SEP>
+    index: Int,
+<SEP>
+  def getPartitions: Array[PartitionGroup] = groupArr.filter( pg => pg.numPartitions > 0).toArray
+<SEP>
+      allowNesting: Boolean = false)(body: => T): T = {
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+      .map(_.getMethodName)
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    isFromBarrier || dependencies.exists(_.rdd.isBarrier())
+<SEP>
+    val conf: Configuration = broadcastedConf.value.value
+     if (shouldCloneJobConf) {
+       // Hadoop Configuration objects are not thread-safe, which may lead to various problems if
+       // one job modifies a configuration while another reads it (SPARK-2546).  This problem occurs
+       // somewhat rarely because most jobs treat the configuration as though it's immutable.  One
+       // solution, implemented here, is to clone the Configuration object.  Unfortunately, this
+       // clone can be very expensive.  To avoid unexpected performance regressions for workloads and
+       // Hadoop versions that do not suffer from these thread-safety issues, this cloning is
+       // disabled by default.
+       HadoopRDD.CONFIGURATION_INSTANTIATION_LOCK.synchronized {
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    prev.context.getPreferredLocs(prev, part.index).map(tl => tl.host)
+<SEP>
+<SEP>
+    locs.getOrElse(hsplit.getLocations.filter(_ != "localhost"))
+<SEP>
+  val groupHash = mutable.Map[String, ArrayBuffer[PartitionGroup]]()
+<SEP>
+    Seq(new NarrowDependency(prev) {
+<SEP>
+private[spark] class HadoopPartition(rddId: Int, override val index: Int, s: InputSplit)
+<SEP>
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>
+      .dropWhile(_.getMethodName != ourMethodName)
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+<SEP>
+               partitionCoalescer: Option[PartitionCoalescer] = Option.empty)
+<SEP>
+  @transient var name: String = _
+<SEP>
+  private val jsonMapper = new ObjectMapper().registerModule(DefaultScalaModule)
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+object GraphLoader extends Logging {
+<SEP>
+    val ourMethodName = "withScope"
+     val callerMethodName = Thread.currentThread.getStackTrace()
+       .dropWhile(_.getMethodName != ourMethodName)
+       .find(_.getMethodName != ourMethodName)
+       .map(_.getMethodName)
+       .getOrElse {
+         // Log a warning just in case, but this should almost certainly never happen
+         logWarning("No valid method name for this RDD operation scope!")
+         "N/A"
+       }
+     withScope[T](sc, callerMethodName, allowNesting, ignoreParent = false)(body)
+<SEP>
+    SparkEnv.get.hadoopJobMetadata.put(key, value)
+<SEP>
+    val hsplit = split.asInstanceOf[HadoopPartition].inputSplit.value
+     val locs = hsplit match {
+       case lsplit: InputSplitWithLocationInfo =>
+         HadoopRDD.convertSplitLocationInfo(lsplit.getLocationInfo)
+       case _ => None
+     }
+     locs.getOrElse(hsplit.getLocations.filter(_ != "localhost"))
+<SEP>
+  def nextScopeId(): Int = scopeCounter.getAndIncrement
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+  def getCachedMetadata(key: String): Any = SparkEnv.get.hadoopJobMetadata.get(key)
+<SEP>
+    val newInputFormat = ReflectionUtils.newInstance(inputFormatClass.asInstanceOf[Class[_]], conf)
+       .asInstanceOf[InputFormat[K, V]]
+     newInputFormat match {
+       case c: Configurable => c.setConf(conf)
+       case _ =>
+     }
+     newInputFormat
+<SEP>
+    val oldScope = Option(oldScopeJson).map(RDDOperationScope.fromJson)
+<SEP>
+  def coalesce(numPartitions: Int, shuffle: Boolean = false,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    ancestors.filterNot(_ == this).toSeq
+<SEP>
+  var parents: Seq[Partition] = parentsIndices.map(rdd.partitions(_))
+<SEP>
+    jsonMapper.readValue(s, classOf[RDDOperationScope])
+<SEP>
+    name = _name
+     this
+<SEP>
+    partition.asInstanceOf[CoalescedRDDPartition].preferredLocation.toSeq
+<SEP>
+    Option(infos).map(_.flatMap { loc =>
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+    val id: String,
+<SEP>
+case class ApplicationAttemptInfo private[spark](
+<SEP>
+      for (p <- prev.partitions if (!initialHash.contains(p))) { // throw every partition into group
+<SEP>
+      for (x <- 0 to 2) {
+<SEP>
+      preservesPartitioning: Boolean = false): RDD[U] = withScope {
+<SEP>
+  var noLocality = true  // if true if no preferredLocations exists for parent RDD
+<SEP>
+        val ids = pg.partitions.map(_.index).toArray
+<SEP>
+        ancestors.add(parent)
+         visit(parent)
+<SEP>
+    isOrderSensitive: Boolean = false)
+<SEP>
+  protected def getDependencies: Seq[Dependency[_]] = deps
+<SEP>
+<SEP>
+    val id: String = RDDOperationScope.nextScopeId().toString) {
+<SEP>

@@ -1,0 +1,2 @@
+Premain-Class: test.agent.SimpleAgent
+Can-Retransform-Classes: true

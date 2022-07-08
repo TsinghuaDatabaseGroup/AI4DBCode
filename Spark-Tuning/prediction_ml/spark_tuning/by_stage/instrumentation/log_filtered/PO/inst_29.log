@@ -1,0 +1,15 @@
+org/apache/spark/rdd/RDD.org$apache$spark$rdd$RDD$$partitions_-RDD.scala-242-242=72
+org/apache/spark/rdd/RDD.id-RDD.scala-150-150=118
+org/apache/spark/status/api/v1/InputMetrics.recordsRead-api.scala-238-238=25
+org/apache/spark/rdd/RDD.preferredLocations-RDD.scala-296-296=30
+org/apache/spark/rdd/RDD$$anonfun$partitions$2.apply-RDD.scala-269-269=36
+org/apache/spark/rdd/RDD$$anonfun$preferredLocations$2.apply-RDD.scala-297-297=30
+org/apache/spark/util/JsonProtocol$$anonfun$rddInfoToJson$3.apply-JsonProtocol.scala-439-439=32
+org/apache/spark/rdd/RDD.checkpointData-RDD.scala-1751-1751=101
+org/apache/spark/util/JsonProtocol$$anonfun$rddInfoToJson$4.apply-JsonProtocol.scala-439-439=32
+org/apache/spark/status/api/v1/InputMetrics.bytesRead-api.scala-237-237=29
+org/apache/spark/rdd/RDD.getPreferredLocations-RDD.scala-137-137=10
+org/apache/spark/rdd/ZippedPartitionsPartition.preferredLocations-ZippedPartitionsRDD.scala-30-30=20
+org/apache/spark/rdd/ZippedPartitionsBaseRDD.getPreferredLocations-ZippedPartitionsRDD.scala-70-70=20
+org/apache/spark/rdd/ZippedPartitionsRDD2.getPreferredLocations-ZippedPartitionsRDD.scala-70-70=20
+org/apache/spark/rdd/RDD.partitions-RDD.scala-269-269=36

@@ -1,0 +1,202 @@
+    val bytesWritten: Long,
+<SEP>
+  def unset(): Unit = inputBlock.remove()
+<SEP>
+
+<SEP>
+    val executorRunTime: Long,
+<SEP>
+    val inputMetrics: InputMetrics,
+<SEP>
+        updateBytesRead()
+         close()
+<SEP>
+  @transient var name: String = _
+<SEP>
+    ("Number of Partitions" -> rddInfo.numPartitions) ~
+<SEP>
+        getBytesReadCallback.foreach { getBytesRead =>
+<SEP>
+  override val index: Int = idx
+<SEP>
+
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    if (isCheckpointedAndMaterialized) {
+<SEP>
+  @volatile @transient private var partitions_ : Array[Partition] = _
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    val outputMetrics: OutputMetrics,
+<SEP>
+    val iter = new Iterator[(K, V)] {
+<SEP>
+  val id: Int = sc.newRddId()
+<SEP>
+  @transient private[spark] val scope: Option[RDDOperationScope] = {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    ("Callsite" -> rddInfo.callSite) ~
+<SEP>
+        if (reader != null) {
+<SEP>
+<SEP>
+    val shuffleWriteMetrics: ShuffleWriteMetrics)
+<SEP>
+    checkpointRDD.map(_.getPreferredLocations(split)).getOrElse {
+<SEP>
+    checkpointRDD.map(r => List(new OneToOneDependency(r))).getOrElse {
+<SEP>
+    val attemptId: Int,
+<SEP>
+    val conf: Configuration = confBroadcast.value.value
+     if (shouldCloneJobConf) {
+       // Hadoop Configuration objects are not thread-safe, which may lead to various problems if
+       // one job modifies a configuration while another reads it (SPARK-2546, SPARK-10611).  This
+       // problem occurs somewhat rarely because most jobs treat the configuration as though it's
+       // immutable.  One solution, implemented here, is to clone the Configuration object.
+       // Unfortunately, this clone can be very expensive.  To avoid unexpected performance
+       // regressions for workloads and Hadoop versions that do not suffer from these thread-safety
+       // issues, this cloning is disabled by default.
+       NewHadoopRDD.CONFIGURATION_INSTANTIATION_LOCK.synchronized {
+<SEP>
+      context.addTaskCompletionListener[Unit] { context =>
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+      logInfo("Input split: " + split.serializableHadoopSplit)
+<SEP>
+    val stageId: Int,
+<SEP>
+    val ancestors = new mutable.HashSet[RDD[_]]
+ 
+     def visit(rdd: RDD[_]): Unit = {
+       val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+         ancestors.add(parent)
+         visit(parent)
+       }
+     }
+ 
+     visit(this)
+ 
+     // In case there is a cycle, do not include the root itself
+     ancestors.filterNot(_ == this).toSeq
+<SEP>
+      private val split = theSplit.asInstanceOf[NewHadoopPartition]
+<SEP>
+    val tracker = SparkEnv.get.mapOutputTracker.asInstanceOf[MapOutputTrackerMaster]
+     val dep = dependencies.head.asInstanceOf[ShuffleDependency[K, V, C]]
+     tracker.getPreferredLocationsForShuffle(dep, partition.index)
+<SEP>
+  @transient protected lazy val isBarrier_ : Boolean =
+<SEP>
+    val shuffleReadMetrics: ShuffleReadMetrics,
+<SEP>
+    val memoryBytesSpilled: Long,
+<SEP>
+    checkpointData.exists(_.isCheckpointed)
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+    val diskBytesSpilled: Long,
+<SEP>
+      private val inputMetrics = context.taskMetrics().inputMetrics
+<SEP>
+  private val jobTrackerId: String = {
+<SEP>
+        if (!finished && !havePair) {
+           try {
+<SEP>
+    val recordsRead: Long)
+<SEP>
+    val recordsWritten: Long)
+<SEP>
+
+<SEP>
+      private val existingBytesRead = inputMetrics.bytesRead
+<SEP>
+  @transient private[spark] val creationSite = sc.getCallSite()
+<SEP>
+        getBytesReadCallback.foreach { getBytesRead =>
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+  def getStorageLevel: StorageLevel = storageLevel
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+      getPreferredLocations(split)
+<SEP>
+  @volatile private var dependencies_ : Seq[Dependency[_]] = _
+<SEP>
+    new InheritableThreadLocal[AtomicReference[FileBlock]] {
+<SEP>
+  def sparkContext: SparkContext = sc
+<SEP>
+    val executorCpuTime: Long,
+<SEP>
+  def initialize(): Unit = inputBlock.get()
+<SEP>
+  val serializableHadoopSplit = new SerializableWritable(rawSplit)
+<SEP>
+
+<SEP>
+  private[spark] var checkpointData: Option[RDDCheckpointData[T]] = None
+<SEP>
+    val localBytesRead: Long,
+<SEP>
+      val narrowDependencies = rdd.dependencies.filter(_.isInstanceOf[NarrowDependency[_]])
+       val narrowParents = narrowDependencies.map(_.rdd)
+       val narrowParentsNotVisited = narrowParents.filterNot(ancestors.contains)
+       narrowParentsNotVisited.foreach { parent =>
+<SEP>
+  private[spark] def isBarrier(): Boolean = isBarrier_
+<SEP>
+    val bytesRead: Long,
+<SEP>
+  protected def getPreferredLocations(split: Partition): Seq[String] = Nil
+<SEP>
+
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+    if (storageLevel != StorageLevel.NONE) {
+<SEP>
+<SEP>
+    val bytesWritten: Long,
+<SEP>
+    val parent: Option[RDDOperationScope] = None,
+<SEP>
+    require(filePath != null, "filePath cannot be null")
+     require(startOffset >= 0, s"startOffset ($startOffset) cannot be negative")
+     require(length >= -1, s"length ($length) cannot be smaller than -1")
+     inputBlock.get().set(new FileBlock(UTF8String.fromString(filePath), startOffset, length))
+<SEP>
+    checkpointRDD.map(_.partitions).getOrElse {
+<SEP>
+abstract class RDD[T: ClassTag](
+<SEP>
+
+<SEP>
+class NewHadoopRDD[K, V](
+<SEP>
+          inputMetrics.setBytesRead(existingBytesRead + getBytesRead())
+<SEP>
+
+<SEP>
+  override def compute(theSplit: Partition, context: TaskContext): InterruptibleIterator[(K, V)] = {
+<SEP>
+
+<SEP>
+    val remoteBytesRead: Long,
+<SEP>
+    val index: Int,
+<SEP>
