@@ -1,5 +1,7 @@
 <div align="center">
 
+ we will public the source code together with a basic demo during the conference :)
+   
 -----
 Grep: A Graph Learning Based Database Partitioning System.
 
