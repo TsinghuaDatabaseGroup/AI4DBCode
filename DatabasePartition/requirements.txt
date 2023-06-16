@@ -1,0 +1,14 @@
+flask_cors==3.0.10
+flask==2.1.1
+pymysql==1.0.2
+PyYAML==6.0
+Flask-APScheduler==1.12.3
+Pillow==9.1.0
+flask_caching==1.10.1
+aliyun-python-sdk-core==2.13.36
+psycopg2-binary==2.9.1
+paramiko==2.8.0
+torch==2.0.1
+numpy==1.24.3
+pandas==2.0.2
+scipy==1.10.1

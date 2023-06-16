@@ -1,0 +1,1 @@
+{"customer":"c_custkey", "lineitem":"l_orderkey,l_shipdate", "orders":"o_orderkey,o_orderdate"}
