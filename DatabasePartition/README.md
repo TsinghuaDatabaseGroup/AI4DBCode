@@ -6,7 +6,7 @@
   <a href="#1-setup">Setup</a> •
   <a href="#2-unit-tests">Unit Tests</a> •
   <a href="#3-model-training">Model Training</a> •
-  <a href="#4-frontend-demo">Frontend Demo</a> •  
+  <a href="#4-web-application">Web Application</a> •  
   <a href="#citation">Citation</a> •
 </p>
 
@@ -62,7 +62,7 @@ python train_partition_models.py
 
 TBD
 
-## 4. Frontend Demo
+## 4. Web Application
 
 ### Backend
 
