@@ -14,10 +14,7 @@ Grep is a database partitioning framework using graph embedding algorithms, whic
 
 - **A demo of Grep**
 
-<video width="640" height="360" controls>
-  <source src="grep_6_20.mp4" type="video/mp4">
-</video>
-
+https://github.com/TsinghuaDatabaseGroup/AI4DBCode/assets/17394639/9bebbdde-d0d6-42b7-a501-63caedb7a020
 
 ## 1. Setup
 
