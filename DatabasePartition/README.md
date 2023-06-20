@@ -88,14 +88,22 @@ npm run dev
 If you use Grep in your research, please cite:
 
 ```bibtex
-@article{zhou2023grep,
-  title={Grep: A Graph Learning Based Database Partitioning System},
-  author={Zhou, Xuanhe and Li, Guoliang and Feng, Jianhua and Liu, Luyang and Guo, Wei},
-  journal={Proceedings of the ACM on Management of Data},
-  volume={1},
-  number={1},
-  pages={1--24},
-  year={2023},
-  publisher={ACM New York, NY, USA}
+@article{DBLP:journals/pacmmod/ZhouLFLG23,
+  author       = {Xuanhe Zhou and
+                  Guoliang Li and
+                  Jianhua Feng and
+                  Luyang Liu and
+                  Wei Guo},
+  title        = {Grep: {A} Graph Learning Based Database Partitioning System},
+  journal      = {Proc. {ACM} Manag. Data},
+  volume       = {1},
+  number       = {1},
+  pages        = {94:1--94:24},
+  year         = {2023},
+  url          = {https://doi.org/10.1145/3588948},
+  doi          = {10.1145/3588948},
+  timestamp    = {Mon, 19 Jun 2023 16:36:09 +0200},
+  biburl       = {https://dblp.org/rec/journals/pacmmod/ZhouLFLG23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```
