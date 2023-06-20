@@ -1,8 +1,17 @@
 from api.services.partition.partition_selection.selection_model import Column2Graph, partitioning_model
-
+import os
+import torch
+import torch.nn as nn
 
 def partition_key_selection(args):
+
     p_model = partitioning_model(args)
+    
+    if args.reload_pretrain == True:
+        p_model_path = os.path.join(args.pretrain_model_checkpoint, 'partitioning_model.pt')
+
+        if os.path.exists(p_model_path):
+            p_model.gnns[0].load_state_dict(torch.load(p_model_path))
 
     graph = Column2Graph(args)
 

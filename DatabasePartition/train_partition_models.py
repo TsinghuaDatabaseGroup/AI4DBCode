@@ -30,7 +30,7 @@ def train_partitioning_models():
 
     # configure key selection model
     p_model = partitioning_model(args)
-    # p_optimizer = torch.optim.SGD(p_model.gnn.parameters(), lr=args.partition_learning_rate)
+    # p_optimizer = torch.optim.SGD(p_model.gnns[0].parameters(), lr=args.partition_learning_rate)
     # loss_fn = nn.MSELoss()
 
     # configure evaluation model
@@ -84,7 +84,7 @@ def train_partitioning_models():
         e_model_path = os.path.join(args.pretrain_model_checkpoint, 'evaluation_model.pt')
 
         if os.path.exists(p_model_path):
-            p_model.gnn.load_state_dict(torch.load(p_model_path))
+            p_model.gnns[0].load_state_dict(torch.load(p_model_path))
         if os.path.exists(e_model_path):
             e_model.gnn.load_state_dict(torch.load(e_model_path))
 
@@ -111,7 +111,7 @@ def train_partitioning_models():
         p_loss = -torch.mean(torch.abs(default_latency - estimated_latency)/(default_latency + 1e-10))
 
         # print p_model parameters
-        # for name, param in p_model.gnn.named_parameters():
+        # for name, param in p_model.gnns[0].named_parameters():
         #     print(f"Parameter Name: {name}")
         #     print(f"Parameter Shape: {param.shape}")
         #     print(f"Parameter Values: {param}")
@@ -150,7 +150,7 @@ def train_partitioning_models():
                 os.mkdir(current_model_dir)
 
                 # Save models if real_latency improved
-                torch.save(p_model.gnn.state_dict(), os.path.join(current_model_dir, 'partitioning_model.pt'))
+                torch.save(p_model.gnns[0].state_dict(), os.path.join(current_model_dir, 'partitioning_model.pt'))
                 torch.save(e_model.gnn.state_dict(), os.path.join(current_model_dir, 'evaluation_model.pt'))
 
             success_time += 1

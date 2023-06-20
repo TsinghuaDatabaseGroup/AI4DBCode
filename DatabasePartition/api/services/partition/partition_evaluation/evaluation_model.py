@@ -521,7 +521,7 @@ class partition_evaluation_model:
         # estimate the latency based on the embedding for the partitioned_sample_graph
 
         # latency = torch.exp(embedding) / (1 + torch.exp(embedding))
-        latency = self.fc_layer(embedding)
+        latency = torch.abs(self.fc_layer(embedding))
 
         # return latency.item()
         return latency

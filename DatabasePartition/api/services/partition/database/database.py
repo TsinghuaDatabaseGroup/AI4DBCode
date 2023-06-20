@@ -144,10 +144,18 @@ def execution_under_selected_keys(args, database, partition_keys):
     # schema (with default keys); load data; run queries
     command = "python3 run.py {} \"{}\" {} \"{}\" \"{}\"".format(args.schema, db_credentials_json, database,
                                                                  partition_keys_json, workload_json)
+    # command = "python3 run.py {} \"{}\" {} \"{}\" \"{}\" \"{}\"".format(args.schema, db_credentials_json, database,
+    #                                                              partition_keys_json, workload_json, args.workload_concurrency)
+
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(args.server, username=args.server_username, password=args.server_password, port=args.server_port)
+    ssh.connect(args.server, username=args.server_username, password=args.server_password, port=args.server_port, timeout=12000)
+
+    # Add keepalive
+    transport = ssh.get_transport()
+    transport.set_keepalive(30)  # Send a keepalive packet every 60 seconds
+
     stdin, stdout, stderr = ssh.exec_command("cd {} ; ".format(args.server_script_path) + command)
     output = stdout.readlines()
     ssh.close()
@@ -343,7 +351,7 @@ def table_statistics(args):
         "dbname": args.database,
         "user": args.db_user,
         "password": args.db_password,
-        "connect_timeout": 60
+        "connect_timeout": 1200
     }
     conn = psycopg2.connect(**source_db_credentials)
     cursor = conn.cursor()

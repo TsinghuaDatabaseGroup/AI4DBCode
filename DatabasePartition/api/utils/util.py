@@ -2,6 +2,7 @@ from functools import wraps
 from flask import jsonify
 from api.utils.response import ResMsg
 import os
+import numpy as np
 
 
 def route(bp, *args, **kwargs):
@@ -78,10 +79,26 @@ def get_dataset_names():
     current_file = os.path.abspath(__file__)
     directory_path = os.path.dirname(current_file)
     parent_path = os.path.dirname(directory_path)
-    dataset_path = os.path.join(parent_path, "datasets")
+    dataset_path = os.path.join(parent_path, "services/partition/datasets")
 
     directory_names = []
     for dir_name in os.listdir(dataset_path):
         if os.path.isdir(os.path.join(dataset_path, dir_name)):
-            directory_names.append({"name": dir_name, "path": dir_name})
+            directory_names.append({"name": dir_name, "value": dir_name})
     return directory_names
+
+
+def generate_coordinates(num_points, graph_width, graph_height):
+    # 计算每个点的横坐标和纵坐标上的间隔
+    x_interval = graph_width // num_points
+    y_interval = graph_height // num_points
+
+    # 生成相应数量的点
+    points = np.zeros((num_points, 2))
+
+    # 根据间隔计算每个点在图中的坐标
+    for i in range(num_points):
+        points[i][0] = (i * x_interval) + (x_interval // 2)
+        points[i][1] = (i * y_interval) + (y_interval // 2)
+
+    return points.tolist()

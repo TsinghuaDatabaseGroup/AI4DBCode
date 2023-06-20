@@ -184,10 +184,14 @@ class partitioning_model:
         self.args = args
 
         hidden_dim = self.get_hidden_dimension(args.selection_graph_vertex)
-        self.gnn = GNN(input_dim=args.selection_graph_vertex, 
+
+        self.gnns = []
+        for i in range(args.partition_gnn_layers):
+            gnn = GNN(input_dim=args.selection_graph_vertex, 
                        hidden_dim=hidden_dim, 
                        output_dim=args.selection_graph_vertex)
-        self.gnn.train(True)
+            gnn.train(True)            
+            self.gnns.append(gnn)
 
         self.grads = {}  # Initialize grads here
 
@@ -222,26 +226,32 @@ class partitioning_model:
         # First we need to clear any existing gradients
 
         self.grads = {}  # Reset the dictionary at the start of the computation
-        for param in self.gnn.parameters():
-            if param.grad is not None:
-                param.grad.data.zero_()
+
+        for gnn in self.gnns:
+            for param in gnn.parameters():
+                if param.grad is not None:
+                    param.grad.data.zero_()
 
         # Add regularization term to the loss
         l2_reg = 0
-        for param in self.gnn.parameters():
-            l2_reg += torch.norm(param)
+
+        for gnn in self.gnns:
+            for param in gnn.parameters():
+                l2_reg += torch.norm(param)
 
         reg_loss = p_loss + self.args.reg_factor * l2_reg  # self.args.reg_factor is the regularization factor
 
-        for name, param in self.gnn.named_parameters():
-            derivative = torch.autograd.grad(reg_loss, param, create_graph=True, allow_unused=True)
-            if derivative[0] is not None:
-                self.grads[name] = derivative[0]
+        for gnn in self.gnns:
+            for name, param in gnn.named_parameters():
+                derivative = torch.autograd.grad(reg_loss, param, create_graph=True, allow_unused=True)
+                if derivative[0] is not None:
+                    self.grads[name] = derivative[0]
 
         with torch.no_grad():
-            for name, param in self.gnn.named_parameters():
-                if name in self.grads:
-                    param -= self.args.partition_learning_rate * self.grads[name]
+            for gnn in self.gnns:
+                for name, param in gnn.named_parameters():
+                    if name in self.grads:
+                        param -= self.args.partition_learning_rate * self.grads[name]
 
 
     def get_hidden_dimension(self, graph_vertex):
@@ -262,7 +272,10 @@ class partitioning_model:
 
         # Implement the forward pass for the Partitioning Model
         # Compute embeddings
-        embeddings, V = self.gnn(padded_vertex_matrix, padded_edge_matrix)  # Get the original embeddings
+
+        embeddings = padded_vertex_matrix
+        for gnn in self.gnns:
+            embeddings, V = gnn(embeddings, padded_edge_matrix)  # Get the original embeddings
 
         # embeddings = embeddings[:origin_graph.vertex_matrix.size(0), :]
         # V = V[:origin_graph.vertex_matrix.size(0), :]
@@ -270,8 +283,10 @@ class partitioning_model:
         total_relevance = torch.ones(embeddings.shape[0])
 
         # Compute partial derivatives of relevance with respect to each input feature
-        gnn_weights= self.gnn.W[:embeddings.size(-1), :]
-        partial_derivatives = gnn_weights.t() * total_relevance
+
+        for gnn in reversed(self.gnns):
+            gnn_weights= gnn.W[:embeddings.size(-1), :]
+            partial_derivatives = gnn_weights.t() * total_relevance
 
 
         # Compute relevance for each input feature
