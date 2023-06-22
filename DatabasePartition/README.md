@@ -6,7 +6,7 @@
   <a href="#1-setup">Setup</a> •
   <a href="#2-unit-tests">Unit Tests</a> •
   <a href="#3-model-training">Model Training</a> •
-  <a href="#4-frontend-demo">Frontend Demo</a> •  
+  <a href="#4-web-application">Web Application</a> •  
   <a href="#citation">Citation</a> •
 </p>
 
@@ -14,10 +14,7 @@ Grep is a database partitioning framework using graph embedding algorithms, whic
 
 - **A demo of Grep**
 
-<video width="640" height="360" controls>
-  <source src="grep_6_20.mp4" type="video/mp4">
-</video>
-
+https://github.com/TsinghuaDatabaseGroup/AI4DBCode/assets/17394639/9bebbdde-d0d6-42b7-a501-63caedb7a020
 
 ## 1. Setup
 
@@ -65,7 +62,7 @@ python train_partition_models.py
 
 TBD
 
-## 4. Frontend Demo
+## 4. Web Application
 
 ### Backend
 
