@@ -7,6 +7,7 @@
   <a href="#2-unit-tests">Unit Tests</a> •
   <a href="#3-model-training">Model Training</a> •
   <a href="#4-web-application">Web Application</a> •  
+  <a href="#5-practices">Web Application</a> •  
   <a href="#citation">Citation</a> •
 </p>
 
@@ -78,6 +79,9 @@ npm install
 npm run dev
 ```
 
+## 5. Practices
+
+Check out the subset of queries and partiton results (only those that are publicly available) within *./practices*.
 
 
 ## Citation
