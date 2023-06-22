@@ -7,7 +7,7 @@
   <a href="#2-unit-tests">Unit Tests</a> •
   <a href="#3-model-training">Model Training</a> •
   <a href="#4-web-application">Web Application</a> •  
-  <a href="#5-practices">Web Application</a> •  
+  <a href="#5-practices">Practices</a> •  
   <a href="#citation">Citation</a> •
 </p>
 
