@@ -13,6 +13,8 @@
 
 Grep is a database partitioning framework using graph embedding algorithms, which judiciously selects partition-keys for each table in order to maximize the performance. Grep includes four parts, i.e., *partition-key selection*, *selected-key evaluation*, *model training*, and *frontend demo*.
 
+*A complete version will be made available at https://github.com/zhouxh19/grep*
+
 - **A demo of Grep**
 
 https://github.com/TsinghuaDatabaseGroup/AI4DBCode/assets/17394639/9bebbdde-d0d6-42b7-a501-63caedb7a020
