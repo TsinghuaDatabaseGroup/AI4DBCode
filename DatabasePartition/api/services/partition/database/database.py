@@ -142,6 +142,8 @@ def execution_under_selected_keys(args, database, partition_keys):
     db_credentials_json = db_credentials_json.replace('"', '\\"')
 
     # schema (with default keys); load data; run queries
+    # python3 run.py 10 tpch10xmulti_4_9 c_custkey l_orderkey,l_shipdate o_orderkey,o_orderdate "SELECT * FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey AND O_ORDERDATE = l.l_shipdate WHERE l.l_quantity > 10"
+    # python3 run.py tpch_demo "{\"host\": \"127.0.0.1\", \"port\": \"54322\", \"dbname\": \"tpch10default10_1686577780\", \"user\": \"gpadmin\", \"password\": \"80b361292d39\"}" tpch10default10_1686577780 "{\"SUPPLIER\": \"\", \"LINEITEM\": \"\", \"ORDERS\": \"\", \"CUSTOMER\": \"\"}" "[\"SELECT * FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey AND o.o_orderdate = l.l_shipdate WHERE l.l_quantity > 10\"]"
     command = "python3 run.py {} \"{}\" {} \"{}\" \"{}\"".format(args.schema, db_credentials_json, database,
                                                                  partition_keys_json, workload_json)
     # command = "python3 run.py {} \"{}\" {} \"{}\" \"{}\" \"{}\"".format(args.schema, db_credentials_json, database,
@@ -169,6 +171,7 @@ def execution_under_selected_keys(args, database, partition_keys):
             throughput = float(line.split(":")[1].strip())
             cnt = cnt + 1
     if cnt != 2:
+        import pdb; pdb.set_trace()
         raise Exception("Error: cannot get the latency and throughput!\n Please check your db cluster..")
 
     return latency, throughput
@@ -272,6 +275,7 @@ def clone_sample_data_to_database(args):
 
 
 def extract_tables(args):
+
     source_db_credentials = {
         "host": args.db_host,
         "port": args.db_port,
@@ -279,9 +283,12 @@ def extract_tables(args):
         "user": args.db_user,
         "password": args.db_password,
     }
+
     conn = psycopg2.connect(**source_db_credentials)
     cursor = conn.cursor()
+
     # Execute the SQL query to fetch all table names in the sample_data database
+
     cursor.execute("""
         SELECT table_name, pg_size_pretty(pg_total_relation_size('"' || table_name || '"')) AS table_size
         FROM information_schema.tables

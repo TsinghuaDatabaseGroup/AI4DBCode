@@ -21,6 +21,7 @@ class Column2Graph:
     def __init__(self, args):
         self.args = args
         print("Loading workload...", self.args.schema_path)
+        
         self.schema = database.table_col(self.args.schema_path)
         self.cols = {}
         for tbl in self.schema:
@@ -30,7 +31,7 @@ class Column2Graph:
         
         with open(self.args.workload_path, 'r') as f:
             file_contents = f.read()
-
+            
             queries = file_contents.split(';')
             self.workload = [query.strip() for query in queries]
 
@@ -182,7 +183,6 @@ class partitioning_model:
         # Define the layers for the Partitioning Model based on the descriptions
         #self.input_dim, self.hidden_dim, self.output_dim = self.get_gnn_dimensions(graph.edge_matrix)
         self.args = args
-
         hidden_dim = self.get_hidden_dimension(args.selection_graph_vertex)
 
         self.gnns = []
@@ -195,7 +195,7 @@ class partitioning_model:
 
         self.grads = {}  # Initialize grads here
 
-        print(" === partition gnn size ({}, {}, {})".format(args.selection_graph_vertex, hidden_dim, args.selection_graph_vertex))
+        print(" [partition gnn] size ({}, {}, {})".format(args.selection_graph_vertex, hidden_dim, args.selection_graph_vertex))
         
     def padding_graph_matrcies(self, vertex_matrix, edge_matrix):
 

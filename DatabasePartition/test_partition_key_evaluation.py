@@ -17,13 +17,10 @@ import numpy as np
 import math
 
 from api.services.partition.config import PartitionConfig
-from api.services.partition.utils import utils
 from api.services.partition.database import database
 from api.services.partition.models.attention_network import AttentionNetwork
 from api.services.partition.models.gnn import GNN
 from api.services.partition.partition_evaluation.evaluation_model import SampleGraph, partition_evaluation_model
-
-import pdb
 
 sys.path.append('api/services')
 
@@ -43,9 +40,10 @@ if __name__ == "__main__":
     success, msg = args.generate_paths()
     if not success:
         raise ValueError(msg)
-
+    
     partitioning_keys = {'lineitem': ['l_orderkey', 'l_quantity'], 'orders': ['o_custkey', 'o_orderdate'], 'customer': ['c_custkey']}
 
+    # import pdb; pdb.set_trace()
     # Generate k-node sample graph (self.sample_vertex_matrix, self.sample_edge_matrix)
     partitioned_sample_graph = SampleGraph(args, partitioning_keys=partitioning_keys)
     partition_eval = partition_evaluation_model(args)

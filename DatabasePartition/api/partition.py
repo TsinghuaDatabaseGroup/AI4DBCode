@@ -191,7 +191,7 @@ def preview():
         origin_latency = origin_latency.item()
         latency = latency.item()
     else:
-        database.drop_database(args, args.database + "_tmp")
+        database.drop_database(args, args.database + "")
         database.drop_database(args, args.database + "_tmp2")
 
         time.sleep(2)

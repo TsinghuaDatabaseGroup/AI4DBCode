@@ -126,7 +126,7 @@ class SampleGraph:
         # self.atomic_queries = self.add_key_columns(atomic_queries)
         # self.atomic_queries = ['SELECT customer.c_custkey FROM customer AS customer;', 'SELECT orders.o_custkey, orders.o_orderdate FROM orders AS orders;', 'SELECT c_custkey, o_custkey, o_orderdate FROM (SELECT * FROM customer) AS customer JOIN (SELECT * FROM orders) AS orders ON c_custkey = o_custkey;', "SELECT lineitem.l_orderkey, lineitem.l_quantity FROM lineitem AS lineitem WHERE (l_quantity > '10');", "SELECT o_custkey, o_orderdate, l_orderkey, l_quantity FROM (SELECT * FROM orders) AS orders JOIN (SELECT * FROM lineitem WHERE (l_quantity > '10')) AS lineitem ON o_orderkey = l_orderkey AND orders.o_orderdate = lineitem.l_shipdate;"]
 
-        print(" ==== splitted queries: ", self.atomic_queries)
+        print(" [splitted queries] ", self.atomic_queries)
 
         # execute the atomic queries and build the graph based on the query results
         self.vertex_matrix, self.edge_matrix, self.vertex_json = self.build_sample_graph(is_sample)
@@ -254,9 +254,12 @@ class SampleGraph:
         # {'lineitem': ['l_orderkey', 'l_quantity'], 'orders': ['o_custkey', 'o_orderdate'], 'customer': ['c_custkey']}
         matched_partitioning_keys = []
 
+        # import pdb; pdb.set_trace()
+
         for table in self.partitioning_keys:
             keys = self.partitioning_keys[table]
-            keys = keys.split(',')
+            if isinstance(keys, str):
+                keys = keys.split(',')
             contains_all_keys = True
             key_pos = []
             for key_column in keys:
@@ -480,8 +483,8 @@ class partition_evaluation_model:
         self.output_dim = args.max_node_num
 
         self.gnn = GNN(input_dim=self.input_dim, hidden_dim=self.hidden_dim, output_dim=self.output_dim)
-        print(" === evaluation gnn size ({}, {}, {})".format(self.input_dim, self.hidden_dim, self.output_dim))
-
+        print("[evaluation gnn size] ({}, {}, {})".format(self.input_dim, self.hidden_dim, self.output_dim))
+        
         self.fc_layer = nn.Sequential(
             nn.Linear(self.output_dim, 1),
             # input size of node number (from the embedding tensor), output size of 1 (for the latency value)

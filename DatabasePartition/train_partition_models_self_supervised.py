@@ -5,7 +5,6 @@ import re
 import time
 import logging
 
-from api.services.partition.utils import utils
 from api.services.partition.database import database
 from api.services.partition.partition_selection.selection_model import Column2Graph, partitioning_model
 from api.services.partition.partition_evaluation.evaluation_model import SampleGraph, partition_evaluation_model
@@ -23,7 +22,7 @@ def train_partitioning_models():
 
     current_timestamp = int(time.time())
     args.database = f"{args.database}_{current_timestamp}"
-    print(" === origin database: ", args.database)
+    print("[origin database]: ", args.database)
 
     # Set up logging
     logging.basicConfig(filename='./logs/train_partitioning_models_{}.log'.format(current_timestamp), level=logging.INFO)
@@ -32,7 +31,7 @@ def train_partitioning_models():
     p_model = partitioning_model(args)
     # p_optimizer = torch.optim.SGD(p_model.gnns[0].parameters(), lr=args.partition_learning_rate)
     # loss_fn = nn.MSELoss()
-
+    
     # configure evaluation model
     e_model = partition_evaluation_model(args)
     e_optimizer = torch.optim.Adam(list(e_model.gnn.parameters()) + list(e_model.fc_layer.parameters()), 
@@ -102,12 +101,12 @@ def train_partitioning_models():
                     partitioning_keys[graph.used_cols[candidate_cols[i]]] = candidate_cols[i]
                 else:
                     partitioning_keys[graph.used_cols[candidate_cols[i]]] = partitioning_keys[graph.used_cols[candidate_cols[i]]] + "," + candidate_cols[i]
-
+         
         partitioned_sample_graph = SampleGraph(args, partitioning_keys=partitioning_keys, is_sample=True)
         
         embedding = e_model.embedding(partitioned_sample_graph)
         estimated_latency = e_model.estimate_latency(embedding)
-
+        
         p_loss = -torch.mean(torch.abs(default_latency - estimated_latency)/(default_latency + 1e-10))
 
         # print p_model parameters
@@ -136,7 +135,6 @@ def train_partitioning_models():
         if real_latency < best_latency * 0.9: # reduce the effect of normal performance noise
             best_latency = real_latency.item()
             best_keys = partitioning_keys
-
 
         if real_latency < default_latency * 0.9:
         
@@ -178,4 +176,5 @@ def train_partitioning_models():
 
 
 if __name__ == "__main__":
+    
     train_partitioning_models()

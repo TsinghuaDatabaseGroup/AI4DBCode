@@ -8,6 +8,7 @@ def partition_key_selection(args):
     p_model = partitioning_model(args)
     
     if args.reload_pretrain == True:
+        
         p_model_path = os.path.join(args.pretrain_model_checkpoint, 'partitioning_model.pt')
 
         if os.path.exists(p_model_path):
@@ -18,6 +19,7 @@ def partition_key_selection(args):
     candidate_cols = list(graph.used_cols.keys())
     partitioning_keys_marks = p_model.forward(graph)
     partitioning_keys = {}
+    
     for i in range(len(partitioning_keys_marks)):
         if partitioning_keys_marks[i] == 1:
             if graph.used_cols[candidate_cols[i]] not in partitioning_keys:
